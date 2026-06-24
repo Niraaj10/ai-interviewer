@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import cookiesParser from 'cookie-parser'
 
+
 const app = express()
 
 // 1. Middleware 

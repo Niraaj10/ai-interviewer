@@ -3,11 +3,13 @@ import { useRef, useState } from "react"
 import { toast } from "sonner"
 import { BACKEND } from "../../lib/config";
 import { resume } from "react-dom/server";
+import { useNavigate } from "@tanstack/react-router";
 
 export function Form() {
     const [github, setGithub] = useState("");
     const [linkedin, setLinkedin] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -40,6 +42,7 @@ export function Form() {
              },
         });
         
+        navigate({ to: '/interview' })
         setLoading(false);
        } catch (e) {
         toast.error("Something went wrong starting your interview. Please try again.")
@@ -78,9 +81,10 @@ export function Form() {
 
             <div className="flex flex-col items-center justify-center mt-5">
                 <button 
+                disabled={loading}
                 className="bg-black text-white p-2 rounded-md"
                 onClick={onSubmit}>
-                    Start Interview
+                    {loading ? "starting Interview..." : "Start Interview"}
                 </button>
             </div>
 
