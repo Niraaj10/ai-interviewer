@@ -11,7 +11,14 @@ model Interview {
   id             String          @id @default(uuid())
   githubMetadata Json
   status         InterviewStatus
+
   score          Int             @default(0)
+
+  roomName       String?         @unique
+
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  
   conversations  Message[]
 }
 
@@ -20,7 +27,10 @@ model Message {
   message     String
   type        MessageType
   interviewId String
-  interview   Interview   @relation(fields: [interviewId], references: [id])
+  createdAt   DateTime    @default(now())
+  interview   Interview   @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+
+  @@index([interviewId, createdAt])
 }
 
 enum MessageType {

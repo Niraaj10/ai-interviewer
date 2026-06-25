@@ -17,12 +17,6 @@ function getProxyConfig(): AxiosProxyConfig {
   };
 }
 
-/**
- * Extracts GitHub username from URL and fetches user repositories via Proxy.
- * @param githubUrl - Full GitHub profile URL
- * @returns Promise<GitHubRepo[]> - Array of user repositories
- */
-
 export async function fetchUserRepos(githubUrl: string): Promise<GitHubRepo[]> {
   const normalizedUrl = githubUrl.endsWith("/") ? githubUrl.slice(0, -1) : githubUrl;
   const username = normalizedUrl.split("/").pop();
