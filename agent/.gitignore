@@ -1,0 +1,44 @@
+# --- Security ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+credentials.json
+
+# --- AI Agent Specific ---
+AGENTS.local.md
+CLAUDE.local.md
+.cursorignore
+.clineignore
+.uignore
+chroma_db/
+qdrant_storage/
+.vector_cache/
+.langgraph_api
+.langgraph.pid
+evals/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# --- IDE/OS ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints   

@@ -30,9 +30,6 @@ const adapter = new PrismaPg({
   connectionString: process.env.DIRECT_URL!,
 });
 
-console.log('DIRECT_URL being used:', JSON.stringify(process.env.DIRECT_URL)); adapter.connect?.().then(() => console.log('Adapter connected OK')).catch((e: any) => console.log('Adapter connect error:', e));
-
-
 
 export const prisma =
   globalForPrisma.prisma ??
