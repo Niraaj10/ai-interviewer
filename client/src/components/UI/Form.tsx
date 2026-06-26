@@ -31,6 +31,7 @@ export function Form() {
        
 
        setLoading(true);
+
        try {
         const formData = new FormData();
         formData.append("github", github.trim());
@@ -41,8 +42,14 @@ export function Form() {
                 "Content-Type": "multipart/form-data",
              },
         });
+
+        console.log(res.data.intId)
         
-        navigate({ to: '/interview' })
+        navigate({ 
+            to: '/interview/$interviewId',
+            params: { interviewId: res.data.intId }
+        });
+
         setLoading(false);
        } catch (e) {
         toast.error("Something went wrong starting your interview. Please try again.")

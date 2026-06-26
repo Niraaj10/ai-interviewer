@@ -30,9 +30,6 @@ const adapter = new PrismaPg({
   connectionString: process.env.DIRECT_URL!,
 });
 
-console.log("db-key : ", process.env.DIRECT_URL)
-
-
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
