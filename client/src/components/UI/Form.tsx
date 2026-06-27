@@ -14,47 +14,59 @@ export function Form() {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     async function onSubmit() {
-       if(!github) {
-            toast.info("Provide valid github URLs",{
+        if (!github) {
+            toast.info("Provide valid github URLs", {
                 position: 'top-center',
             })
             return;
-       }
+        }
 
-       const file = fileInputRef.current?.files?.[0]
-       if (!file) {
-            toast.info("Please upload your resume/cv",{
+        const file = fileInputRef.current?.files?.[0]
+        if (!file) {
+            toast.info("Please upload your resume/cv", {
                 position: 'top-center',
             })
             return;
-       }
-       
+        }
 
-       setLoading(true);
 
-       try {
-        const formData = new FormData();
-        formData.append("github", github.trim());
-        formData.append("resume", file);
+        setLoading(true);
 
-        const res = await axios.post(`${BACKEND}/api/v1/pre-interview`, formData, {
-             headers: {
-                "Content-Type": "multipart/form-data",
-             },
-        });
+        try {
+            const formData = new FormData();
+            formData.append("github", github.trim());
+            formData.append("resume", file);
 
-        console.log(res.data.intId)
-        
-        navigate({ 
-            to: '/interview/$interviewId',
-            params: { interviewId: res.data.intId }
-        });
+            const res = await axios.post(`${BACKEND}/api/v1/pre-interview`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
 
-        setLoading(false);
-       } catch (e) {
-        toast.error("Something went wrong starting your interview. Please try again.")
-        setLoading(false);
-       }
+            // console.log("Server Response:", res.data);
+
+            const interviewId = res.data.data.intId;
+
+            // console.log("Extracted ID:", interviewId); 
+
+            if (!interviewId) {
+                throw new Error("No Interview ID received");
+            }
+
+            if (!res.data || !res.data.data.intId) {
+                throw new Error("Server did not return a valid Interview ID");
+            }
+
+            navigate({
+                to: '/interview/$interviewId',
+                params: { interviewId }
+            });
+
+            setLoading(false);
+        } catch (e) {
+            toast.error("Something went wrong starting your interview. Please try again.")
+            setLoading(false);
+        }
     }
 
 
@@ -75,7 +87,7 @@ export function Form() {
                     disabled={loading}
                     className="border-2 border-gray-300 p-2 rounded-md"
                 />
-                
+
                 <input
                     ref={fileInputRef}
                     type="file"
@@ -83,14 +95,14 @@ export function Form() {
                     disabled={loading}
                     className="border-2 border-gray-300 p-2 rounded-md"
                 />
-                
+
             </div>
 
             <div className="flex flex-col items-center justify-center mt-5">
-                <button 
-                disabled={loading}
-                className="bg-black text-white p-2 rounded-md"
-                onClick={onSubmit}>
+                <button
+                    disabled={loading}
+                    className="bg-black text-white p-2 rounded-md"
+                    onClick={onSubmit}>
                     {loading ? "starting Interview..." : "Start Interview"}
                 </button>
             </div>

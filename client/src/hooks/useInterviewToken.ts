@@ -1,24 +1,16 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 
-interface TokenResponseData {
-    token: string,
-    roomName: string,
-    serverUrl: string
-}
-
-interface useInterviewTokenResult {
-     connectionDetails: TokenResponseData | null;
-     isLoading: boolean;
-     error: string | null;
-     fetchToken: (interviewId: string) => Promise<void>;
-}
-
 const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
-console.log("Backend URL : ", BACKEND_URL)
 
-export function useInterviewToken(): useInterviewTokenResult {
-    const [connectionDetails, setConnectionDetails] = useState<TokenResponseData | null>(null);
+export function useInterviewToken() {
+    // ✅ Type inferred automatically from initial state (null) and usage
+    const [connectionDetails, setConnectionDetails] = useState<{
+        token: string;
+        serverUrl: string;
+        roomName: string;
+    } | null>(null);
+    
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -37,11 +29,20 @@ export function useInterviewToken(): useInterviewTokenResult {
                 }
             );
     
-            const json = res.data; 
-            
-            console.log("Token response:", json);
+            const payload = res.data; 
+            console.log("Token response:", payload);
+    
+            if (!payload.data || !payload.data.token) {
+                throw new Error("Invalid response structure from server");
+            }
+            console.log("token :", payload.data.token);
+    
+            setConnectionDetails({
+                token: payload.data.token,
+                roomName: payload.data.roomName,
+                serverUrl: payload.data.serverUrl
+            });
 
-            setConnectionDetails(res.data as TokenResponseData);    
         } catch (error: any) {
             const message = error.response?.data?.message || error.message || "Failed to fetch interview token";
             setError(message);
@@ -49,7 +50,8 @@ export function useInterviewToken(): useInterviewTokenResult {
         } finally {
             setIsLoading(false);
         }
-    }, [])
+    }, [BACKEND_URL]); // ✅ Added dependency
 
-    return { connectionDetails, isLoading, error, fetchToken}
-}
+    // ✅ Return types inferred automatically
+    return { connectionDetails, isLoading, error, fetchToken };
+}   
