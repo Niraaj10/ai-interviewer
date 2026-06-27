@@ -7,22 +7,13 @@ import {
 } from "@livekit/components-react";
 import { useInterviewToken } from "../hooks/useInterviewToken";
 import { useEffect } from "react";
+import VoiceAssistantUI from "./UI/VoiceAssistantUI";
 
 interface InterviewRoomProps {
     interviewId: string
 }
 
-function VoiceAssistantUI() {
-    const { state, audioTrack } = useVoiceAssistant();
 
-    return (
-        <div className="assistant-panel">
-            <p className="assistant-status">Status: {state}</p>
-            <BarVisualizer state={state} barCount={5} trackRef={audioTrack} />
-            <DisconnectButton>End Interview</DisconnectButton>
-        </div>
-    );
-}
 
 
 export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
