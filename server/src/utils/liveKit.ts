@@ -21,8 +21,9 @@ export async function generateInterviewToken(
     atoken.addGrant({
         roomJoin: true,
         room: params.roomName,
-        canPublish: false,
+        canPublish: true,
         canSubscribe: true,
+        canPublishData: true,
       });
 
     return await atoken.toJwt();
