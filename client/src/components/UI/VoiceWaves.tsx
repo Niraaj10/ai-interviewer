@@ -33,7 +33,7 @@ export function VoiceWaves({ trackRef, isAI, aiState }: VoiceWavesProps) {
       // 2. LINEAR INTERPOLATION (LERP): Smooths out raw audio spikes
       // Lower number (e.g., 0.1) = smoother and more fluid fluid movement
       // Higher number (e.g., 0.3) = faster, more erratic jumps
-      const lerpValue = 0.15;
+      const lerpValue = 0.1;
       const nextScale = currentScaleRef.current + (targetScale - currentScaleRef.current) * lerpValue;
 
       // 3. Update memory bounds and push layout configuration values to view state

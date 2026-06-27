@@ -1,32 +1,48 @@
-import { BarVisualizer, DisconnectButton, useConnectionState, useLocalParticipant, useRoomContext, useVoiceAssistant } from "@livekit/components-react";
+import {
+    DisconnectButton,
+    useConnectionState,
+    useLocalParticipant,
+    useVoiceAssistant,
+    type TrackReference,
+} from "@livekit/components-react";
 import { Track } from "livekit-client";
 import { VoiceWaves } from "./VoiceWaves";
 
 export default function VoiceAssistantUI() {
     const { state, audioTrack } = useVoiceAssistant();
     const { localParticipant } = useLocalParticipant();
-    
-    const micTrackRef = localParticipant.getTrackPublication(Track.Source.Microphone);
-    const micTrack = micTrackRef?.track;
+    const connectionState = useConnectionState();
 
-    const aiTrack = audioTrack?.publication?.track;
+    const micTrackPublication = localParticipant.getTrackPublication(Track.Source.Microphone);
 
     const isAISpeaking = state === "speaking" || state === "thinking";
-    const activeTrack = isAISpeaking ? aiTrack : micTrack;
-    // const activeTrack = isAISpeaking ? audioTrack : micTrackRef;
 
-    // Human-friendly UI text updates
+    // useTrackVolume needs a proper TrackReference object ({ participant,
+    // source, publication }), not a bare Track. Passing the unwrapped
+    // `.track` here silently breaks volume detection — the hook can't
+    // resolve any audio data from it, so the orb never animates.
+    const micTrackRef: TrackReference | undefined = micTrackPublication
+        ? {
+              participant: localParticipant,
+              source: Track.Source.Microphone,
+              publication: micTrackPublication,
+          }
+        : undefined;
+
+    const activeTrack: TrackReference | undefined = isAISpeaking ? audioTrack : micTrackRef;
+
     const getStatusText = () => {
         switch (state) {
-            case "listening": return "Listening to you...";
-            case "thinking": return "Processing response...";
-            case "speaking": return "AI is speaking...";
-            default: return "Ready - Speak when ready";
+            case "listening":
+                return "Listening to you...";
+            case "thinking":
+                return "Processing response...";
+            case "speaking":
+                return "AI is speaking...";
+            default:
+                return "Ready - Speak when ready";
         }
     };
-    const room = useRoomContext();
-    
-    const connectionState = useConnectionState(); 
 
     if (connectionState === "connecting") {
         return (
@@ -44,7 +60,9 @@ export default function VoiceAssistantUI() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
-                <span className="text-sm font-semibold text-green-600 uppercase tracking-wider">Interview Active</span>
+                <span className="text-sm font-semibold text-green-600 uppercase tracking-wider">
+                    Interview Active
+                </span>
             </div>
 
             <h2 className="text-xl font-bold text-gray-800 mb-2">AI Technical Interviewer</h2>
@@ -54,13 +72,9 @@ export default function VoiceAssistantUI() {
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">
                     {getStatusText()}
                 </p>
-                
+
                 <div className="w-full flex items-center justify-center">
-                    <VoiceWaves 
-                        trackRef={activeTrack} 
-                        isAI={isAISpeaking} 
-                        aiState={state} 
-                    />
+                    <VoiceWaves trackRef={activeTrack} isAI={isAISpeaking} aiState={state} />
                 </div>
             </div>
 
