@@ -1,55 +1,107 @@
+import { useState, useEffect } from "react";
 import {
     LiveKitRoom,
     RoomAudioRenderer,
-    useVoiceAssistant,
-    BarVisualizer,
-    DisconnectButton,
+    AudioConference,
 } from "@livekit/components-react";
 import { useInterviewToken } from "../hooks/useInterviewToken";
-import { useEffect } from "react";
 import VoiceAssistantUI from "./UI/VoiceAssistantUI";
 
 interface InterviewRoomProps {
-    interviewId: string
+    interviewId: string;
 }
-
-
-
 
 export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
     const { connectionDetails, isLoading, error, fetchToken } = useInterviewToken();
+    const [hasUserJoined, setHasUserJoined] = useState(false);
 
     useEffect(() => {
-        fetchToken(interviewId);
-    }, [interviewId, fetchToken]);
+        if (interviewId && hasUserJoined) {
+            fetchToken(interviewId);
+        }
+    }, [interviewId, fetchToken, hasUserJoined]);
+
+    // Step A: Show a clear landing card to satisfy browser audio interaction security policies
+    if (!hasUserJoined) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+                <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-gray-100 text-center">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Ready to Start Your Interview?</h2>
+                    <p className="text-sm text-gray-500 mb-6">
+                        Clicking below will establish a secure connection and activate your microphone.
+                    </p>
+                    <button
+                        onClick={() => setHasUserJoined(true)}
+                        className="w-full py-3 bg-black hover:bg-gray-800 text-white font-medium rounded-xl transition duration-200 shadow-lg"
+                    >
+                        Join Interview Room
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     if (isLoading) {
-        return <p>Connection to your interview...</p>
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-50">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black mx-auto"></div>
+                    <p className="text-sm font-medium text-gray-600 mt-4 animate-pulse">
+                        Configuring real-time media pipeline...
+                    </p>
+                </div>
+            </div>
+        );
     }
 
     if (error) {
-        return <p role="alert">Couldn't start the interview: {error}</p>
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+                <div className="p-6 max-w-sm bg-white rounded-xl shadow-md border border-red-100 text-center" role="alert">
+                    <p className="text-red-600 font-semibold mb-2">Connection Blocked</p>
+                    <p className="text-sm text-gray-500">{error}</p>
+                    <button 
+                        onClick={() => setHasUserJoined(false)}
+                        className="mt-4 text-xs font-medium text-gray-600 underline"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        );
     }
 
-    if (!connectionDetails) {
-        return null;
-    }
+    if (!connectionDetails) return null;
 
     return (
-        <LiveKitRoom
-            token={connectionDetails.token}
-            serverUrl={connectionDetails.serverUrl}
-            connect
-            audio
-            video={false}
-            onDisconnected={() => {
-                return <>
-                    <p>Thanks for completing interview</p>
-                </>
-            }}
-        >
-            <RoomAudioRenderer />
-            <VoiceAssistantUI />
-        </LiveKitRoom>
-    )
+        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <LiveKitRoom
+                token={connectionDetails.token}
+                serverUrl={connectionDetails.serverUrl}
+                connect={true}
+                audio={{
+                    echoCancellation: true,    
+                    noiseSuppression: true,    
+                    autoGainControl: true,    
+                    channelCount: 1,           
+                    sampleRate: 48000          
+                }}
+                video={false}
+                onDisconnected={() => {
+                    window.location.href = "/interview/summary";
+                }}
+            >
+                {/* Low-level audio streaming pipeline client driver */}
+                <RoomAudioRenderer />
+                
+                {/* Minimalist circular Orb interface panel */}
+                <VoiceAssistantUI />
+
+                {/* System Control Panel: Displays explicit hardware status and debugging keys */}
+                <div className="mt-8 max-w-md mx-auto p-2 bg-gray-100 rounded-xl flex justify-center border border-gray-200">
+                    <AudioConference />
+                </div>
+            </LiveKitRoom>
+        </div>
+    );
 }

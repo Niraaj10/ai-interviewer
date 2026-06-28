@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import atexit
 
 import config 
 import backendClient
@@ -12,17 +13,15 @@ logging.basicConfig(level=logging.INFO)
 
 INTERVIEWER_INSTRUCTIONS = (
     "You are a calm, professional technical interviewer. Ask one question at a "
-    "time about the candidate's background, resume, and GitHub projects. "
-    "Listen carefully to their answer before asking a natural follow-up. "
-    "Keep your responses concise — a sentence or two, not a monologue. "
-    "Do not move to the next topic until the current one feels sufficiently "
-    "explored. Maintain a friendly but focused tone throughout."
+    "time about the candidate's background, resume, and GitHub projects.\n"
+    "CRITICAL PROTOCOL:\n"
+    "1. You conduct this interview strictly in English. Ignore any random or non-English audio artifacts.\n"
+    "2. If you hear static, background room echo, ambient noise, or single words like 'Hello' during an ongoing topic, "
+    "do not interrupt the user. Wait patiently until they finish speaking their entire point.\n"
+    "3. Maintain a professional, conversational tone. Keep your inputs brief."
 )
 
 def extractInterviewId(roomName: str) -> str:
-    """
-    Recovers the clear-text UUID v4 string from the standard room identity prefix.
-    """
     prefix = "interview-"
     if roomName.startswith(prefix):
         return roomName[len(prefix):]
@@ -34,9 +33,8 @@ class interviewAgent(Agent):
 
 async def entrypoint(ctx: JobContext) -> None:
     await ctx.connect()
-
     interviewId = extractInterviewId(ctx.room.name)
-    logger.info("Agent joined room=%s interviewId=%s", ctx.room.name, interviewId)
+    logger.info("🤖 Agent connected to room=%s. Target ID: %s", ctx.room.name, interviewId)
 
     session = AgentSession(
         llm=google.beta.realtime.RealtimeModel(
@@ -58,7 +56,6 @@ async def entrypoint(ctx: JobContext) -> None:
             backendClient.log_message(interviewId, text_content, role)
         )
 
-   
     @session.on("userInputTranscribed")
     def onUserInputTranscribed(event) -> None:
         if not event.is_final or not event.transcript:
@@ -68,22 +65,25 @@ async def entrypoint(ctx: JobContext) -> None:
             backendClient.log_message(interviewId, event.transcript, "user")
         )
 
-    # 5. Ignite the agent listening loop
+    # Launch the multi-modal orchestration engine inside the WebRTC room context
     await session.start(
         room=ctx.room,
         agent=interviewAgent(),
-        room_input_options=RoomInputOptions(  
+        room_input_options=RoomInputOptions(
             noise_cancellation=noise_cancellation.BVC(),
         ),
     )
+    logger.info("🚀 Interview Agent session initialization lifecycle complete.")
 
 async def shutdown() -> None:
+    logger.info("Stopping agent worker instance and freeing client connection pools...")
     await backendClient.close()
 
 if __name__ == "__main__":
+    atexit.register(lambda: asyncio.run(shutdown()))
+
     agents.cli.run_app(
         WorkerOptions(
-            entrypoint_fnc=entrypoint,
-            shutdown_fnc=shutdown
+            entrypoint_fnc=entrypoint
         )
     )
