@@ -4,8 +4,9 @@ import { extractTextFromPdf } from "../utils/pdfParser";
 import { fetchUserRepos } from "../utils/githubUtils";
 import { prisma } from "../db/db";
 import { asyncHandler } from "../utils/asyncHandler";
-import { ApiError } from "../utils/ApiError";
-import { success } from "zod";
+import { ApiError } from "../utils/apiError";
+
+
 
 const preInterview = asyncHandler( async (req: Request, res: Response) => {
     const { success, data, error } = PreInterviewBody.safeParse(req.body);
@@ -76,6 +77,8 @@ const getInterviewContext = asyncHandler( async (req: Request, res: Response) =>
             select: {
                 resumeText: true,
                 githubMetadata: true,
+                score: true,
+                feedback: true,
             },
         })
 
@@ -90,6 +93,8 @@ const getInterviewContext = asyncHandler( async (req: Request, res: Response) =>
                 data: {
                     resumeText: interview.resumeText || "No resume data attached to this profile.",
                     githubMetadata: interview.githubMetadata || [],
+                    score: interview.score,
+                    feedback: interview.feedback
                 },
             });
         
@@ -99,7 +104,46 @@ const getInterviewContext = asyncHandler( async (req: Request, res: Response) =>
 
 });
 
+
+
+const interviewFeedbackByAgent = asyncHandler(async (req: Request, res: Response) => {
+    const { interviewId } = req.params as { interviewId: string };
+
+    const { score, feedback } = req.body as { score: number; feedback: string };
+
+    if (!interviewId) {
+        throw new ApiError(400, "Please provide Interview Id")  
+    }
+
+    if (!score || !feedback) {
+        throw new ApiError(400, "Please provide Score and feedback")  
+    }
+
+    try {
+        
+        const updatedInterview = await prisma.interview.update({
+            where: { id: interviewId },
+            data: {
+                score: Number(score),
+                feedback: feedback
+            }
+        });
+
+        res.status(200).json({
+            success: true,
+            message: "Evaluation payload written successfully.",
+            data: updatedInterview
+        });
+
+    } catch (err: any) {
+        throw new ApiError(500, err?.message ||  "Something went wrong while updating interview score and feedback");
+    }
+});
+
+
+
 export { 
     preInterview,
     getInterviewContext, 
+    interviewFeedbackByAgent,
 };
