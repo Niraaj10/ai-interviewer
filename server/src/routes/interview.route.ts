@@ -1,15 +1,16 @@
-import express from 'express';
-import multer from 'multer';
-import { preInterview } from '../controller/interview.ctrl';
+import { Router } from "express";
+import { getInterviewToken, logMessage } from "../controller/livekit.ctrl";
+import { tokenEndpointRateLimiter } from "../middleware/rateLimiter";
+import { interalServiceAuth } from "../middleware/internalAuth";
+import { getInterviewContext } from "../controller/interview.ctrl";
 
-const router = express.Router();
+const router = Router();
 
-// In-memory storage so don't need to store temp files on disk
-const upload = multer({ 
-    storage: multer.memoryStorage(),
-    limits: { fileSize: 1024 * 1024 * 5 } // 5MB limit
-});
+router.get("/:interviewId", getInterviewContext);
 
-router.post('/', upload.single('resume'), preInterview);
+router.post("/token", tokenEndpointRateLimiter, getInterviewToken);
+
+// Internal endpoint called only by the Python agent worker, never the browser.
+router.post("/log-message", interalServiceAuth, logMessage);
 
 export default router;

@@ -9,7 +9,8 @@ datasource db {
 
 model Interview {
   id             String          @id @default(uuid())
-  githubMetadata Json
+  resumeText     String?  @db.Text
+  githubMetadata Json?
   status         InterviewStatus
 
   score          Int             @default(0)

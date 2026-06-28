@@ -21,10 +21,10 @@ app.get('/', (req, res) => {
 })
 
 // 3. Specific Routes
-import interviewRoute from './routes/interview.route' 
-import livekitRoutes from './routes/livekit.route' 
+import preInterviewRoute from './routes/preInterview.route' 
+import interviewRoutes from './routes/interview.route' 
 
-app.use("/api/v1/pre-interview", interviewRoute)
-app.use("/api/v1/interview", livekitRoutes)
+app.use("/api/v1/pre-interview", preInterviewRoute)
+app.use("/api/v1/interview", interviewRoutes)
 
 export { app }

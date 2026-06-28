@@ -3,22 +3,20 @@ import { PreInterviewBody } from "../utils/types";
 import { extractTextFromPdf } from "../utils/pdfParser";
 import { fetchUserRepos } from "../utils/githubUtils";
 import { prisma } from "../db/db";
+import { asyncHandler } from "../utils/asyncHandler";
+import { ApiError } from "../utils/ApiError";
+import { success } from "zod";
 
-const preInterview = async (req: Request, res: Response) => {
+const preInterview = asyncHandler( async (req: Request, res: Response) => {
     const { success, data, error } = PreInterviewBody.safeParse(req.body);
 
     if (!success) {
-        res.status(400).json({
-            message: "Incorrect body",
-        });
-        return;
+        throw new ApiError(400, "Incorrect body");
+        
     }
-
+    
     if (!req.file) {
-        res.status(400).json({
-            message: "Please upload your resume (PDF format)."
-        });
-        return;
+        throw new ApiError(400, "Please upload your resume (PDF format).");
     }
 
     try {
@@ -30,13 +28,14 @@ const preInterview = async (req: Request, res: Response) => {
         const interview = await prisma.interview.create({
             data: {
                 githubMetadata: userGitRepos, 
+                resumeText: resumeText,
                 status: "Pre",
                 createdAt: new Date(),
                 updatedAt: new Date()
             }
         });
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Candidate profile successfully integrated.",
             data: {
                 intId: interview.id,
@@ -51,10 +50,56 @@ const preInterview = async (req: Request, res: Response) => {
             meta: err.meta
         });
 
-        res.status(500).json({
-            message: "Something went wrong while processing the candidate profile."
-        });
+        throw new ApiError(500, err?.message ||  "Something went wrong while processing the candidate profile.");
+        // res.status(500).json({
+        //     message: "Something went wrong while processing the candidate profile."
+        // });
     }
-};
+});
 
-export { preInterview };
+
+const getInterviewContext = asyncHandler( async (req: Request, res: Response) => {
+
+    const { interviewId } = req.params as { interviewId: string };
+
+
+    if (!interviewId) {
+        throw new ApiError(400, "Please provide Interview Id")  
+    }
+
+    try {
+
+        const interview = await prisma.interview.findUnique({
+            where: {
+                id: interviewId
+            },
+            select: {
+                resumeText: true,
+                githubMetadata: true,
+            },
+        })
+
+        if (!interview) {
+            throw new ApiError(404, `No interview record found matching Id: ${interviewId}`)
+        }
+
+        res
+            .status(200)
+            .json({
+                success: true,
+                data: {
+                    resumeText: interview.resumeText || "No resume data attached to this profile.",
+                    githubMetadata: interview.githubMetadata || [],
+                },
+            });
+        
+    } catch (err: any) {
+        throw new ApiError(500, err?.message ||  "Something went wrong while fetching the interviewer's github and resume data");
+    }
+
+});
+
+export { 
+    preInterview,
+    getInterviewContext, 
+};
