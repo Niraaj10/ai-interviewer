@@ -35,6 +35,9 @@ dist/
 build/
 *.egg-info/
 
+
+test_backend.py
+
 # --- IDE/OS ---
 .idea/
 .vscode/

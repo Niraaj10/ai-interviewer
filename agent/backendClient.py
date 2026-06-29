@@ -22,7 +22,7 @@ async def log_message(interviewId: str, message: str, role: str) -> None:
 
     try: 
         response = await _client.post(
-            "/api/livekit/log-message",
+            "/api/v1/interview/log-message",
             json={
                 "interviewId": interviewId,
                 "message": message,
