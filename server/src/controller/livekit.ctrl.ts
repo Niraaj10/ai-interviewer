@@ -2,8 +2,10 @@ import { Request, Response } from "express";
 import { prisma } from "../db/db";
 import { buildParticipantId, buildRoomName, generateInterviewToken } from "../utils/liveKit";
 import { LivekitTokenBody, LogMessageBody } from "../utils/types"
+import { ApiError } from "../utils/apiError";
+import { asyncHandler } from "../utils/asyncHandler";
 
-export const getInterviewToken = async (req: Request, res: Response) => {
+const getInterviewToken = async (req: Request, res: Response) => {
     const { success, data, error } = LivekitTokenBody.safeParse(req.body);
 
     if(!success) {
@@ -73,52 +75,43 @@ export const getInterviewToken = async (req: Request, res: Response) => {
     }
 }
 
-export const logMessage = async (req: Request, res: Response) => {
-    const { success, data, error } = LogMessageBody.safeParse(req.body);
 
-    if(!success) {
-        res.status(400).json({
-            message: "Incorrect body",
-        });
-        return;
+const logMessage = asyncHandler(async (req: Request, res: Response) => {
+    const result = LogMessageBody.safeParse(req.body);
+    
+    if (!result.success) {
+        console.error("Zod Validation Failed:", result.error.format());
+        throw new ApiError(400, "Incorrect request body layout mapping.");
     }
 
-    try {
-        const interview = await prisma.interview.findUnique({
-            where: { id: data.interviewId }
-        });
+    const { interviewId, message, type } = result.data;
 
-        if (!interview) {
-            res.status(404).json({
-                message: "Interview not found"
-            });
-            return;
+    const interview = await prisma.interview.findUnique({
+        where: { id: interviewId }
+    });
+
+    if (!interview) {
+        throw new ApiError(404, "Target interview session instance not found.");
+    }
+
+    const createdMessage = await prisma.message.create({
+        data: {
+            interviewId,
+            message,
+            type, // Must match "User" | "Assistant" precisely
         }
+    });
 
-        const message = await prisma.message.create({
-            data: {
-                interviewId: data.interviewId,
-                message: data.message,
-                type: data.type,
-            }
-        });
+    res.status(201).json({
+        success: true,
+        message: "Logged successfully.",
+        data: { id: createdMessage.id }
+    });
+});
 
-        res.status(201).json({
-            message: "Logged",
-            data: {
-                id: message.id
-            }
-        })
 
-    } catch (err: any) {
-        console.error("getInterviewToken failed:", {
-            message: err.message,
-            code: err.code,
-            meta: err.meta
-        });
 
-        res.status(500).json({
-            message: "Failed to generate token."
-        });
-    }
+export { 
+    logMessage,
+    getInterviewToken,
 }
