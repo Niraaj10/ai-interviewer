@@ -77,6 +77,12 @@ html {
 }
 
 
+.red-orb > span > span {
+  background-color: red !important;
+  
+}
+
+
 @keyframes wave-pulse {
   0% {
     transform: scaleY(1);

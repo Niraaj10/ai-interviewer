@@ -28,13 +28,17 @@ export function VoiceWaves({ trackRef, isAI, aiState }: VoiceWavesProps) {
     const volume = useTrackVolume(trackRef);
 
     return (
+        <div>
+
         <Orb
             theme="bars"
             state={toOrbState(aiState)}
             volume={volume}
             size={140}
             aria-label={isAI ? "AI audio level" : "Microphone audio level"}
-        />
+            className="red-orb"
+            />
+            </div>
     );
 }
 
