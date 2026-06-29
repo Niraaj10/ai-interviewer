@@ -17,10 +17,6 @@ export default function VoiceAssistantUI() {
 
     const isAISpeaking = state === "speaking" || state === "thinking";
 
-    // useTrackVolume needs a proper TrackReference object ({ participant,
-    // source, publication }), not a bare Track. Passing the unwrapped
-    // `.track` here silently breaks volume detection — the hook can't
-    // resolve any audio data from it, so the orb never animates.
     const micTrackRef: TrackReference | undefined = micTrackPublication
         ? {
               participant: localParticipant,

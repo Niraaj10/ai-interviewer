@@ -21,7 +21,6 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
         }
     }, [interviewId, fetchToken, hasUserJoined]);
 
-    // Step A: Show a clear landing card to satisfy browser audio interaction security policies
     if (!hasUserJoined) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
@@ -88,16 +87,13 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
                 }}
                 video={false}
                 onDisconnected={() => {
-                    window.location.href = "/interview/summary";
+                    window.location.href = `/interview/${interviewId}/summary`;
                 }}
             >
-                {/* Low-level audio streaming pipeline client driver */}
                 <RoomAudioRenderer />
                 
-                {/* Minimalist circular Orb interface panel */}
                 <VoiceAssistantUI />
 
-                {/* System Control Panel: Displays explicit hardware status and debugging keys */}
                 <div className="mt-8 max-w-md mx-auto p-2 bg-gray-100 rounded-xl flex justify-center border border-gray-200">
                     <AudioConference />
                 </div>

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import InterviewRoom from '../components/InterviewRoom'
+import InterviewRoom from '../../../components/InterviewRoom'
 
-export const Route = createFileRoute('/interview/$interviewId')({
+export const Route = createFileRoute('/interview/$interviewId/')({
   component: RouteComponent,
 })
 
