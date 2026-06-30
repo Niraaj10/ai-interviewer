@@ -34,7 +34,7 @@ function Home() {
           <div className="hidden md:flex items-center gap-4">
             <a href="#login" className="text-sm font-medium text-gray-700 hover:text-black">Log in</a>
             <a
-              href="#try"
+              href="/interview"
               className="text-sm font-semibold bg-[#F4D03F] text-black px-5 py-2.5 rounded-full hover:bg-[#e8c52e] transition"
             >
               Try for free
