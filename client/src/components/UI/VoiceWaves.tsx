@@ -29,9 +29,12 @@ export function VoiceWaves({ trackRef, isAI, aiState }: VoiceWavesProps) {
 
     return (
         <div>
-            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">
+            {/* <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">
                 {toOrbState(aiState)}
-            </p>
+            </p> */}
+            <span className="bg-[#F4D03F] p-2 leading-tight rotate-[12deg] text-xs font-bold uppercase tracking-widest mb-6">
+                {toOrbState(aiState)}
+            </span>
 
             <div className="mt-20">
                 <Orb
