@@ -12,10 +12,8 @@ function RouteComponent() {
 
 
   return <>
-    <div>
-      Hello "/interview"!
+    <div className=''>
+      <InterviewRoom interviewId={interviewId} />
     </div>
-
-    <InterviewRoom interviewId={interviewId} />
   </>
 }

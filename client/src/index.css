@@ -63,8 +63,8 @@
 /* 3. Global element modifiers using native CSS fallback variables.
    This avoids the @apply timing bug entirely. */
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: #0a0a0a;
+  color: white;
 }
 
 html {
@@ -78,7 +78,7 @@ html {
 
 
 .red-orb > span > span {
-  background-color: red !important;
+  background-color: white !important;
   
 }
 

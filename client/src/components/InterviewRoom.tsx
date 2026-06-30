@@ -23,8 +23,8 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
 
     if (!hasUserJoined) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-black px-4">
-                <div className="max-w-md w-full bg-gray-950 rounded-2xl shadow-xl p-8 border border-gray-800 text-center">
+            <div className="flex items-center justify-center min-h-screen px-4">
+                <div className="max-w-md w-full rounded-2xl shadow-xl p-8 text-center">
                     <h2 className="text-2xl font-bold text-white mb-2">Ready to Start Your Interview?</h2>
                     <p className="text-sm text-gray-400 mb-6">
                         Clicking below will establish a secure connection and activate your microphone.
@@ -42,7 +42,7 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-black">
+            <div className="flex items-center justify-center min-h-screen ">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white mx-auto"></div>
                     <p className="text-sm font-medium text-gray-400 mt-4 animate-pulse">
@@ -55,8 +55,8 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
 
     if (error) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-black px-4">
-                <div className="p-6 max-w-sm bg-gray-950 rounded-xl shadow-md border border-red-900/40 text-center" role="alert">
+            <div className="flex items-center justify-center min-h-screen px-4">
+                <div className="p-6 max-w-sm rounded-xl shadow-md border border-red-900/40 text-center" role="alert">
                     <p className="text-red-400 font-semibold mb-2">Connection Blocked</p>
                     <p className="text-sm text-gray-400">{error}</p>
                     <button 
@@ -94,9 +94,9 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
                 
                 <VoiceAssistantUI />
 
-                <div className="mt-8 max-w-md mx-auto p-2 bg-gray-950 rounded-xl flex justify-center border border-gray-800">
+                {/* <div className="mt-8 max-w-md mx-auto p-2 flex justify-center">
                     <AudioConference />
-                </div>
+                </div> */}
             </LiveKitRoom>
         </div>
     );
