@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResultRouteImport } from './routes/result'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrepIndexRouteImport } from './routes/prep/index'
 import { Route as InterviewIndexRouteImport } from './routes/interview/index'
 import { Route as InterviewInterviewIdIndexRouteImport } from './routes/interview/$interviewId/index'
 import { Route as InterviewInterviewIdSummaryRouteImport } from './routes/interview/$interviewId/summary'
@@ -23,6 +24,11 @@ const ResultRoute = ResultRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrepIndexRoute = PrepIndexRouteImport.update({
+  id: '/prep/',
+  path: '/prep/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterviewIndexRoute = InterviewIndexRouteImport.update({
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/result': typeof ResultRoute
   '/interview/': typeof InterviewIndexRoute
+  '/prep/': typeof PrepIndexRoute
   '/interview/$interviewId/summary': typeof InterviewInterviewIdSummaryRoute
   '/interview/$interviewId/': typeof InterviewInterviewIdIndexRoute
 }
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/result': typeof ResultRoute
   '/interview': typeof InterviewIndexRoute
+  '/prep': typeof PrepIndexRoute
   '/interview/$interviewId/summary': typeof InterviewInterviewIdSummaryRoute
   '/interview/$interviewId': typeof InterviewInterviewIdIndexRoute
 }
@@ -62,6 +70,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/result': typeof ResultRoute
   '/interview/': typeof InterviewIndexRoute
+  '/prep/': typeof PrepIndexRoute
   '/interview/$interviewId/summary': typeof InterviewInterviewIdSummaryRoute
   '/interview/$interviewId/': typeof InterviewInterviewIdIndexRoute
 }
@@ -71,6 +80,7 @@ export interface FileRouteTypes {
     | '/'
     | '/result'
     | '/interview/'
+    | '/prep/'
     | '/interview/$interviewId/summary'
     | '/interview/$interviewId/'
   fileRoutesByTo: FileRoutesByTo
@@ -78,6 +88,7 @@ export interface FileRouteTypes {
     | '/'
     | '/result'
     | '/interview'
+    | '/prep'
     | '/interview/$interviewId/summary'
     | '/interview/$interviewId'
   id:
@@ -85,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/result'
     | '/interview/'
+    | '/prep/'
     | '/interview/$interviewId/summary'
     | '/interview/$interviewId/'
   fileRoutesById: FileRoutesById
@@ -93,6 +105,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ResultRoute: typeof ResultRoute
   InterviewIndexRoute: typeof InterviewIndexRoute
+  PrepIndexRoute: typeof PrepIndexRoute
   InterviewInterviewIdSummaryRoute: typeof InterviewInterviewIdSummaryRoute
   InterviewInterviewIdIndexRoute: typeof InterviewInterviewIdIndexRoute
 }
@@ -111,6 +124,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prep/': {
+      id: '/prep/'
+      path: '/prep'
+      fullPath: '/prep/'
+      preLoaderRoute: typeof PrepIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/interview/': {
@@ -141,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ResultRoute: ResultRoute,
   InterviewIndexRoute: InterviewIndexRoute,
+  PrepIndexRoute: PrepIndexRoute,
   InterviewInterviewIdSummaryRoute: InterviewInterviewIdSummaryRoute,
   InterviewInterviewIdIndexRoute: InterviewInterviewIdIndexRoute,
 }
