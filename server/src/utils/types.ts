@@ -10,6 +10,17 @@ export const PreInterviewBody = z.object({
     
 });
 
+export const SuggestQuestionsBody = z.object({
+    jobDescription: z.string().min(10, "Job description must be at least 10 characters long."),
+});
+
+export const StudyRoadmapBody = z.object({
+    jobDescription: z.string().min(10, "Job description must be at least 10 characters long."),
+    transcript: z.string().optional().nullable().transform(val => 
+        val === "undefined" || val === "null" ? undefined : val
+    ),
+});
+
 export const LivekitTokenBody = z.object({
     interviewId: z
                  .string()

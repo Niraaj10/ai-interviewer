@@ -12,4 +12,4 @@ class apiResponse<T = any> {
     }
   }
   
-  export { apiResponse };   
+ export { apiResponse };   

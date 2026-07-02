@@ -23,8 +23,10 @@ app.get('/', (req, res) => {
 // 3. Specific Routes
 import preInterviewRoute from './routes/preInterview.route' 
 import interviewRoutes from './routes/interview.route' 
+import prepRoutes from './routes/prep.route'
 
 app.use("/api/v1/pre-interview", preInterviewRoute)
 app.use("/api/v1/interview", interviewRoutes)
+app.use("/api/v1/prep", prepRoutes)
 
 export { app }
