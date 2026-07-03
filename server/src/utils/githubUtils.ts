@@ -1,52 +1,103 @@
-import axios, { type AxiosProxyConfig } from 'axios';
-import { GitHubRepo } from './types';
-
-function getProxyConfig(): AxiosProxyConfig {
-  const username = process.env.WEBSHARE_PROXY_USERNAME;
-  const password = process.env.WEBSHARE_PROXY_PASS;
-
-  if (!username || !password) {
-    throw new Error('WEBSHARE_PROXY_USERNAME and WEBSHARE_PROXY_PASS must be set');
-  }
-
-  return {
-    protocol: 'http',
-    host: '198.105.121.200',
-    port: 6462,
-    auth: { username, password },
-  };
-}
+import axios from 'axios';
+import { GitHubRepo } from './types.js';
 
 export async function fetchUserRepos(githubUrl: string): Promise<GitHubRepo[]> {
-  const normalizedUrl = githubUrl.endsWith("/") ? githubUrl.slice(0, -1) : githubUrl;
-  const username = normalizedUrl.split("/").pop();
-  
-  if (!username) {
-    throw new Error("Invalid GitHub URL");
-  }
+    const normalizedUrl = githubUrl.endsWith("/") ? githubUrl.slice(0, -1) : githubUrl;
+    const username = normalizedUrl.split("/").pop();
 
-  try {
-    const response = await axios.get(`https://api.github.com/users/${username}/repos`, {
-      proxy: getProxyConfig(),
-      headers: {
-        'User-Agent': 'AI-Interview-App', 
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
-    
-    return response.data.map((repo: any) => ({
-      id: repo.id,
-      name: repo.name,
-      fullName: repo.full_name,
-      desc: repo.description,
-      starCount: repo.stargazers_count,
-      url: repo.html_url,
-      language: repo.language
-    }));
-  } catch (error: any) {
-    if (error.response && error.response.status === 403) {
-      throw new Error("GitHub API rate limit exceeded or IP blocked. Try rotating proxy.");
+    if (!username) {
+        throw new Error("Invalid GitHub URL");
     }
-    throw error;
-  }
-}   
+
+    const token = process.env.GITHUB_TOKEN;
+
+    const headers: Record<string, string> = {
+        'User-Agent': 'AI-Interview-App',
+        'Accept': 'application/vnd.github.v3+json',
+    };
+
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        const response = await axios.get(
+            `https://api.github.com/users/${username}/repos?per_page=50&sort=updated`,
+            { headers }
+        );
+
+        return response.data.map((repo: any) => ({
+            id: repo.id,
+            name: repo.name,
+            fullName: repo.full_name,
+            desc: repo.description,
+            starCount: repo.stargazers_count,
+            url: repo.html_url,
+            language: repo.language,
+        }));
+    } catch (error: any) {
+        if (error.response?.status === 403) {
+            throw new Error("GitHub API rate limit exceeded. Please try again later.");
+        }
+        if (error.response?.status === 404) {
+            throw new Error("GitHub user not found. Check the URL.");
+        }
+        throw error;
+    }
+}
+
+
+
+
+// import axios, { type AxiosProxyConfig } from 'axios';
+// import { GitHubRepo } from './types';
+
+// function getProxyConfig(): AxiosProxyConfig {
+//   const username = process.env.WEBSHARE_PROXY_USERNAME;
+//   const password = process.env.WEBSHARE_PROXY_PASS;
+
+//   if (!username || !password) {
+//     throw new Error('WEBSHARE_PROXY_USERNAME and WEBSHARE_PROXY_PASS must be set');
+//   }
+
+//   return {
+//     protocol: 'http',
+//     host: '198.105.121.200',
+//     port: 6462,
+//     auth: { username, password },
+//   };
+// }
+
+// export async function fetchUserRepos(githubUrl: string): Promise<GitHubRepo[]> {
+//   const normalizedUrl = githubUrl.endsWith("/") ? githubUrl.slice(0, -1) : githubUrl;
+//   const username = normalizedUrl.split("/").pop();
+  
+//   if (!username) {
+//     throw new Error("Invalid GitHub URL");
+//   }
+
+//   try {
+//     const response = await axios.get(`https://api.github.com/users/${username}/repos`, {
+//       proxy: getProxyConfig(),
+//       headers: {
+//         'User-Agent': 'AI-Interview-App', 
+//         'Accept': 'application/vnd.github.v3+json'
+//       }
+//     });
+    
+//     return response.data.map((repo: any) => ({
+//       id: repo.id,
+//       name: repo.name,
+//       fullName: repo.full_name,
+//       desc: repo.description,
+//       starCount: repo.stargazers_count,
+//       url: repo.html_url,
+//       language: repo.language
+//     }));
+//   } catch (error: any) {
+//     if (error.response && error.response.status === 403) {
+//       throw new Error("GitHub API rate limit exceeded or IP blocked. Try rotating proxy.");
+//     }
+//     throw error;
+//   }
+// }   
