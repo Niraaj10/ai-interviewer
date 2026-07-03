@@ -72,9 +72,12 @@ async def entrypoint(ctx: JobContext) -> None:
 
    
     voice_model = google.beta.realtime.RealtimeModel(
-        model="gemini-2.5-flash-native-audio-preview-12-2025",
+        # model="gemini-2.5-flash-native-audio-preview-12-2025",
+        model="gemini-2.0-flash-live-001",
         voice="Puck",
-        temperature=0.7,
+        temperature=0.8,
+        instructions=system_prompt,
+        http_options={"timeout": 120000},
     )
 
     eval_model = google.LLM(model="gemini-2.5-flash")
