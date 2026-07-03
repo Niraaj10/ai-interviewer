@@ -80,7 +80,7 @@ async def entrypoint(ctx: JobContext) -> None:
     # )
     voice_model = google.beta.realtime.RealtimeModel(
         # model="gemini-2.5-flash-native-audio-preview-12-2025",
-        model="gemini-2.0-flash-live-001",
+        model="gemini-2.5-flash-native-audio-preview-12-2025",
         voice="Puck",
         temperature=0.7,
     )
