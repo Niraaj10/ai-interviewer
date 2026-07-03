@@ -27,18 +27,18 @@ export default function VoiceAssistantUI() {
 
     const activeTrack: TrackReference | undefined = isAISpeaking ? audioTrack : micTrackRef;
 
-    const getStatusText = () => {
-        switch (state) {
-            case "listening":
-                return "Listening to you...";
-            case "thinking":
-                return "Processing response...";
-            case "speaking":
-                return "AI is speaking...";
-            default:
-                return "Ready - Speak when ready";
-        }
-    };
+    // const getStatusText = () => {
+    //     switch (state) {
+    //         case "listening":
+    //             return "Listening to you...";
+    //         case "thinking":
+    //             return "Processing response...";
+    //         case "speaking":
+    //             return "AI is speaking...";
+    //         default:
+    //             return "Ready - Speak when ready";
+    //     }
+    // };
 
     if (connectionState === "connecting") {
         return (

@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react"
 import { toast } from "sonner"
-import { BACKEND } from "../../lib/config";
-import { resume } from "react-dom/server";
 import { useNavigate } from "@tanstack/react-router";
 
 const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
@@ -10,7 +8,6 @@ const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export function Form() {
     const [github, setGithub] = useState("");
-    const [linkedin, setLinkedin] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
 

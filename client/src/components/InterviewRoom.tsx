@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
     LiveKitRoom,
     RoomAudioRenderer,
-    AudioConference,
 } from "@livekit/components-react";
 import { useInterviewToken } from "../hooks/useInterviewToken";
 import VoiceAssistantUI from "./UI/VoiceAssistantUI";
