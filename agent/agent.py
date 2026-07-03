@@ -71,12 +71,18 @@ async def entrypoint(ctx: JobContext) -> None:
         dynamic_prompt += f"\n\n[COMPREHENSIVE]\nResume:\n{resume_data}\n\nGitHub:\n{github_data}"
 
    
+    # voice_model = google.beta.realtime.RealtimeModel(
+    #     # model="gemini-2.5-flash-native-audio-preview-12-2025",
+    #     model="gemini-2.0-flash-live-001",
+    #     voice="Puck",
+    #     temperature=0.8,
+    #     http_options={"timeout": 120000},
+    # )
     voice_model = google.beta.realtime.RealtimeModel(
         # model="gemini-2.5-flash-native-audio-preview-12-2025",
         model="gemini-2.0-flash-live-001",
         voice="Puck",
-        temperature=0.8,
-        http_options={"timeout": 120000},
+        temperature=0.7,
     )
 
     eval_model = google.LLM(model="gemini-2.5-flash")
