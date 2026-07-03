@@ -5,6 +5,9 @@ import { BACKEND } from "../../lib/config";
 import { resume } from "react-dom/server";
 import { useNavigate } from "@tanstack/react-router";
 
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+
+
 export function Form() {
     const [github, setGithub] = useState("");
     const [linkedin, setLinkedin] = useState("");
@@ -37,7 +40,7 @@ export function Form() {
             formData.append("github", github.trim());
             formData.append("resume", file);
 
-            const res = await axios.post(`${BACKEND}/api/v1/pre-interview`, formData, {
+            const res = await axios.post(`${VITE_BACKEND_BASE_URL}/api/v1/pre-interview`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

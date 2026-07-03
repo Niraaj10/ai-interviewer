@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 
-const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export function useInterviewToken() {
-    // ✅ Type inferred automatically from initial state (null) and usage
     const [connectionDetails, setConnectionDetails] = useState<{
         token: string;
         serverUrl: string;
@@ -50,8 +49,7 @@ export function useInterviewToken() {
         } finally {
             setIsLoading(false);
         }
-    }, [BACKEND_URL]); // ✅ Added dependency
+    }, [BACKEND_URL]); 
 
-    // ✅ Return types inferred automatically
     return { connectionDetails, isLoading, error, fetchToken };
 }   

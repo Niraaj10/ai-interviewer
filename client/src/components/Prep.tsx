@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
-import { BACKEND } from "../lib/config";
 import { StudyRoadmap } from "./StudyRoadmap";
+
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+
 
 export function PrepPage() {
     const [jobDescription, setJobDescription] = useState("");
@@ -35,7 +37,7 @@ export function PrepPage() {
         formData.append("jobDescription", jobDescription.trim());
 
         try {
-            const res = await axios.post(`${BACKEND}/api/v1/prep/suggest-questions`, formData, {
+            const res = await axios.post(`${VITE_BACKEND_BASE_URL}/api/v1/prep/suggest-questions`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
 

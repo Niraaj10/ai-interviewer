@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BACKEND } from "../lib/config";
 
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+
 interface Gap {
     area: string;
     reason: string;
@@ -45,7 +47,7 @@ export function StudyRoadmap({ resumeText, jobDescription, transcript }: StudyRo
             setLoading(true);
             setError(null);
             try {
-                const res = await axios.post(`${BACKEND}/api/v1/study-roadmap`, {
+                const res = await axios.post(`${VITE_BACKEND_BASE_URL}/api/v1/study-roadmap`, {
                     resumeText,
                     jobDescription,
                     transcript: transcript ?? "",
