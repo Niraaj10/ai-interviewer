@@ -1,6 +1,8 @@
 import asyncio
 import logging
 import atexit
+import threading
+import http.server
 
 import config
 import backendClient
@@ -163,3 +165,18 @@ async def shutdown() -> None:
 if __name__ == "__main__":
     atexit.register(lambda: asyncio.run(shutdown()))
     agents.cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
+
+
+
+def run_health_server():
+    handler = http.server.BaseHTTPRequestHandler
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"ok")
+    handler.do_GET = do_GET
+    server = http.server.HTTPServer(("0.0.0.0", 8080), handler)
+    server.serve_forever()
+
+# Start health server in background thread
+threading.Thread(target=run_health_server, daemon=True).start()
