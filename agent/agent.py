@@ -76,7 +76,6 @@ async def entrypoint(ctx: JobContext) -> None:
         model="gemini-2.0-flash-live-001",
         voice="Puck",
         temperature=0.8,
-        instructions=system_prompt,
         http_options={"timeout": 120000},
     )
 
