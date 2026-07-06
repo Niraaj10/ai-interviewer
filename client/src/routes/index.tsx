@@ -24,15 +24,15 @@ function Home() {
             <span className="font-bold text-lg">Vivaro</span>
           </div>
 
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+          {/* <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
             <a href="#features" className="hover:text-black">Features</a>
             <a href="#how-it-works" className="hover:text-black">How it works</a>
             <a href="#roadmap" className="hover:text-black">Roadmap</a>
             <a href="#pilot" className="hover:text-black">Pilot study</a>
-          </div>
+          </div> */}
 
           <div className="hidden md:flex items-center gap-4">
-            <a href="#login" className="text-sm font-medium text-gray-700 hover:text-black">Log in</a>
+            {/* <a href="#login" className="text-sm font-medium text-gray-700 hover:text-black">Log in</a> */}
             <a
               href="/interview"
               className="text-sm font-semibold bg-[#F4D03F] text-black px-5 py-2.5 rounded-full hover:bg-[#e8c52e] transition"
@@ -52,7 +52,7 @@ function Home() {
           </button>
         </nav>
 
-        {mobileMenuOpen && (
+        {/* {mobileMenuOpen && (
           <div className="md:hidden px-6 pb-4 flex flex-col gap-3 text-sm font-medium">
             <a href="#features">Features</a>
             <a href="#how-it-works">How it works</a>
@@ -62,12 +62,13 @@ function Home() {
               Try for free
             </a>
           </div>
-        )}
+        )} */}
 
         {/* Hero */}
         <header className="max-w-2xl mx-auto px-6 pt-10 pb-12 text-center">
           <span className="inline-block bg-black text-white text-xs font-semibold px-3 py-1 rounded-full mb-6">
-            Built for Gen AI in education
+            {/* Built for Gen AI in education */}
+            For students and job seekers
           </span>
 
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
@@ -83,16 +84,16 @@ function Home() {
 
           <div className="flex items-center justify-center gap-3 flex-wrap mb-4">
             <a
-              href="#try"
+              href="/prep"
               className="bg-black text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-gray-800 transition"
             >
-              Practice For Free
+              Plan your study
             </a>
             <a
-              href="#how-it-works"
+              href="/interview"
               className="border border-gray-300 font-semibold text-sm px-6 py-3 rounded-full hover:border-gray-400 transition"
             >
-              Get Vivaro Today
+              Take mock Interview 
             </a>
           </div>
 
@@ -143,7 +144,7 @@ function Home() {
             your time on what matters.
           </p>
           <a
-            href="#try"
+            href="/interview"
             className="inline-block bg-[#F4D03F] text-black font-semibold text-sm px-6 py-3 rounded-full hover:bg-[#e8c52e] transition"
           >
             Try For Free
