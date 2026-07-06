@@ -106,8 +106,8 @@ function Home() {
         <div className="max-w-3xl mx-auto px-6 mb-24">
           <div className="rounded-2xl border-4 border-[#D2541E] overflow-hidden bg-gray-900 aspect-video relative">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="flex items-end justify-center gap-1.5 h-12 mb-4">
+              <div className="text-center text-white ">
+                {/* <div className="flex items-end justify-center gap-1.5 h-12 mb-4">
                   {[14, 28, 38, 22, 30, 16].map((h, i) => (
                     <div
                       key={i}
@@ -115,8 +115,9 @@ function Home() {
                       style={{ height: `${h}px` }}
                     />
                   ))}
-                </div>
-                <p className="text-sm text-gray-300">AI interviewer is listening...</p>
+                </div> */}
+                {/* <p className="text-sm text-gray-300">AI interviewer is listening...</p> */}
+                <img src="https://res.cloudinary.com/diff4mm8y/image/upload/v1783341821/Screenshot_2026-07-06_180947_blshii.png" alt="AI-Interview"  className='object-cover'/>
               </div>
             </div>
             <button
