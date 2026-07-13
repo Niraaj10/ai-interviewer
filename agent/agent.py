@@ -1,12 +1,13 @@
 import asyncio
 import logging
+import sys
 import atexit
 
 import config
 import backendClient
 from pydantic import BaseModel, Field
 from livekit import agents
-from livekit.agents import Agent, AgentSession, ChatContext, JobContext, WorkerOptions, RoomInputOptions
+from livekit.agents import Worker, Agent, AgentSession, ChatContext, JobContext, WorkerOptions, RoomInputOptions
 from livekit.plugins import google, noise_cancellation
 
 logger = logging.getLogger("agent.main")
@@ -27,11 +28,9 @@ BASE_INSTRUCTIONS = (
     "from Vivaro, and asking them to start with a brief introduction about themselves and what they are currently working on."
 )
 
-
 class InterviewEvaluation(BaseModel):
     score: int = Field(..., ge=0, le=100, description="Overall interview score out of 100")
     feedback: str = Field(..., description="Detailed feedback summarizing strengths and areas to improve")
-
 
 def extractInterviewId(roomName: str) -> str:
     prefix = "interview-"
@@ -39,11 +38,9 @@ def extractInterviewId(roomName: str) -> str:
         return roomName[len(prefix):]
     return roomName
 
-
 class interviewAgent(Agent):
     def __init__(self, dynamic_instructions: str) -> None:
         super().__init__(instructions=dynamic_instructions)
-
 
 async def entrypoint(ctx: JobContext) -> None:
     await ctx.connect()
@@ -77,9 +74,7 @@ async def entrypoint(ctx: JobContext) -> None:
     )
 
     eval_model = google.LLM(model="gemini-2.5-flash")
-
     interview_agent = interviewAgent(dynamic_instructions=dynamic_prompt)
-
     session = AgentSession(llm=voice_model)
 
     @session.on("conversation_item_added")
@@ -145,24 +140,37 @@ async def entrypoint(ctx: JobContext) -> None:
 
         asyncio.create_task(generate_final_report())
 
+   
     await session.start(
         room=ctx.room,
         agent=interview_agent,
-        room_input_options=RoomInputOptions(
-            noise_cancellation=noise_cancellation.BVC(),
-        ),
     )
 
     logger.info("Interview Agent session initialization lifecycle complete.")
-
 
 async def shutdown() -> None:
     await backendClient.close()
 
 
 if __name__ == "__main__":
-    atexit.register(lambda: asyncio.run(shutdown()))
-    agents.cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
+    async def main():
+        worker = Worker(
+            WorkerOptions(
+                entrypoint_fnc=entrypoint,
+            )
+        )
+        try:
+            logger.info("⚡ Starting single-process low-memory LiveKit Worker daemon...")
+            await worker.run()
+        finally:
+            await shutdown()
+
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        logger.info("Process terminated by user request loop.")
+        sys.exit(0)
+
 
 
 
