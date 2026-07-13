@@ -100,7 +100,7 @@ export function Form() {
                             onChange={(e) => setGithub(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && !loading && onSubmit()}
                             disabled={loading}
-                            className="w-full border border-gray-300 p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#F4D03F] focus:border-transparent disabled:bg-gray-100 disabled:text-gray-400"
+                            className="w-full border border-gray-300 p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#F4D03F] focus:border-transparent text-black disabled:bg-gray-100 disabled:text-gray-400"
                         />
                     </div>
 
