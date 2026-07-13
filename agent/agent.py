@@ -1,14 +1,13 @@
 import asyncio
 import logging
-import sys
 import atexit
 
 import config
 import backendClient
 from pydantic import BaseModel, Field
 from livekit import agents
-from livekit.agents import Worker, Agent, AgentSession, ChatContext, JobContext, WorkerOptions, RoomInputOptions
-from livekit.plugins import google, noise_cancellation
+from livekit.agents import Agent, AgentSession, ChatContext, JobContext, WorkerOptions, RoomInputOptions
+from livekit.plugins import google
 
 logger = logging.getLogger("agent.main")
 logging.basicConfig(level=logging.INFO)
@@ -140,38 +139,15 @@ async def entrypoint(ctx: JobContext) -> None:
 
         asyncio.create_task(generate_final_report())
 
-   
-    await session.start(
-        room=ctx.room,
-        agent=interview_agent,
-    )
-
+    await session.start(room=ctx.room, agent=interview_agent)
     logger.info("Interview Agent session initialization lifecycle complete.")
 
 async def shutdown() -> None:
     await backendClient.close()
 
-
 if __name__ == "__main__":
-    async def main():
-        worker = Worker(
-            WorkerOptions(
-                entrypoint_fnc=entrypoint,
-            )
-        )
-        try:
-            logger.info("⚡ Starting single-process low-memory LiveKit Worker daemon...")
-            await worker.run()
-        finally:
-            await shutdown()
-
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        logger.info("Process terminated by user request loop.")
-        sys.exit(0)
-
-
+    atexit.register(lambda: asyncio.run(shutdown()))
+    agents.cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
 
 
 
