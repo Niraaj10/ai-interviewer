@@ -155,15 +155,6 @@ async def entrypoint(ctx: JobContext) -> None:
 
     logger.info("Interview Agent session initialization lifecycle complete.")
 
-    await session.say(
-        "Hello! I'm your AI technical interviewer from Vivaro. "
-        "I've reviewed your resume and I'm ready to begin. "
-        "Take a deep breath this is a relaxed session. "
-        "Let's start with a quick introduction. Could you tell me a little about yourself "
-        "and what you're currently working on?",
-        allow_interruptions=True,
-    )
-
 
 async def shutdown() -> None:
     await backendClient.close()
@@ -172,7 +163,6 @@ async def shutdown() -> None:
 if __name__ == "__main__":
     atexit.register(lambda: asyncio.run(shutdown()))
     agents.cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
-
 
 
 
