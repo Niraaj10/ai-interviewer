@@ -1,14 +1,12 @@
 import asyncio
 import logging
 import atexit
-import threading
-import http.server
 
 import config
 import backendClient
 from pydantic import BaseModel, Field
 from livekit import agents
-from livekit.agents import Agent, AgentSession, ChatContext, JobContext, RoomInputOptions, WorkerOptions
+from livekit.agents import Agent, AgentSession, ChatContext, JobContext, WorkerOptions, RoomInputOptions
 from livekit.plugins import google, noise_cancellation
 
 logger = logging.getLogger("agent.main")
@@ -70,16 +68,7 @@ async def entrypoint(ctx: JobContext) -> None:
     else:
         dynamic_prompt += f"\n\n[COMPREHENSIVE]\nResume:\n{resume_data}\n\nGitHub:\n{github_data}"
 
-   
-    # voice_model = google.beta.realtime.RealtimeModel(
-    #     # model="gemini-2.5-flash-native-audio-preview-12-2025",
-    #     model="gemini-2.0-flash-live-001",
-    #     voice="Puck",
-    #     temperature=0.8,
-    #     http_options={"timeout": 120000},
-    # )
     voice_model = google.beta.realtime.RealtimeModel(
-        # model="gemini-2.5-flash-native-audio-preview-12-2025",
         model="gemini-2.5-flash-native-audio-preview-12-2025",
         voice="Puck",
         temperature=0.7,
@@ -87,11 +76,9 @@ async def entrypoint(ctx: JobContext) -> None:
 
     eval_model = google.LLM(model="gemini-2.5-flash")
 
-
     interview_agent = interviewAgent(dynamic_instructions=dynamic_prompt)
 
     session = AgentSession(llm=voice_model)
-
 
     @session.on("conversation_item_added")
     def onConversationItem(event) -> None:
@@ -163,7 +150,17 @@ async def entrypoint(ctx: JobContext) -> None:
             noise_cancellation=noise_cancellation.BVC(),
         ),
     )
+
     logger.info("Interview Agent session initialization lifecycle complete.")
+
+    await session.say(
+        "Hello! I'm your AI technical interviewer from Vivaro. "
+        "I've reviewed your resume and I'm ready to begin. "
+        "Take a deep breath this is a relaxed session. "
+        "Let's start with a quick introduction. Could you tell me a little about yourself "
+        "and what you're currently working on?",
+        allow_interruptions=True,
+    )
 
 
 async def shutdown() -> None:
@@ -173,18 +170,3 @@ async def shutdown() -> None:
 if __name__ == "__main__":
     atexit.register(lambda: asyncio.run(shutdown()))
     agents.cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
-
-
-
-# def run_health_server():
-#     handler = http.server.BaseHTTPRequestHandler
-#     def do_GET(self):
-#         self.send_response(200)
-#         self.end_headers()
-#         self.wfile.write(b"ok")
-#     handler.do_GET = do_GET
-#     server = http.server.HTTPServer(("0.0.0.0", 8080), handler)
-#     server.serve_forever()
-
-# # Start health server in background thread
-# threading.Thread(target=run_health_server, daemon=True).start()
