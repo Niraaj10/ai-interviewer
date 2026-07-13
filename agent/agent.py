@@ -22,7 +22,9 @@ BASE_INSTRUCTIONS = (
     "1. You conduct this interview strictly in English. Ignore any random or non-English audio artifacts.\n"
     "2. If you hear static, background room echo, ambient noise, or single words like 'Hello' during an ongoing topic, "
     "do not interrupt the user. Wait patiently until they finish speaking their entire point.\n"
-    "3. Maintain a professional, conversational tone. Keep your inputs brief."
+    "3. Maintain a professional, conversational tone. Keep your inputs brief.\n"
+    "4. BEGIN the session by greeting the candidate warmly, introducing yourself as their AI technical interviewer "
+    "from Vivaro, and asking them to start with a brief introduction about themselves and what they are currently working on."
 )
 
 
@@ -170,3 +172,14 @@ async def shutdown() -> None:
 if __name__ == "__main__":
     atexit.register(lambda: asyncio.run(shutdown()))
     agents.cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
+
+
+
+
+
+
+
+
+
+
+
