@@ -97,14 +97,14 @@ function Home() {
             </a>
           </div>
 
-          <p className="text-xs text-gray-400">
-            Trusted by students &nbsp;·&nbsp; PERN stack &nbsp;·&nbsp; LiveKit &nbsp;·&nbsp; Gemini Live &nbsp;·&nbsp; 2026 pilot
-          </p>
+          {/* <p className="text-xs text-gray-400">
+            Trusted by students &nbsp;·&nbsp; MERN/PERN stack &nbsp;·&nbsp; LiveKit &nbsp;·&nbsp; Gemini Live &nbsp;·&nbsp; 2026 pilot
+          </p> */}
         </header>
 
         {/* Hero visual */}
         <div className="max-w-3xl mx-auto px-6 mb-24">
-          <div className="rounded-2xl border-4 border-[#D2541E] overflow-hidden bg-gray-900 aspect-video relative">
+          <div className="rounded-2xl border-4 border-[#F4D03F] overflow-hidden bg-gray-900 aspect-video relative">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
               <div className="text-center text-white ">
                 {/* <div className="flex items-end justify-center gap-1.5 h-12 mb-4">
@@ -117,17 +117,18 @@ function Home() {
                   ))}
                 </div> */}
                 {/* <p className="text-sm text-gray-300">AI interviewer is listening...</p> */}
-                <img src="https://res.cloudinary.com/diff4mm8y/image/upload/v1783341821/Screenshot_2026-07-06_180947_blshii.png" alt="AI-Interview"  className='object-cover'/>
+                {/* <img src="https://res.cloudinary.com/diff4mm8y/image/upload/v1783341821/Screenshot_2026-07-06_180947_blshii.pngl" at="AI-Interview"  className='object-cover'/> */}
+                <img src="https://res.cloudinary.com/diff4mm8y/image/upload/v1784031395/Screenshot_2026-07-14_174432_gdjk42.png" alt="AI-Interview"  className='object-fill -my-10'/>
               </div>
             </div>
-            <button
+            {/* <button
               className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 w-14 h-14 rounded-full bg-white/90 flex items-center justify-center"
               aria-label="Play demo"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
                 <path d="M8 5v14l11-7z" />
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
 
