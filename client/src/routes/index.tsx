@@ -3,7 +3,7 @@ import { CheckIcon } from 'lucide-react';
 import { useState } from "react";
 
 
-function PaperDoodle({ className, rotate = 0 }) {
+function PaperDoodle({ className, rotate = 0 } : { className?: string, rotate?: number} ) {
   return (
     <svg
       viewBox="0 0 90 90"
