@@ -20,10 +20,10 @@ const preInterview = asyncHandler(async (req: Request, res: Response) => {
     if (!req.file) {
         throw new ApiError(400, "Please upload your resume (PDF format).");
     }
-
+    
     try {
         const resumeText = await extractTextFromPdf(req.file.buffer);
-
+        
         const userGitRepos = await fetchUserRepos(data.github);
         // console.log("Filtered repos:", userGitRepos);
 
@@ -45,6 +45,7 @@ const preInterview = asyncHandler(async (req: Request, res: Response) => {
                 resumeParsedText: resumeText.trim()
             }
         });
+
     } catch (err: any) {
         console.error("preInterview failed:", {
             message: err.message,
