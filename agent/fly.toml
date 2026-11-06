@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for agent-ai-interviewww on 2026-11-06T18:47:43+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'agent-ai-interviewww'
+primary_region = 'ams'
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = '8080'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '2gb'
+  cpus = 1
+  memory_mb = 2048
