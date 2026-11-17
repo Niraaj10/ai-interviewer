@@ -35,7 +35,7 @@ function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const footerCols = ["Company", "Quick Links", "Industry"];
   const footerLinks = ["About Us", "Carees", "Contact", "Community", "Testimonials"];
-  const navLinks = ["AI Interview", "Features", "For Businesses", "For Recruiters", "Pricing"];
+  // const navLinks = ["AI Interview", "Features", "For Businesses", "For Recruiters", "Pricing"];
   const logos = ["stripe", "HubSpot", "coinbase", "Google", "GLASSDOOR"];
 
 
