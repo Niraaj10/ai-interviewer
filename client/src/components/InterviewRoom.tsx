@@ -16,6 +16,7 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
             fetchToken(interviewId);
         }
     }, [interviewId, fetchToken, hasUserJoined]);
+
     if (!hasUserJoined) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-[#F4F0E6] px-4">
@@ -37,6 +38,7 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
             </div>
         );
     }
+
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-[#F4F0E6]">
@@ -49,6 +51,7 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
             </div>
         );
     }
+
     if (error) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-[#F4F0E6] px-4">
@@ -65,7 +68,9 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
             </div>
         );
     }
+
     if (!connectionDetails) return null;
+    
     return (
         <div className="min-h-screen bg-[#F4F0E6] py-12 px-4 sm:px-6 lg:px-8">
             <LiveKitRoom
