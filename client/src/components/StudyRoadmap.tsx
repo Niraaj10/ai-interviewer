@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+// const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 interface Gap {
     area: string;

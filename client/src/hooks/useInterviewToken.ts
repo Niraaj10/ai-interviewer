@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+// const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL; // Main deplyed
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export function useInterviewToken() {
     const [connectionDetails, setConnectionDetails] = useState<{
@@ -19,7 +20,7 @@ export function useInterviewToken() {
     
         try {
             const res = await axios.post(
-                `${BACKEND_URL}/api/v1/interview/token`, 
+                `${VITE_BACKEND_BASE_URL}/api/v1/interview/token`, 
                 { interviewId }, 
                 { 
                     headers: { 
@@ -49,7 +50,7 @@ export function useInterviewToken() {
         } finally {
             setIsLoading(false);
         }
-    }, [BACKEND_URL]); 
+    }, [VITE_BACKEND_BASE_URL]); 
 
     return { connectionDetails, isLoading, error, fetchToken };
 }   
