@@ -1,451 +1,3856 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { CheckIcon } from 'lucide-react';
-import { useState } from "react";
+// import { createFileRoute } from '@tanstack/react-router'
+// import { CheckIcon } from 'lucide-react';
+// import { useState } from "react";
 
 
-function PaperDoodle({ className, rotate = 0 } : { className?: string, rotate?: number} ) {
-  return (
-    <svg
-      viewBox="0 0 90 90"
-      className={className}
-      style={{ transform: `rotate(${rotate}deg)` }}
-    >
-      <path
-        d="M12 8 L70 4 L82 20 L78 78 L14 84 L8 22 Z"
-        fill="#fdfdf8"
-        stroke="#1c2b17"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <circle cx="22" cy="24" r="1.8" fill="#1c2b17" />
-      <path d="M30 23 h30" stroke="#1c2b17" strokeWidth="1.5" />
-      <path d="M22 34 q10 -6 18 0 t18 0" stroke="#1c2b17" strokeWidth="1.5" fill="none" />
-      <circle cx="22" cy="46" r="1.8" fill="#1c2b17" />
-      <path d="M30 45 h28" stroke="#1c2b17" strokeWidth="1.5" />
-      <path d="M20 58 q12 8 24 0 t24 0" stroke="#1c2b17" strokeWidth="1.5" fill="none" />
-    </svg>
-  );
-}
+// function PaperDoodle({ className, rotate = 0 } : { className?: string, rotate?: number} ) {
+//   return (
+//     <svg
+//       viewBox="0 0 90 90"
+//       className={className}
+//       style={{ transform: `rotate(${rotate}deg)` }}
+//     >
+//       <path
+//         d="M12 8 L70 4 L82 20 L78 78 L14 84 L8 22 Z"
+//         fill="#fdfdf8"
+//         stroke="#1c2b17"
+//         strokeWidth="2"
+//         strokeLinejoin="round"
+//       />
+//       <circle cx="22" cy="24" r="1.8" fill="#1c2b17" />
+//       <path d="M30 23 h30" stroke="#1c2b17" strokeWidth="1.5" />
+//       <path d="M22 34 q10 -6 18 0 t18 0" stroke="#1c2b17" strokeWidth="1.5" fill="none" />
+//       <circle cx="22" cy="46" r="1.8" fill="#1c2b17" />
+//       <path d="M30 45 h28" stroke="#1c2b17" strokeWidth="1.5" />
+//       <path d="M20 58 q12 8 24 0 t24 0" stroke="#1c2b17" strokeWidth="1.5" fill="none" />
+//     </svg>
+//   );
+// }
 
-export const Route = createFileRoute('/')({
+// export const Route = createFileRoute('/')({
+//   component: Home,
+// })
+
+// function Home() {
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+//   const footerCols = ["Company", "Quick Links", "Industry"];
+//   const footerLinks = ["About Us", "Carees", "Contact", "Community", "Testimonials"];
+//   // const navLinks = ["AI Interview", "Features", "For Businesses", "For Recruiters", "Pricing"];
+//   const logos = ["stripe", "HubSpot", "coinbase", "Google", "GLASSDOOR"];
+
+
+
+//   return (
+//     <>
+//       <div className="min-h-screen bg-[#F4F0E6] text-gray-900">
+//         {/* Nav */}
+//         <div className="bg-[#f7f4e8] font-sans min-h-screen">
+//           <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 rounded-lg bg-[#F4D03F] flex items-center justify-center">
+//                 <span className="text-black font-bold text-sm">V</span>
+//               </div>
+//               <span className="font-bold text-lg">Vivaro</span>
+//             </div>
+
+//             {/* <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+//             <a href="#features" className="hover:text-black">Features</a>
+//             <a href="#how-it-works" className="hover:text-black">How it works</a>
+//             <a href="#roadmap" className="hover:text-black">Roadmap</a>
+//             <a href="#pilot" className="hover:text-black">Pilot study</a>
+//           </div> */}
+
+//             <div className="hidden md:flex items-center gap-4">
+//               {/* <a href="#login" className="text-sm font-medium text-gray-700 hover:text-black">Log in</a> */}
+//               <a
+//                 href="/interview"
+//                 className="text-sm font-semibold bg-[#F4D03F] text-black px-5 py-2.5 rounded-full hover:bg-[#e8c52e] transition"
+//               >
+//                 Try for free
+//               </a>
+//             </div>
+
+//             <button
+//               className="md:hidden"
+//               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+//               aria-label="Toggle menu"
+//             >
+//               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+//                 <path d="M3 12h18M3 6h18M3 18h18" />
+//               </svg>
+//             </button>
+//           </nav>
+
+
+//           {mobileMenuOpen && (
+//             <div className="md:hidden px-6 pb-4 flex flex-col gap-3 text-sm font-medium">
+//               <a href="#features">Features</a>
+//               <a href="#how-it-works">How it works</a>
+//               <a href="#roadmap">Roadmap</a>
+//               <a href="#pilot">Pilot study</a>
+//               <a href="#try" className="bg-[#F4D03F] text-black px-5 py-2.5 rounded-full text-center font-semibold">
+//                 Try for free
+//               </a>
+//             </div>
+//           )}
+
+
+
+//           {/* HERO */}
+//           <div className="relative max-w-4xl mx-auto text-center pt-16 pb-10 px-6">
+
+//             <span className="inline-block bg-black text-white text-xs font-semibold px-3 py-1 rounded-full mb-6">
+//               {/* Built for Gen AI in education */}
+//               For students and job seekers
+//             </span>
+
+//             {/* doodles */}
+//             <PaperDoodle className="hidden md:block absolute left-0 top-32 w-24 h-24" rotate={-8} />
+//             <PaperDoodle className="hidden md:block absolute left-24 top-72 w-20 h-20" rotate={-14} />
+//             <PaperDoodle className="hidden md:block absolute right-8 top-56 w-24 h-24" rotate={10} />
+
+//             <h1 className="max-w-2xl mx-auto text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
+//               AI interviewer for your{" "}
+//               <span className="bg-[#F4D03F] px-2">dream tech role.</span>
+//             </h1>
+
+//             <p className="text-gray-600 text-sm sm:text-base max-w-lg mx-auto mb-8">
+//             Run real voice-driven mock interviews, compare your resume against any job
+//             description, and get a scored, actionable feedback report, all in one
+//             low-latency session.
+//           </p>
+
+//           <div className="flex items-center justify-center gap-3 flex-wrap mb-4">
+//             <a
+//               href="/prep"
+//               className="bg-black text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-gray-800 transition"
+//             >
+//               Plan your study
+//             </a>
+//             <a
+//               href="/interview"
+//               className="border border-gray-300 font-semibold text-sm px-6 py-3 rounded-full hover:border-gray-400 transition"
+//             >
+//               Take mock Interview 
+//             </a>
+//           </div>
+
+//             <div className="flex items-center justify-center gap-6 text-[#1c2b17]/60 text-sm">
+//               <span className="text-xs uppercase tracking-wide">Trusted by Students:</span>
+//               {logos.map((logo) => (
+//                 <span key={logo} className="font-semibold text-[#1c2b17]/70">
+//                   {logo}
+//                 </span>
+//               ))}
+//             </div>
+//           </div>
+
+//           {/* VIDEO / IMAGE CARD */}
+//           <div className="max-w-4xl mx-auto px-6 pb-16">
+//             <div className="relative rounded-3xl border-8 border-[#c9531f] overflow-hidden aspect-video bg-black">
+//               <img
+//                 src="https://images.unsplash.com/photo-1590650046871-92c887180603?auto=format&fit=crop&w=1200&q=80"
+//                 alt="Person recording a podcast interview"
+//                 className="w-full h-full object-cover"
+//               />
+//               <button
+//                 aria-label="Play video"
+//                 className="absolute bottom-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-xl bg-black/70 flex items-center justify-center hover:bg-black/80 transition"
+//               >
+//                 <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+//                   <path d="M8 5v14l11-7z" />
+//                 </svg>
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+
+
+//         {/* Are you preparing section */}
+//         <section id="how-it-works" className="max-w-2xl mx-auto px-6 text-center mb-16">
+//           <span className="inline-block bg-black text-white text-xs font-semibold px-3 py-1 rounded-full mb-6">
+//             For students and job seekers
+//           </span>
+//           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+//             Are you preparing for a job switch or new opportunities?
+//           </h2>
+//           <p className="text-gray-600 text-sm max-w-lg mx-auto mb-8">
+//             Configure custom interview questions, get a semantic skill-gap analysis
+//             against any job description, and evaluate every session fairly while focusing
+//             your time on what matters.
+//           </p>
+//           <a
+//             href="/interview"
+//             className="inline-block bg-[#F4D03F] text-black font-semibold text-sm px-6 py-3 rounded-full hover:bg-[#e8c52e] transition"
+//           >
+//             Try For Free
+//           </a>
+//         </section>
+
+//         {/* Feature 1: Practice interviews - yellow card */}
+//         <section id="features" className="max-w-5xl mx-auto px-6 mb-10">
+//           <div className="grid md:grid-cols-2 gap-10 items-center">
+//             <div>
+//               <h3 className="text-2xl font-extrabold mb-4">
+//                 Practice interviews with AI on any job role or subject
+//               </h3>
+//               <ul className="space-y-3 text-sm text-gray-700">
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Access comprehensive interview scenarios across web
+//                   dev, databases, and system design
+//                 </li>
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Simulate interviews for both entry-level and
+//                   advanced engineering roles
+//                 </li>
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Adjust interview settings to match your target job
+//                   description
+//                 </li>
+//               </ul>
+//             </div>
+//             <div className="bg-[#F4D03F] rounded-2xl p-6 aspect-[4/3] flex items-center justify-center">
+//               <div className="bg-white rounded-xl shadow-lg w-full max-w-xs p-4">
+//                 <p className="text-xs font-semibold text-gray-400 mb-3">Welcome Vivek</p>
+//                 <div className="flex gap-2 mb-3">
+//                   <span className="text-[11px] bg-black text-white px-3 py-1 rounded-full">Job</span>
+//                   <span className="text-[11px] text-gray-500 px-3 py-1">Topic</span>
+//                   <span className="text-[11px] text-gray-500 px-3 py-1">Resume</span>
+//                 </div>
+//                 <p className="text-sm text-gray-800 mb-3">
+//                   "We are seeing a stateless and creative individual to join our
+//                   frontend team."
+//                 </p>
+//                 <div className="flex items-end gap-1 h-8">
+//                   {[6, 14, 20, 10, 16, 8].map((h, i) => (
+//                     <div key={i} className="w-1.5 bg-gray-800 rounded-full" style={{ height: `${h}px` }} />
+//                   ))}
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         <hr className="max-w-5xl mx-auto border-dashed border-gray-300 my-10" />
+
+//         {/* Feature 2: Scoring & feedback - purple card */}
+//         <section className="max-w-5xl mx-auto px-6 mb-10">
+//           <div className="grid md:grid-cols-2 gap-10 items-center">
+//             <div className="bg-[#C9B8F0] rounded-2xl p-6 aspect-[4/3] flex items-center justify-center order-2 md:order-1">
+//               <div className="bg-[#0F2A24] rounded-xl shadow-lg w-full max-w-xs p-4">
+//                 <p className="text-xs font-semibold text-gray-300 mb-4">Score Report</p>
+//                 <div className="flex items-center justify-center mb-2">
+//                   <div className="relative w-20 h-20 rounded-full border-8 border-gray-700 flex items-center justify-center">
+//                     <div className="absolute inset-0 rounded-full border-8 border-[#7DD3C0] border-r-transparent border-b-transparent rotate-45" />
+//                     <span className="text-lg font-bold text-white">22.6/10</span>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//             <div className="order-1 md:order-2">
+//               <h3 className="text-2xl font-extrabold mb-4">
+//                 Learn from instant feedback and example answers
+//               </h3>
+//               <ul className="space-y-3 text-sm text-gray-700">
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Receive immediate feedback on your responses, scored
+//                   against a real rubric
+//                 </li>
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Access example answers for comparison against your
+//                   own transcript
+//                 </li>
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Enhance your performance constructively with
+//                   actionable insights
+//                 </li>
+//               </ul>
+//             </div>
+//           </div>
+//         </section>
+
+//         <hr className="max-w-5xl mx-auto border-dashed border-gray-300 my-10" />
+
+//         {/* Feature 3: Resume optimization - teal card */}
+//         <section className="max-w-5xl mx-auto px-6 mb-24">
+//           <div className="grid md:grid-cols-2 gap-10 items-center">
+//             <div>
+//               <h3 className="text-2xl font-extrabold mb-4">
+//                 Optimize your resume with AI interviewer technology better
+//               </h3>
+//               <ul className="space-y-3 text-sm text-gray-700">
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> ATS score checker to evaluate resume visibility
+//                 </li>
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> AI-powered resume feedback with keyword optimization
+//                 </li>
+//                 <li className="flex gap-2">
+//                   <CheckIcon /> Job match analysis to target specific positions
+//                 </li>
+//               </ul>
+//             </div>
+//             <div className="bg-[#7DD3C0] rounded-2xl p-6 aspect-[4/3] flex items-center justify-center">
+//               <div className="bg-white rounded-xl shadow-lg w-full max-w-xs p-4 space-y-2">
+//                 <div className="flex justify-between items-center mb-2">
+//                   <p className="text-xs font-semibold text-gray-400">Fixed Skills</p>
+//                   <span className="text-[10px] text-gray-400">Show All</span>
+//                 </div>
+//                 {[
+//                   ["React", 82],
+//                   ["System design", 54],
+//                   ["SQL", 70],
+//                 ].map(([label, pct]) => (
+//                   <div key={label}>
+//                     <div className="flex justify-between text-xs text-gray-600 mb-1">
+//                       <span>{label}</span>
+//                       <span>{pct}%</span>
+//                     </div>
+//                     <div className="w-full h-1.5 bg-gray-100 rounded-full">
+//                       <div
+//                         className="h-1.5 bg-[#7DD3C0] rounded-full"
+//                         style={{ width: `${pct}%` }}
+//                       />
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Pilot study / CTA */}
+//         <section id="pilot" className="max-w-2xl mx-auto px-6 text-center mb-20">
+//           <h2 className="text-3xl font-extrabold mb-4">Now piloting with engineering students</h2>
+//           <p className="text-gray-600 text-sm mb-8 max-w-lg mx-auto">
+//             We're running a pilot with 15–20 engineering students to measure feedback
+//             accuracy, scorecard consistency, and resume match quality. If your placement
+//             cell wants high-fidelity mock interviews without the staffing problem, we'd
+//             like to talk.
+//           </p>
+//           <a
+//             href="#contact"
+//             className="inline-block bg-black text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-gray-800 transition"
+//           >
+//             Bring Vivaro to your campus
+//           </a>
+//         </section>
+
+//         {/* Footer */}
+//         <div className="bg-[#e7e6e0] p-6 font-sans">
+//           <div className=" mx-auto bg-[#f7f4e8] rounded-3xl overflow-hidden relative">
+
+//             {/* HERO */}
+//             <div className="p-10">
+//               <div className="relative overflow-hidden bg-[#f4dd4d] rounded-[20px] flex items-center justify-between px-14 py-12">
+
+//                 <div className="max-w-md z-10">
+//                   <h1 className="text-4xl font-bold text-[#1c2b17] leading-tight mb-4">
+//                     Prepare students for career success.
+//                   </h1>
+//                   <p className="text-sm text-[#2c3a25] leading-relaxed mb-6">
+//                     Transform your career services with our AI interviewer platform.
+//                     Give every student unlimited practice with AI interview technology
+//                     that provides personalized feedback and builds real confidence.
+//                   </p>
+//                   <button className="bg-[#1c2b17] text-[#f4dd4d] rounded-lg px-6 py-3 text-sm font-semibold hover:opacity-90 transition">
+//                     It's Free Try Now!
+//                   </button>
+//                 </div>
+
+//                 {/* Illustration */}
+//                 <svg width="220" height="200" viewBox="0 0 220 200" className="z-10 shrink-0">
+//                   <g stroke="#1c2b17" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round">
+//                     <rect x="10" y="150" width="30" height="35" />
+//                     <rect x="55" y="120" width="30" height="65" />
+//                     <rect x="100" y="90" width="30" height="95" />
+//                     <line x1="165" y1="70" x2="165" y2="35" strokeDasharray="4 5" />
+//                     <path d="M165 10 L171 25 L187 26 L174 36 L179 51 L165 42 L151 51 L156 36 L143 26 L159 25 Z" />
+//                     <circle cx="115" cy="45" r="9" />
+//                     <path d="M115 54 L115 78" />
+//                     <path d="M115 60 L98 70" />
+//                     <path d="M115 60 L132 50" />
+//                     <rect x="122" y="48" width="14" height="12" rx="1" transform="rotate(20 122 48)" />
+//                     <path d="M115 78 L100 95" />
+//                     <path d="M115 78 L128 92" />
+//                   </g>
+//                 </svg>
+//               </div>
+//             </div>
+
+//             {/* FOOTER */}
+//             <div className="px-14 pb-10">
+
+//               <div className="flex flex-wrap justify-between items-start gap-6 mb-6">
+//                 <div className="flex items-center gap-3">
+//                   <div className="w-[46px] h-[46px] bg-[#f4dd4d] rounded-[10px] flex items-center justify-center font-bold text-2xl text-[#1c2b17]">
+//                     S
+//                   </div>
+//                   <span className="text-2xl font-bold text-[#1c2b17]">Vivaro</span>
+//                 </div>
+
+//                 <div className="min-w-[260px]">
+//                   <p className="text-sm font-semibold text-[#1c2b17] mb-2.5">Sign up to our news letter</p>
+//                   <div className="flex gap-2.5">
+//                     <input
+//                       placeholder="Email"
+//                       className="flex-1  border-[#1c2b17] bg-transparent px-1 py-1.5 text-sm outline-none text-[#1c2b17] placeholder:text-[#1c2b17]/60"
+//                     />
+//                     <button className="bg-[#1c2b17] text-[#f4dd4d] rounded-md px-4.5 py-2 text-sm font-semibold whitespace-nowrap hover:opacity-90 transition">
+//                       Subscribe
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="flex flex-wrap justify-between items-center gap-3 text-xs text-[#1c2b17]">
+//                 <div className="flex gap-5">
+//                   <span>Terms of use</span>
+//                   <span>Privacy Policy</span>
+//                 </div>
+//                 <div className="flex items-center gap-5">
+//                   <span>
+//                     Contact Us <strong>support@Vivaro.ai</strong>
+//                   </span>
+//                   <div className="flex gap-3 text-base">
+//                     <span>in</span>
+//                     <span>𝕏</span>
+//                     <span></span>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="border-t border-[#1c2b17] my-5" />
+
+//               <div className="flex flex-wrap justify-between gap-6">
+//                 {footerCols.map((col) => (
+//                   <div key={col}>
+//                     <p className="text-[13px] font-bold text-[#1c2b17] mb-2.5">{col}</p>
+//                     {footerLinks.map((item) => (
+//                       <p key={item} className="text-xs text-[#1c2b17] my-1.5">
+//                         {item}
+//                       </p>
+//                     ))}
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* GIANT WORDMARK, cropped at bottom */}
+//             <div className="text-center font-extrabold text-[#1c2b17] leading-none select-none text-[450px] mt-[-200px] tracking-tighter translate-y-[30%]">
+//               Vivaro
+//             </div>
+//           </div>
+//         </div>
+
+//       </div>
+
+//     </>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+"use client"
+
+import * as React from "react"
+import { createFileRoute } from "@tanstack/react-router"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger)
+
+export const Route = createFileRoute("/")({
   component: Home,
 })
 
-function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const footerCols = ["Company", "Quick Links", "Industry"];
-  const footerLinks = ["About Us", "Carees", "Contact", "Community", "Testimonials"];
-  // const navLinks = ["AI Interview", "Features", "For Businesses", "For Recruiters", "Pricing"];
-  const logos = ["stripe", "HubSpot", "coinbase", "Google", "GLASSDOOR"];
+export type CnlLink = { label: string; href?: string }
 
+export type CnlScenario = {
+  /** The chip under the window, e.g. "System Design". */
+  label: string
+  /** The dark bubble: the candidate's context or question. */
+  alert: string
+  /** The white bubble: the AI interviewer's follow-up. */
+  reply: string
+  replyLink?: CnlLink | null
+  /** The voice pill: a candidate's spoken answer, heard live. */
+  voice: string
+}
 
+export type CnlLogoStyle = "script" | "badge" | "heavy" | "round" | "mono" | "serif"
 
+export type CnlLogo = { name: string; style?: CnlLogoStyle; color?: string; src?: string }
+
+export type CnlPanel = "create" | "policies" | "simulate" | "deploy"
+
+export type CnlStep = { title: string; text: string; panel: CnlPanel }
+
+export type CnlPolicy = { id: string; title: string; text: string; on?: boolean }
+
+export type CnlChannel = {
+  id: string
+  label: string
+  detail: string
+  icon?: "phone" | "chat" | "whats" | "mail" | "globe"
+  on?: boolean
+}
+
+export type CnlSample = { name: string; size: number }
+
+export type CnlCanvas = {
+  kicker?: string
+  heading?: string
+  title: string
+  text: string
+  steps: CnlStep[]
+  policies: CnlPolicy[]
+  personas: string[]
+  intents: string[]
+  channels: CnlChannel[]
+  samples: CnlSample[]
+}
+
+export type CnlLine = {
+  who: "caller" | "agent"
+  text: string
+  /** Shown in the Memory card once this line is reached. */
+  memory?: string
+  /** -1 (nervous) to 1 (confident), drawn as the confidence/sentiment line. */
+  mood: number
+}
+
+export type CnlCall = {
+  caller: string
+  topic: string
+  lines: CnlLine[]
+  /** Already known from resume & GitHub before the interview starts. */
+  memory?: string[]
+  outcome?: string
+}
+
+export type CnlStat = {
+  value: number
+  /** Counts from here, e.g. an industry hold time down to zero. */
+  from?: number
+  decimals?: number
+  prefix?: string
+  suffix?: string
+  /** Format as m:ss. */
+  clock?: boolean
+  label: string
+  note?: string
+}
+
+export type CnlQuote = { quote: string; name: string; role: string; company: string; avatar?: string }
+
+export type CnlImages = { hero?: string; canvas?: string; call?: string; cta?: string }
+
+export type CnlPaletteName = "fog" | "ember"
+
+export type CnlPalette = {
+  bg: string
+  night: string
+  accent: string
+  agent: string
+  ridges: string[]
+}
+
+export type CnlPaletteInput = { bg?: string; night?: string; accent?: string; agent?: string; ridges?: string[] }
+
+export type CnlTalkRequest = { name: string; email: string; company: string; volume: string; message: string }
+
+export interface CairnAgentsLandingProps {
+  brand?: string
+  logo?: React.ReactNode
+  nav?: CnlLink[]
+  login?: CnlLink | null
+  action?: CnlLink
+  announcement?: CnlLink | null
+  title?: string
+  subtitle?: string
+  primaryAction?: CnlLink
+  scenarios?: CnlScenario[]
+  liveCalls?: number | null
+  logosLabel?: string
+  logos?: CnlLogo[] | null
+  canvas?: CnlCanvas | null
+  call?: { kicker?: string; title: string; text?: string; data: CnlCall } | null
+  stats?: { kicker?: string; title?: string; items: CnlStat[] } | null
+  quotes?: { kicker?: string; items: CnlQuote[] } | null
+  cta?: { kicker?: string; title: string; text?: string; action?: string; assurances?: string[] } | null
+  footer?: { tagline?: string; columns?: { title: string; links: CnlLink[] }[]; note?: string } | null
+  images?: CnlImages
+  palette?: CnlPaletteName | CnlPaletteInput
+  scheme?: "auto" | "light" | "dark"
+  height?: string
+  volumes?: string[]
+  onTalk?: (data: CnlTalkRequest) => unknown
+  onSubscribe?: (email: string) => unknown
+  className?: string
+  style?: React.CSSProperties
+}
+
+type CnlFile = { id: number; name: string; size: number; progress: number }
+
+type CnlSimCall = { id: number; persona: string; intent: string; outcome: "resolved" | "handoff" | "flagged"; ms: number }
+
+type CnlSimResult = { calls: CnlSimCall[]; resolved: number; handoff: number; flagged: number }
+
+type CnlMark = { start: number; end: number }
+
+// #region content (Vivaro Tailored Content)
+const U = (id: string, w: number) => "https://images.unsplash.com/photo-" + id + "?auto=format&fit=crop&q=72&w=" + w
+
+const DEFAULT_IMAGES = {
+  hero: U("1500534314209-a25ddb2bd429", 2400),
+  canvas: U("1469474968028-56623f02e42e", 2000),
+  call: U("1506905925346-21bda4d32df4", 2200),
+  cta: U("1519681393784-d120267933ba", 2400),
+}
+
+const PALETTES = {
+  fog: {
+    bg: "#f7f7f5",
+    night: "#0c0d0d",
+    accent: "#e4572e",
+    agent: "#2a6ee0",
+    ridges: ["#c9d3dc", "#e7d9cc", "#a9b8b4", "#86998f", "#5f776c", "#3c5148"],
+  },
+  ember: {
+    bg: "#f8f5f0",
+    night: "#100d0b",
+    accent: "#d9480f",
+    agent: "#0f7c6e",
+    ridges: ["#f2c8a0", "#f6e2c8", "#d59b86", "#b9767a", "#8a5868", "#4f3646"],
+  },
+}
+
+const DEFAULT_NAV: CnlLink[] = [
+  { label: "Live Demo", href: "#demo" },
+  { label: "Workflow", href: "#product" },
+  { label: "Plan Study", href: "/prep" },
+  { label: "Campus Pilot", href: "#company" },
+]
+
+const DEFAULT_SCENARIOS: CnlScenario[] = [
+  {
+    label: "System Design",
+    alert: "Resume uploaded: Full-Stack Engineer · Target JD: Backend Systems.",
+    reply: "I've reviewed your distributed cache project. How did you handle cache invalidation under write spikes?",
+    replyLink: { label: "Plan your study", href: "/prep" },
+    voice: "We used write-through with Redis pub/sub...",
+  },
+  {
+    label: "GitHub Deep-Dive",
+    alert: "GitHub synced: 4 public repos · 12 role-specific questions generated.",
+    reply: "In your Express API repo, why did you choose Prisma connection pooling over raw pg pools?",
+    replyLink: { label: "Start mock interview", href: "/interview" },
+    voice: "Because serverless functions open short connections...",
+  },
+  {
+    label: "Rubric Feedback",
+    alert: "Session ended · Transcript scored across 4 engineering pillars.",
+    reply: "Score: 84/100. Strong architectural reasoning—here is a 7-day study roadmap for database indexing.",
+    replyLink: { label: "Try for free", href: "/interview" },
+    voice: "That roadmap pinpoints my exact weak spots!",
+  },
+]
+
+const DEFAULT_LOGOS: CnlLogo[] = [
+  { name: "stripe", style: "heavy", color: "#151515" },
+  { name: "HubSpot", style: "badge", color: "#ef5b25" },
+  { name: "coinbase", style: "round", color: "#0052ff" },
+  { name: "Google", style: "serif", color: "#1a73e8" },
+  { name: "GLASSDOOR", style: "mono", color: "#0caa41" },
+  { name: "Vercel", style: "script", color: "#111111" },
+]
+
+const DEFAULT_CANVAS: CnlCanvas = {
+  kicker: "How Vivaro works",
+  heading: "Built for real spoken\ntechnical readiness",
+  title: "Interview Studio",
+  text: "Vivaro parses your PDF resume and GitHub repositories, runs a low-latency WebRTC voice interview, and scores every turn against a real rubric.",
+  steps: [
+    {
+      title: "Upload resume & target JD",
+      panel: "create",
+      text: "Drop your PDF resume, paste a job description, and sync public GitHub repos to generate 10–15 likely interview questions.",
+    },
+    {
+      title: "Configure rubric & role",
+      panel: "policies",
+      text: "Calibrate follow-up depth, target seniority, and evaluation pillars across system design, APIs, and project ownership.",
+    },
+    {
+      title: "Practice live voice rounds",
+      panel: "simulate",
+      text: "Speak naturally over WebRTC with server-side turn detection and adaptive follow-up questions tailored to your actual code.",
+    },
+    {
+      title: "Get scorecard & roadmap",
+      panel: "deploy",
+      text: "Receive an objective 0–100 rubric scorecard, example answers, and a personalized study roadmap right after the call.",
+    },
+  ],
+  policies: [
+    { id: "github", title: "Probe GitHub repository architecture", text: "Ask follow-ups on commits, schemas, and trade-offs.", on: true },
+    { id: "rubric", title: "Score against 4 engineering pillars", text: "Technical accuracy, ownership, reasoning, and clarity.", on: true },
+    { id: "followup", title: "Adaptive deep-dive follow-ups", text: "Dig deeper when an answer skips edge cases.", on: true },
+    { id: "strict", title: "Strict senior-bar calibration", text: "Expect production-grade scaling and latency numbers.", on: false },
+  ],
+  personas: ["Frontend", "Backend", "Full-Stack", "System Design", "DSA & SQL"],
+  intents: [
+    "Cache invalidation",
+    "SQL indexing",
+    "REST vs GraphQL",
+    "React re-renders",
+    "Auth & JWT",
+    "Rate limiting",
+    "Docker & CI/CD",
+    "WebRTC latency",
+  ],
+  channels: [
+    { id: "score", label: "0–100 Rubric Scorecard", detail: "Structured pillar breakdown", icon: "globe", on: true },
+    { id: "roadmap", label: "Personalized Study Roadmap", detail: "Targeted skill-gap plan", icon: "chat", on: true },
+    { id: "transcript", label: "Annotated Transcript", detail: "Turn-by-turn model answers", icon: "mail", on: true },
+    { id: "prep", label: "Pre-Interview Question Bank", detail: "12 tailored practice prompts", icon: "phone", on: false },
+  ],
+  samples: [
+    { name: "vivek_resume_2026.pdf", size: 248000 },
+    { name: "backend_engineer_jd.txt", size: 18400 },
+    { name: "github_repos_context.json", size: 96200 },
+  ],
+}
+
+const DEFAULT_CALL: { kicker?: string; title: string; text?: string; data: CnlCall } = {
+  kicker: "Listen in",
+  title: "Adaptive follow-ups,\non every answer.",
+  text: "A real mock interview exchange, start to finish. Vivaro recalls your resume and GitHub projects, challenges architectural choices, and builds confidence aloud.",
+  data: {
+    caller: "Vivek Sharma",
+    topic: "Full-Stack Mock Interview",
+    memory: ["PDF Resume parsed", "GitHub: 4 public repositories"],
+    outcome: "Score: 86/100 · Roadmap generated in 4s",
+    lines: [
+      {
+        who: "agent",
+        mood: -0.2,
+        memory: "Project: Real-Time Chat App",
+        text: "Welcome Vivek. Looking at your GitHub, you built a WebSocket chat service. How did you prevent message loss when a user briefly disconnects?",
+      },
+      {
+        who: "caller",
+        mood: -0.35,
+        text: "Um, we stored messages in PostgreSQL first, and then broadcast them over Socket.io to connected clients.",
+      },
+      {
+        who: "agent",
+        mood: 0.1,
+        memory: "Follow-up: Delivery guarantees",
+        text: "Good start. If the client reconnects two seconds later, how does it know which messages it missed without re-fetching the whole history?",
+      },
+      {
+        who: "caller",
+        mood: 0.45,
+        text: "Right—each message has a monotonically increasing sequence ID, so the client sends its last seen ID on reconnect and fetches only newer rows.",
+      },
+      {
+        who: "agent",
+        mood: 0.7,
+        memory: "Verified: Cursor pagination",
+        text: "Clean cursor-based sync. Let's look at your SQL schema next—what index did you put on that conversation table?",
+      },
+      {
+        who: "caller",
+        mood: 0.88,
+        text: "A composite index on conversation_id and sequence_id so range queries stay fast!",
+      },
+    ],
+  },
+}
+
+const DEFAULT_STATS = {
+  kicker: "Pilot study results",
+  title: "Validated with students.",
+  items: [
+    { value: 0, from: 702, clock: true, label: "Wait time to start practicing", note: "1-on-1 faculty scheduling" },
+    { value: 81.25, decimals: 2, suffix: "%", label: "Resume & JD question relevance" },
+    { value: 100, suffix: "%", label: "Live voice session completion" },
+    { value: 81.25, decimals: 2, suffix: "%", label: "Students who recommend Vivaro" },
+  ],
+}
+
+const DEFAULT_QUOTES = {
+  kicker: "From pilot participants",
+  items: [
+    {
+      quote: "It pulled questions directly from my GitHub repositories and pushed me to justify my database schema choices just like a real panel.",
+      name: "Vivek Sharma",
+      role: "Final Year CS Student",
+      company: "Pilot Cohort",
+      avatar: U("1500648767791-00dcc994a43e", 200),
+    },
+    {
+      quote: "The pre-interview Prep page gave me 12 spot-on questions from the job description, and the scorecard showed me where my explanations lacked depth.",
+      name: "Ananya Verma",
+      role: "Software Engineering Applicant",
+      company: "Pilot Cohort",
+      avatar: U("1494790108377-be9c29b29330", 200),
+    },
+    {
+      quote: "Speaking my system design reasoning aloud over WebRTC felt natural—way more helpful than grinding silent multiple-choice quizzes.",
+      name: "Rohan Kulkarni",
+      role: "Backend Developer Intern",
+      company: "Pilot Cohort",
+      avatar: U("1534528741775-53994a69daeb", 200),
+    },
+  ],
+}
+
+const DEFAULT_CTA = {
+  kicker: "Start practicing",
+  title: "Ace your next tech\ninterview. Starting today.",
+  text: "Upload your resume, paste any job description, and run a free real-time voice mock interview in seconds.",
+  action: "Try for free",
+  assurances: ["Free for students", "Resume & GitHub sync", "Instant rubric scorecard"],
+}
+
+const DEFAULT_FOOTER = {
+  tagline: "AI voice mock interviews, semantic skill-gap analysis, and personalized study roadmaps for students and job seekers.",
+  columns: [
+    {
+      title: "Platform",
+      links: [
+        { label: "Take Mock Interview", href: "/interview" },
+        { label: "Plan Your Study", href: "/prep" },
+        { label: "How It Works", href: "#product" },
+        { label: "Live Demo", href: "#demo" },
+      ],
+    },
+    {
+      title: "Features",
+      links: [
+        { label: "Voice Scaffolding", href: "#demo" },
+        { label: "Rubric Scorecard", href: "#product" },
+        { label: "Resume & GitHub Sync", href: "#product" },
+        { label: "Study Roadmaps", href: "/prep" },
+      ],
+    },
+    {
+      title: "Campus",
+      links: [
+        { label: "Pilot Study", href: "#company" },
+        { label: "Placement Cells", href: "#company" },
+        { label: "Privacy", href: "#" },
+        { label: "support@Vivaro.ai", href: "mailto:support@Vivaro.ai" },
+      ],
+    },
+  ],
+  note: "Built for students and job seekers.",
+}
+
+const DEFAULT_VOLUMES = ["50–200", "200–500", "500–2k", "2k+"]
+// #endregion content
+
+// #region logic
+function clamp(v: number, a: number, b: number) {
+  return Math.min(b, Math.max(a, v))
+}
+
+function isEmail(s: string) {
+  return /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i.test(s.trim())
+}
+
+function formatClock(sec: number) {
+  const s = Math.max(0, Math.round(sec))
+  return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0")
+}
+
+function formatBytes(n: number) {
+  if (n < 1024) return Math.round(n) + " B"
+  if (n < 1024 * 1024) return Math.round(n / 1024) + " KB"
+  return (n / 1048576).toFixed(1) + " MB"
+}
+
+function formatStat(v: number, decimals: number) {
+  return v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+}
+
+function chunksFor(bytes: number) {
+  return Math.max(1, Math.ceil(bytes / 1800))
+}
+
+function fileKind(name: string) {
+  const ext = (name.split(".").pop() || "").toLowerCase()
+  if (/^(png|jpe?g|gif|webp|svg|heic|avif)$/.test(ext)) return "image"
+  if (/^(mp3|wav|m4a|ogg|flac|aac)$/.test(ext)) return "music"
+  if (/^(zip|tar|gz|rar|7z)$/.test(ext)) return "folder"
+  return "doc"
+}
+
+function splitTitle(t: string) {
+  return t.split("\n").map((s) => s.trim()).filter(Boolean)
+}
+
+function splitWords(t: string) {
+  return t.split(/\s+/).filter(Boolean)
+}
+
+function initials(name: string) {
+  const p = splitWords(name)
+  if (!p.length) return "?"
+  return ((p[0][0] || "") + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase()
+}
+
+function nextIndex(i: number, key: string, n: number) {
+  if (key === "ArrowRight" || key === "ArrowDown") return (i + 1) % n
+  if (key === "ArrowLeft" || key === "ArrowUp") return (i - 1 + n) % n
+  if (key === "Home") return 0
+  if (key === "End") return n - 1
+  return i
+}
+
+function stepAt(p: number, n: number) {
+  return clamp(Math.floor(clamp(p, 0, 1) * n), 0, n - 1)
+}
+
+function stepLocal(p: number, n: number, i: number) {
+  return clamp(p * n - i, 0, 1)
+}
+
+function sensitivityLabel(v: number) {
+  if (v < 34) return "Entry-level · supportive"
+  if (v < 67) return "Mid-level · balanced"
+  return "Senior · deep trade-offs"
+}
+
+function mulberry32(seed: number) {
+  let a = seed | 0
+  return function () {
+    a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+function simulateCalls(
+  count: number,
+  o: { seed: number; personas: string[]; intents: string[]; policies: number; sensitivity: number },
+) {
+  const rnd = mulberry32(o.seed)
+  const pool = o.personas.length ? o.personas : ["Full-Stack"]
+  const intents = o.intents.length ? o.intents : ["System Design"]
+  const hard = (p: string) => (/system|design/i.test(p) ? 0.035 : /backend/i.test(p) ? 0.02 : 0.012)
+  const handoffBase = 0.02 + (clamp(o.sensitivity, 0, 100) / 100) * 0.08
+  const flagBase = Math.max(0.004, 0.05 - clamp(o.policies, 0, 8) * 0.011)
+  const calls: CnlSimCall[] = []
+  let resolved = 0
+  let handoff = 0
+  let flagged = 0
+  for (let i = 0; i < count; i++) {
+    const persona = pool[Math.floor(rnd() * pool.length)]
+    const intent = intents[Math.floor(rnd() * intents.length)]
+    const r = rnd()
+    const h = hard(persona)
+    let outcome: CnlSimCall["outcome"] = "resolved"
+    if (r < flagBase + h * 0.3) outcome = "flagged"
+    else if (r < flagBase + h * 0.3 + handoffBase + h) outcome = "handoff"
+    if (outcome === "resolved") resolved++
+    else if (outcome === "handoff") handoff++
+    else flagged++
+    calls.push({ id: i + 1, persona, intent, outcome, ms: Math.round(280 + rnd() * 520) })
+  }
+  return { calls, resolved, handoff, flagged }
+}
+
+function tally(calls: CnlSimCall[], upto: number) {
+  let resolved = 0
+  let handoff = 0
+  let flagged = 0
+  const n = clamp(Math.floor(upto), 0, calls.length)
+  for (let i = 0; i < n; i++) {
+    const o = calls[i].outcome
+    if (o === "resolved") resolved++
+    else if (o === "handoff") handoff++
+    else flagged++
+  }
+  return { done: n, resolved, handoff, flagged }
+}
+
+function callTimeline(lines: { text: string }[], wps = 2.7, gap = 0.6) {
+  let t = 0.4
+  const marks: CnlMark[] = lines.map((l) => {
+    const d = Math.max(1.4, splitWords(l.text).length / wps)
+    const m = { start: t, end: t + d }
+    t += d + gap
+    return m
+  })
+  return { marks, total: t }
+}
+
+function lineAt(marks: CnlMark[], t: number) {
+  let idx = -1
+  for (let i = 0; i < marks.length; i++) if (marks[i].start <= t) idx = i
+  return idx
+}
+
+function litWords(text: string, local: number) {
+  const n = splitWords(text).length
+  return clamp(Math.ceil(n * clamp(local, 0, 1)), 0, n)
+}
+
+function moodAt(lines: { mood: number }[], marks: CnlMark[], t: number) {
+  if (!lines.length) return 0
+  if (t <= marks[0].start) return lines[0].mood
+  for (let i = 0; i < marks.length - 1; i++) {
+    if (t < marks[i + 1].start) {
+      const k = clamp((t - marks[i].start) / (marks[i + 1].start - marks[i].start), 0, 1)
+      const e = k * k * (3 - 2 * k)
+      return lines[i].mood + (lines[i + 1].mood - lines[i].mood) * e
+    }
+  }
+  return lines[lines.length - 1].mood
+}
+
+function sentimentPath(
+  lines: { mood: number }[],
+  marks: CnlMark[],
+  total: number,
+  t: number,
+  w: number,
+  h: number,
+  samples = 60,
+) {
+  let d = ""
+  let x = 0
+  let y = h / 2
+  const upto = clamp(t, 0, total)
+  for (let k = 0; k <= samples; k++) {
+    const tt = Math.min((k / samples) * total, upto)
+    const v = moodAt(lines, marks, tt)
+    x = (tt / total) * w
+    y = h / 2 - v * (h / 2 - 5)
+    d += (k ? " L" : "M") + x.toFixed(1) + " " + y.toFixed(1)
+    if (tt >= upto) break
+  }
+  return { d, x, y }
+}
+
+function moodLabel(v: number) {
+  if (v < -0.25) return "Warming up"
+  if (v < 0.2) return "Structured"
+  if (v < 0.6) return "Articulate"
+  return "Strong fit"
+}
+
+function ridgePath(seed: number, base: number, amp: number, w = 1600, h = 900) {
+  const rnd = mulberry32(seed)
+  const ph = rnd() * 6.283
+  const n = 40
+  let d = "M0 " + h
+  for (let i = 0; i <= n; i++) {
+    const x = (i / n) * w
+    const y = base - amp * (0.55 * Math.sin(i * 0.33 + ph) + 0.3 * Math.sin(i * 0.91 + ph * 2) + 0.15 * (rnd() * 2 - 1))
+    d += " L" + x.toFixed(1) + " " + y.toFixed(1)
+  }
+  return d + " L" + w + " " + h + " Z"
+}
+
+function resolvePalette(p?: CnlPaletteName | CnlPaletteInput) {
+  const base: CnlPalette = PALETTES.fog
+  if (!p) return base
+  if (typeof p === "string") return (p === "ember" ? PALETTES.ember : base) as CnlPalette
+  return {
+    bg: p.bg || base.bg,
+    night: p.night || base.night,
+    accent: p.accent || base.accent,
+    agent: p.agent || base.agent,
+    ridges: p.ridges && p.ridges.length >= 6 ? p.ridges.slice(0, 6) : base.ridges,
+  }
+}
+// #endregion logic
+
+const CNL_CSS = `
+.cnl-root{--cnl-bg:var(--cnl-day,#f7f7f5);--cnl-ink:#111211;--cnl-mute:#5c5f5b;--cnl-faint:#878a86;--cnl-line:rgba(17,18,17,.1);--cnl-soft:#ebebe8;--cnl-card:#fff;--cnl-card-ink:#151615;--cnl-card-mute:#686b67;--cnl-card-line:rgba(0,0,0,.08);--cnl-card-soft:#f1f1ef;--cnl-dark:#0b0b0c;--cnl-serif:"Instrument Serif","Newsreader","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--cnl-sans:"Inter","Inter Variable",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--cnl-mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;--cnl-in:24px;--cnl-r:14px;--cnl-sp:1;--cnl-ease:cubic-bezier(.22,1,.36,1);position:relative;background:var(--cnl-bg);color:var(--cnl-ink);font-family:var(--cnl-sans);font-size:15px;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;isolation:isolate}
+.cnl-root[data-scheme=dark],:where(.dark) .cnl-root[data-scheme=auto]{--cnl-bg:var(--cnl-night-bg,#0c0d0d);--cnl-ink:#efeeea;--cnl-mute:#a5a7a2;--cnl-faint:#7d807b;--cnl-line:rgba(255,255,255,.1);--cnl-soft:#1d1f1e;--cnl-card:#151716;--cnl-card-ink:#f0efeb;--cnl-card-mute:#a3a5a0;--cnl-card-line:rgba(255,255,255,.08);--cnl-card-soft:#202221;color-scheme:dark}
+.cnl-root :where(*,*::before,*::after){box-sizing:border-box}
+.cnl-root :where(h1,h2,h3,p,ol,ul,figure,blockquote){margin:0;padding:0}
+.cnl-root :where(ol,ul){list-style:none}
+.cnl-root :where(a){color:inherit;text-decoration:none}
+.cnl-root :where(button){font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:inherit}
+.cnl-root :where(input,select,textarea){font:inherit;color:inherit}
+.cnl-root :where(a,button,input,textarea,label,[tabindex]):focus-visible{outline:2px solid var(--cnl-agent);outline-offset:3px;border-radius:8px}
+.cnl-root [data-sec]{scroll-margin-top:72px}
+.cnl-svg{display:block;max-width:none;flex:none}
+.cnl-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.cnl-kicker{display:inline-flex;align-items:center;gap:10px;font:500 10.5px/1 var(--cnl-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cnl-ink)}
+.cnl-kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cnl-accent);box-shadow:0 0 0 4px color-mix(in oklab,var(--cnl-accent) 18%,transparent)}
+.cnl-serif{font-family:var(--cnl-serif);font-weight:400;letter-spacing:-.022em}
+
+.cnl-nav{position:sticky;top:0;z-index:40;height:68px;display:flex;align-items:center;gap:20px;padding:0 28px;transition:background-color .35s,box-shadow .35s,transform .5s var(--cnl-ease)}
+.cnl-nav.is-scrolled{background:color-mix(in oklab,var(--cnl-bg) 84%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);box-shadow:0 1px 0 var(--cnl-line)}
+.cnl-nav.is-hidden{transform:translateY(-102%)}
+.cnl-brand{display:inline-flex;align-items:center;gap:9px;font-size:19px;font-weight:600;letter-spacing:-.03em;min-width:140px}
+.cnl-brand .cnl-svg{transition:transform .6s var(--cnl-ease)}
+.cnl-brand:hover .cnl-svg{transform:rotate(-8deg) translateY(-1px)}
+.cnl-links{position:relative;display:flex;align-items:center;gap:2px;margin-left:44px;margin-right:auto}
+.cnl-links::before{content:"";position:absolute;top:0;left:0;height:34px;width:var(--cnl-lw,0px);transform:translateX(var(--cnl-lx,0px));border-radius:999px;background:var(--cnl-soft);opacity:var(--cnl-lo,0);transition:transform .4s var(--cnl-ease),width .4s var(--cnl-ease),opacity .25s}
+.cnl-link{position:relative;height:34px;display:inline-flex;align-items:center;padding:0 14px;font-size:13.5px;color:var(--cnl-mute);border-radius:999px;transition:color .2s}
+.cnl-link:hover{color:var(--cnl-ink)}
+.cnl-nav-end{display:flex;align-items:center;gap:22px}
+.cnl-signin{font-size:13.5px;color:var(--cnl-mute);transition:color .2s}
+.cnl-signin:hover{color:var(--cnl-ink)}
+.cnl-burger{display:none;width:38px;height:38px;border-radius:999px;align-items:center;justify-content:center;background:var(--cnl-soft)}
+.cnl-sheet{position:fixed;inset:0;z-index:60;background:var(--cnl-bg);display:flex;flex-direction:column;padding:16px 20px 28px;animation:cnl-fade .35s var(--cnl-ease)}
+.cnl-sheet-top{display:flex;align-items:center;justify-content:space-between;height:44px}
+.cnl-sheet-links{display:flex;flex-direction:column;gap:4px;margin-top:40px}
+.cnl-sheet-links a,.cnl-sheet-links button{font-family:var(--cnl-serif);font-size:44px;line-height:1.15;letter-spacing:-.02em;animation:cnl-rise .6s var(--cnl-ease) both}
+.cnl-sheet-end{margin-top:auto;display:flex;gap:12px;align-items:center}
+
+.cnl-pill{--cnl-mx:0px;--cnl-my:0px;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 16px;border-radius:999px;background:var(--cnl-ink);color:var(--cnl-bg);font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;transition:background-color .25s,box-shadow .3s;box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 6px 18px -8px rgba(0,0,0,.45)}
+.cnl-pill.is-lg{height:44px;padding:0 22px;font-size:14.5px}
+.cnl-pill.is-light{background:#fff;color:#111}
+.cnl-pill:disabled{opacity:.45;cursor:not-allowed}
+.cnl-roll{position:relative;display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em}
+.cnl-roll>span{display:block;transition:transform .5s var(--cnl-ease)}
+.cnl-roll::after{content:attr(data-t);position:absolute;left:0;top:100%;transition:transform .5s var(--cnl-ease)}
+.cnl-pill:hover .cnl-roll>span,.cnl-pill:hover .cnl-roll::after{transform:translateY(-100%)}
+
+.cnl-hero{padding:40px 0 0}
+.cnl-hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 20px}
+.cnl-badge{display:inline-flex;align-items:center;gap:10px;height:28px;padding:0 9px 0 12px;border-radius:999px;background:var(--cnl-soft);font:500 10.5px/1 var(--cnl-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--cnl-ink);margin-bottom:22px;transition:background-color .25s}
+.cnl-badge:hover{background:color-mix(in oklab,var(--cnl-soft) 70%,var(--cnl-ink) 8%)}
+.cnl-badge .cnl-svg{transition:transform .35s var(--cnl-ease);opacity:.6}
+.cnl-badge:hover .cnl-svg{transform:translateX(3px)}
+.cnl-badge-dot{position:relative;width:7px;height:7px;border-radius:50%;background:var(--cnl-ink)}
+.cnl-badge-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--cnl-ink);opacity:0;animation:cnl-ping 2.6s var(--cnl-ease) infinite}
+.cnl-title{font-family:var(--cnl-serif);font-weight:400;font-size:clamp(46px,7.4vw,78px);line-height:1.02;letter-spacing:-.03em;color:var(--cnl-ink)}
+.cnl-line{display:block;overflow:hidden;padding:0 .06em .1em;margin-bottom:-.1em}
+.cnl-line-in{display:inline-block;transform-origin:0 100%}
+.cnl-sub{margin-top:26px;max-width:44ch;font-size:15.5px;line-height:1.8;color:var(--cnl-mute)}
+.cnl-hero-cta{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.cnl-hero-stage{margin-top:72px;position:relative}
+.cnl-vista.cnl-hero-vista{border-radius:0;clip-path:inset(0 var(--cnl-in) round var(--cnl-r))}
+
+.cnl-vista{position:relative;overflow:hidden;border-radius:14px;background:#33403f;isolation:isolate;contain:paint}
+.cnl-vista-media{position:absolute;left:0;right:0;top:-8%;bottom:-8%;will-change:transform}
+.cnl-vista-drift{position:absolute;inset:0;will-change:transform}
+.cnl-ridges,.cnl-img{position:absolute;inset:0;width:100%;height:100%;display:block;max-width:none}
+.cnl-img{object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+.cnl-img[data-ok=true]{opacity:1}
+.cnl-vista-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,12,18,.04) 30%,rgba(8,12,18,.3))}
+:where(.dark) .cnl-root[data-scheme=auto] .cnl-vista-shade,.cnl-root[data-scheme=dark] .cnl-vista-shade{background:linear-gradient(180deg,rgba(6,8,12,.2),rgba(6,8,12,.5))}
+
+.cnl-chat{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:72px 20px 84px}
+.cnl-b{display:flex;gap:12px;border-radius:12px;font-size:13.5px;line-height:1.6;box-shadow:0 24px 50px -24px rgba(0,0,0,.55),0 2px 6px -2px rgba(0,0,0,.18)}
+.cnl-b-dot{width:7px;height:7px;border-radius:50%;flex:none;margin-top:.62em}
+.cnl-b-alert{background:var(--cnl-dark);color:#f2f2ef;padding:14px 22px 14px 16px;max-width:300px;margin-left:110px}
+.cnl-b-alert .cnl-b-dot{background:var(--cnl-accent)}
+.cnl-b-agent{position:relative;background:#fff;color:#151515;overflow:hidden;max-width:310px;margin-right:60px}
+.cnl-b-agent .cnl-b-dot{background:var(--cnl-agent)}
+.cnl-b-in{display:flex;gap:12px;padding:16px 22px 16px 16px}
+.cnl-b-text [data-w]{display:inline-block}
+.cnl-b-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;color:var(--cnl-agent);font-weight:500}
+.cnl-b-link:hover{text-decoration:underline;text-underline-offset:3px}
+.cnl-typing{position:absolute;left:0;top:0;width:64px;height:40px;display:flex;align-items:center;justify-content:center;gap:4px;opacity:0;visibility:hidden}
+.cnl-typing i{width:5px;height:5px;border-radius:50%;background:#9a9c98;animation:cnl-bob 1s ease-in-out infinite}
+.cnl-typing i:nth-child(2){animation-delay:.15s}
+.cnl-typing i:nth-child(3){animation-delay:.3s}
+.cnl-voice{display:flex;align-items:center;gap:12px;height:38px;padding:0 15px 0 13px;border-radius:10px;background:var(--cnl-dark);color:#f2f2ef;font-size:13.5px;white-space:nowrap;overflow:hidden;box-shadow:0 24px 50px -24px rgba(0,0,0,.55)}
+.cnl-voice [data-w]{display:inline-block}
+.cnl-eq{display:flex;align-items:center;gap:2px;height:14px;flex:none}
+.cnl-eq i{width:2px;height:100%;border-radius:2px;background:currentColor;transform-origin:50% 50%;animation:cnl-eq .9s ease-in-out infinite}
+.cnl-eq i:nth-child(2){animation-delay:-.3s}
+.cnl-eq i:nth-child(3){animation-delay:-.6s}
+.cnl-eq i:nth-child(4){animation-delay:-.15s}
+.cnl-powered{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.62);margin-top:-4px}
+.cnl-powered b{font-weight:600;color:rgba(255,255,255,.82);letter-spacing:-.02em;font-size:13px}
+.cnl-scenes{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:6px;padding:4px;border-radius:999px;background:rgba(12,14,18,.28);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.cnl-scene{position:relative;height:28px;padding:0 13px;white-space:nowrap;border-radius:999px;font-size:12px;color:rgba(255,255,255,.78);overflow:hidden;transition:background-color .3s,color .3s}
+.cnl-scene:hover{color:#fff}
+.cnl-scene[aria-pressed=true]{background:rgba(255,255,255,.16);color:#fff}
+.cnl-scene i{position:absolute;left:12px;right:12px;bottom:4px;height:1.5px;border-radius:2px;background:#fff;transform-origin:0 50%;transform:scaleX(0)}
+.cnl-scene[aria-pressed=true] i{transform:scaleX(var(--cnl-cp,0))}
+.cnl-live{position:absolute;top:18px;right:18px;display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border-radius:999px;background:rgba(12,14,18,.28);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;font:500 11px/1 var(--cnl-mono);letter-spacing:.04em}
+.cnl-live::before{content:"";width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.25);animation:cnl-pulse 2s ease-in-out infinite}
+.cnl-live b{font-weight:600;font-variant-numeric:tabular-nums}
+
+.cnl-logos{padding:84px 0 24px;text-align:center}
+.cnl-logos-label{font-size:13px;color:var(--cnl-faint);margin-bottom:30px;padding:0 20px}
+.cnl-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.cnl-track{display:flex;align-items:center;width:max-content;animation:cnl-marquee 42s linear infinite}
+.cnl-marquee:hover .cnl-track{animation-play-state:paused}
+.cnl-logo{display:flex;align-items:center;justify-content:center;height:56px;padding:0 44px;filter:grayscale(1);opacity:.62;transition:filter .45s,opacity .45s,transform .45s var(--cnl-ease)}
+.cnl-logo:hover{filter:none;opacity:1;transform:translateY(-2px)}
+:where(.dark) .cnl-root[data-scheme=auto] .cnl-logo,.cnl-root[data-scheme=dark] .cnl-logo{filter:grayscale(1) invert(1) brightness(1.4)}
+:where(.dark) .cnl-root[data-scheme=auto] .cnl-logo:hover,.cnl-root[data-scheme=dark] .cnl-logo:hover{filter:grayscale(1) invert(1) brightness(1.8)}
+.cnl-logo-img{display:block;max-width:none;height:28px;width:auto}
+.cnl-wm{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.cnl-wm-script{position:relative;font-family:var(--cnl-serif);font-style:italic;font-weight:700;font-size:27px;letter-spacing:-.04em;padding-bottom:4px}
+.cnl-wm-script .cnl-svg{position:absolute;left:-4px;bottom:-2px}
+.cnl-wm-badge{font:500 12.5px/1 var(--cnl-sans);letter-spacing:.28em}
+.cnl-wm-badge i{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff}
+.cnl-wm-heavy{font:800 22px/1 var(--cnl-sans);letter-spacing:-.045em;color:#151515}
+.cnl-wm-round{font:800 25px/1 ui-rounded,"SF Pro Rounded","Nunito",var(--cnl-sans);letter-spacing:-.03em}
+.cnl-wm-mono{font:600 14px/1 var(--cnl-mono);letter-spacing:.16em}
+.cnl-wm-serif{font-family:var(--cnl-serif);font-size:24px;letter-spacing:-.01em;font-variant:small-caps}
+
+.cnl-way{padding:130px 24px 70px;text-align:center}
+.cnl-h2{font-family:var(--cnl-serif);font-weight:400;font-size:clamp(38px,5.2vw,56px);line-height:1.08;letter-spacing:-.028em;margin-top:22px}
+.cnl-h2 span{display:block}
+.cnl-h2 [data-word]{display:inline}
+
+.cnl-canvas{position:relative}
+.cnl-canvas-pin{display:grid;grid-template-columns:minmax(0,4.6fr) minmax(0,7.4fr);gap:56px;align-items:center;padding:28px 48px;max-width:1440px;margin:0 auto}
+.cnl-canvas-name{display:flex;align-items:center;gap:16px}
+.cnl-canvas-name h3{font-size:30px;font-weight:400;letter-spacing:-.03em}
+.cnl-orb{position:relative;width:36px;height:36px;border-radius:10px;background:var(--cnl-card);box-shadow:0 0 0 1px var(--cnl-line),0 6px 16px -8px rgba(0,0,0,.3);flex:none}
+.cnl-orb::before{content:"";position:absolute;inset:7px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#fff 0 8%,transparent 30%),conic-gradient(from 210deg,#ff9a76,#f6c1ff,#8ab4ff,#9ff0d5,#ffd38a,#ff9a76);filter:saturate(1.1);animation:cnl-spin 9s linear infinite}
+.cnl-orb.is-sm{width:22px;height:22px;border-radius:50%;box-shadow:none;background:transparent}
+.cnl-orb.is-sm::before{inset:0}
+.cnl-canvas-text{margin-top:24px;max-width:38ch;font-size:14.5px;line-height:1.85;color:var(--cnl-mute)}
+.cnl-steps{margin-top:44px}
+.cnl-steps li{position:relative;border-top:1px solid var(--cnl-line)}
+.cnl-steps li:last-child{border-bottom:1px solid var(--cnl-line)}
+.cnl-step-bar{position:absolute;left:0;right:0;top:-1px;height:1px;overflow:hidden}
+.cnl-step-bar i{display:block;height:100%;background:var(--cnl-ink);transform-origin:0 50%;transform:scaleX(0);transition:transform .2s linear}
+.cnl-steps li.is-on .cnl-step-bar i{transform:scaleX(var(--cnl-sp,1))}
+.cnl-step-btn{display:flex;align-items:baseline;gap:12px;width:100%;padding:18px 0;font-size:15px;color:var(--cnl-mute);transition:color .3s}
+.cnl-step-btn:hover,.cnl-steps li.is-on .cnl-step-btn{color:var(--cnl-ink)}
+.cnl-step-num{font:400 13px/1 var(--cnl-mono);color:var(--cnl-faint);transition:color .3s}
+.cnl-steps li.is-on .cnl-step-num{color:var(--cnl-accent)}
+.cnl-step-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--cnl-ease)}
+.cnl-step-body>div{overflow:hidden}
+.cnl-step-body p{padding:0 0 20px 0;font-size:13.5px;line-height:1.85;color:var(--cnl-mute);max-width:42ch;opacity:0;transform:translateY(-6px);transition:opacity .4s,transform .5s var(--cnl-ease)}
+.cnl-steps li.is-on .cnl-step-body{grid-template-rows:1fr}
+.cnl-steps li.is-on .cnl-step-body p{opacity:1;transform:none;transition-delay:.12s}
+.cnl-canvas-vista{height:620px}
+
+.cnl-app{position:absolute;left:50%;top:50%;width:min(390px,calc(100% - 28px));transform:translate(-50%,-50%);background:var(--cnl-card);color:var(--cnl-card-ink);border-radius:14px;box-shadow:0 40px 90px -30px rgba(0,0,0,.65),0 0 0 1px rgba(0,0,0,.05)}
+.cnl-app-head{position:relative;display:flex;align-items:center;justify-content:center;height:50px;padding:0 14px;border-bottom:1px solid var(--cnl-card-line)}
+.cnl-app-head .cnl-orb{position:absolute;left:14px;top:14px}
+.cnl-app-title{font-size:13.5px;font-weight:600;letter-spacing:-.01em;animation:cnl-roll-in .55s var(--cnl-ease) both}
+.cnl-app-step{position:absolute;right:14px;font:500 10.5px/1 var(--cnl-mono);color:var(--cnl-card-mute);letter-spacing:.04em}
+.cnl-app-body{padding:14px 14px 16px;overflow:hidden}
+.cnl-seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:3px;border-radius:9px;background:var(--cnl-card-soft)}
+.cnl-seg::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc((100% - 6px) / 3);border-radius:7px;background:var(--cnl-card);box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.03);transform:translateX(calc(var(--cnl-i,0) * 100%));transition:transform .5s var(--cnl-ease)}
+.cnl-seg button{position:relative;z-index:1;height:30px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--cnl-card-mute);border-radius:7px;transition:color .25s}
+.cnl-seg button[aria-selected=true]{color:var(--cnl-card-ink);font-weight:600}
+.cnl-seg button[aria-selected=true] .cnl-svg{color:var(--cnl-accent)}
+.cnl-lbl{margin-top:16px}
+.cnl-lbl b{display:block;font-size:12.5px;font-weight:600}
+.cnl-lbl span{display:block;font-size:11.5px;color:var(--cnl-card-mute);margin-top:3px}
+.cnl-drop{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;height:116px;margin-top:10px;border:1px dashed color-mix(in oklab,var(--cnl-card-ink) 22%,transparent);border-radius:10px;font-size:11.5px;color:var(--cnl-card-mute);cursor:pointer;transition:border-color .25s,background-color .25s}
+.cnl-drop:hover,.cnl-drop.is-over{border-color:var(--cnl-agent);background:color-mix(in oklab,var(--cnl-agent) 6%,transparent)}
+.cnl-drop:focus-within{outline:2px solid var(--cnl-agent);outline-offset:2px}
+.cnl-drop u{text-decoration-color:color-mix(in oklab,currentColor 40%,transparent);text-underline-offset:3px}
+.cnl-drop-icons{display:flex;align-items:center;gap:8px}
+.cnl-drop-icons span{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:var(--cnl-card);box-shadow:0 0 0 1px var(--cnl-card-line),0 2px 4px -2px rgba(0,0,0,.15);color:var(--cnl-card-ink);transition:transform .45s var(--cnl-ease)}
+.cnl-drop-icons em{width:14px;height:2px;border-radius:2px;background:var(--cnl-accent);margin:0 -2px}
+.cnl-drop:hover .cnl-drop-icons span,.cnl-drop.is-over .cnl-drop-icons span{transform:translateY(-4px)}
+.cnl-drop-icons span:nth-of-type(2){transition-delay:.04s}
+.cnl-drop-icons span:nth-of-type(3){transition-delay:.08s}
+.cnl-drop-icons span:nth-of-type(4){transition-delay:.12s}
+.cnl-files{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.cnl-file{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:10px;padding:7px 8px;border-radius:9px;background:var(--cnl-card-soft);animation:cnl-rise .45s var(--cnl-ease) both}
+.cnl-file>span:first-child{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:var(--cnl-card);color:var(--cnl-card-ink)}
+.cnl-file-name{min-width:0}
+.cnl-file-name b{display:block;font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cnl-file-name span{display:block;font-size:10.5px;color:var(--cnl-card-mute);font-variant-numeric:tabular-nums}
+.cnl-file-bar{display:block;height:2px;margin-top:5px;border-radius:2px;background:var(--cnl-card-line);overflow:hidden}
+.cnl-file-bar i{display:block;height:100%;background:var(--cnl-agent);transform-origin:0 50%}
+.cnl-x{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--cnl-card-mute);transition:background-color .2s,color .2s}
+.cnl-x:hover{background:var(--cnl-card);color:var(--cnl-card-ink)}
+.cnl-sample{margin-top:10px;font-size:11.5px;color:var(--cnl-agent);font-weight:500}
+.cnl-sample:hover{text-decoration:underline;text-underline-offset:3px}
+.cnl-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 2px;border-bottom:1px solid var(--cnl-card-line)}
+.cnl-row:last-of-type{border-bottom:0}
+.cnl-row b{display:block;font-size:12.5px;font-weight:500}
+.cnl-row span{display:block;font-size:11px;color:var(--cnl-card-mute);margin-top:2px}
+.cnl-row-ico{display:flex;align-items:center;gap:10px;min-width:0}
+.cnl-row-ico>i{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--cnl-card-soft);flex:none}
+.cnl-switch{position:relative;width:32px;height:19px;border-radius:999px;background:color-mix(in oklab,var(--cnl-card-ink) 18%,transparent);flex:none;transition:background-color .3s}
+.cnl-switch::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .4s var(--cnl-ease)}
+.cnl-switch[aria-checked=true]{background:var(--cnl-agent)}
+.cnl-switch[aria-checked=true]::after{transform:translateX(13px)}
+.cnl-range{margin-top:12px;padding:12px;border-radius:10px;background:var(--cnl-card-soft)}
+.cnl-range-top{display:flex;justify-content:space-between;align-items:baseline;font-size:12px}
+.cnl-range-top b{font-weight:600}
+.cnl-range-top span{color:var(--cnl-card-mute);font-size:11px}
+.cnl-range input{width:100%;margin:10px 0 0;accent-color:var(--cnl-agent);height:18px}
+.cnl-rule{margin-top:12px;font-size:11.5px;line-height:1.6;color:var(--cnl-card-mute)}
+.cnl-rule em{font-style:normal;color:var(--cnl-card-ink);background:color-mix(in oklab,var(--cnl-accent) 14%,transparent);border-radius:4px;padding:1px 4px}
+.cnl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.cnl-chip{height:26px;padding:0 10px;border-radius:999px;font-size:11.5px;box-shadow:inset 0 0 0 1px var(--cnl-card-line);color:var(--cnl-card-mute);transition:background-color .25s,color .25s,box-shadow .25s}
+.cnl-chip[aria-pressed=true]{background:var(--cnl-card-ink);color:var(--cnl-card);box-shadow:none}
+.cnl-run{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:38px;margin-top:14px;border-radius:9px;background:var(--cnl-card-ink);color:var(--cnl-card);font-size:12.5px;font-weight:600;transition:transform .2s,opacity .2s}
+.cnl-run:active{transform:scale(.985)}
+.cnl-run:disabled{opacity:.5;cursor:default}
+.cnl-sim-top{display:flex;align-items:baseline;justify-content:space-between;margin-top:14px;font-size:11.5px;color:var(--cnl-card-mute)}
+.cnl-sim-top b{font:500 20px/1 var(--cnl-mono);color:var(--cnl-card-ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.cnl-sim-bar{height:3px;border-radius:3px;background:var(--cnl-card-line);margin-top:8px;overflow:hidden}
+.cnl-sim-bar i{display:block;height:100%;background:var(--cnl-agent);transform-origin:0 50%}
+.cnl-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.cnl-tile{padding:9px 10px;border-radius:9px;background:var(--cnl-card-soft)}
+.cnl-tile b{display:block;font:500 15px/1.1 var(--cnl-mono);font-variant-numeric:tabular-nums}
+.cnl-tile span{display:block;font-size:10.5px;color:var(--cnl-card-mute);margin-top:3px}
+.cnl-feed{margin-top:10px;display:flex;flex-direction:column;gap:4px;min-height:108px}
+.cnl-feed li{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:8px;font-size:11px;padding:5px 8px;border-radius:7px;background:var(--cnl-card-soft);animation:cnl-rise .35s var(--cnl-ease) both}
+.cnl-feed li span{color:var(--cnl-card-mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cnl-feed li code{font:10.5px var(--cnl-mono);color:var(--cnl-card-mute)}
+.cnl-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px;text-transform:capitalize}
+.cnl-tag[data-o=resolved]{background:color-mix(in oklab,#16a34a 14%,transparent);color:#15803d}
+.cnl-tag[data-o=handoff]{background:color-mix(in oklab,var(--cnl-agent) 14%,transparent);color:var(--cnl-agent)}
+.cnl-tag[data-o=flagged]{background:color-mix(in oklab,var(--cnl-accent) 16%,transparent);color:var(--cnl-accent)}
+.cnl-checks{margin-top:12px;display:flex;flex-direction:column;gap:7px}
+.cnl-checks li{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--cnl-card-mute);transition:color .3s}
+.cnl-checks li i{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px var(--cnl-card-line);transition:background-color .3s,box-shadow .3s;color:#fff}
+.cnl-checks li.is-done{color:var(--cnl-card-ink)}
+.cnl-checks li.is-done i{background:var(--cnl-agent);box-shadow:none}
+.cnl-checks li.is-busy i{box-shadow:inset 0 0 0 2px color-mix(in oklab,var(--cnl-agent) 25%,transparent);border-top-color:var(--cnl-agent);animation:cnl-spin .8s linear infinite;background:conic-gradient(var(--cnl-agent) 0 25%,transparent 0)}
+.cnl-golive{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:10px;background:color-mix(in oklab,#16a34a 10%,transparent);font-size:12px}
+.cnl-golive b{display:flex;align-items:center;gap:8px;color:#15803d;font-weight:600}
+.cnl-golive b::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.2);animation:cnl-pulse 1.8s ease-in-out infinite}
+.cnl-golive button{font-size:11.5px;color:var(--cnl-card-mute);text-decoration:underline;text-underline-offset:3px}
+
+.cnl-call{padding:150px 24px 40px}
+.cnl-sec-head{text-align:center;display:flex;flex-direction:column;align-items:center}
+.cnl-sec-text{margin-top:20px;max-width:46ch;font-size:15px;line-height:1.8;color:var(--cnl-mute)}
+.cnl-call-vista{max-width:1180px;margin:56px auto 0;height:640px}
+.cnl-call-in{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:18px;padding:40px}
+.cnl-player{width:440px;background:rgba(11,11,12,.92);color:#f1f1ee;border-radius:16px;padding:16px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.cnl-player-head{display:flex;align-items:center;gap:11px}
+.cnl-avatar{position:relative;width:34px;height:34px;border-radius:50%;overflow:hidden;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;background:#2a2c2b;color:#fff}
+.cnl-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.cnl-player-who{min-width:0;flex:1}
+.cnl-player-who b{display:block;font-size:13.5px;font-weight:600}
+.cnl-player-who span{display:block;font-size:11.5px;color:rgba(255,255,255,.55)}
+.cnl-clock{display:inline-flex;align-items:center;gap:7px;font:500 11px/1 var(--cnl-mono);color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums}
+.cnl-clock::before{content:"";width:6px;height:6px;border-radius:50%;background:#555}
+.cnl-clock.is-live::before{background:var(--cnl-accent);animation:cnl-pulse 1.4s ease-in-out infinite}
+.cnl-icon-btn{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);transition:background-color .2s,color .2s}
+.cnl-icon-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.cnl-icon-btn[aria-pressed=true]{color:#fff;background:rgba(255,255,255,.12)}
+.cnl-wave{display:flex;align-items:center;justify-content:space-between;height:46px;margin:16px 2px 6px}
+.cnl-wave i{width:3px;height:100%;border-radius:3px;background:rgba(255,255,255,.85);transform:scaleY(.08);transform-origin:50% 50%;transition:background-color .3s}
+.cnl-wave[data-who=caller] i{background:color-mix(in oklab,var(--cnl-accent) 75%,#fff)}
+.cnl-wave[data-who=agent] i{background:color-mix(in oklab,var(--cnl-agent) 55%,#fff)}
+.cnl-tx{position:relative;height:196px;overflow:hidden;margin-top:8px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 78%,transparent)}
+.cnl-tx-track{padding:18px 2px 80px}
+.cnl-tx-line{padding:7px 0;transition:opacity .5s}
+.cnl-tx-line small{display:block;font:500 9.5px/1 var(--cnl-mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px}
+.cnl-tx-line[data-who=agent] small{color:color-mix(in oklab,var(--cnl-agent) 60%,#fff)}
+.cnl-tx-line[data-who=caller] small{color:color-mix(in oklab,var(--cnl-accent) 65%,#fff)}
+.cnl-tx-line p{font-size:13.5px;line-height:1.6}
+.cnl-tx-line p span{color:rgba(255,255,255,.32);transition:color .25s}
+.cnl-tx-line p span.is-lit{color:#fff}
+.cnl-tx-line.is-past p span{color:rgba(255,255,255,.55)}
+.cnl-tx-line.is-next{opacity:.35}
+.cnl-controls{display:flex;align-items:center;gap:10px;margin-top:10px}
+.cnl-play{width:36px;height:36px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;flex:none;transition:transform .2s var(--cnl-ease)}
+.cnl-play:hover{transform:scale(1.06)}
+.cnl-scrub{flex:1;accent-color:#fff;height:18px;margin:0}
+.cnl-time{font:500 11px/1 var(--cnl-mono);color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.cnl-outcome{display:flex;align-items:center;gap:8px;margin-top:12px;padding:9px 12px;border-radius:10px;background:rgba(74,222,128,.12);color:#86efac;font-size:12px;animation:cnl-rise .5s var(--cnl-ease) both}
+.cnl-mem{width:270px;background:var(--cnl-card);color:var(--cnl-card-ink);border-radius:16px;padding:16px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);align-self:center}
+.cnl-mem h4{margin:0;font:500 10px/1 var(--cnl-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cnl-card-mute)}
+.cnl-mem-list{display:flex;flex-direction:column;gap:6px;margin:12px 0 18px;min-height:150px}
+.cnl-mem-list li{display:flex;align-items:center;gap:8px;font-size:12px;padding:7px 9px;border-radius:8px;background:var(--cnl-card-soft);animation:cnl-pop .55s var(--cnl-ease) both}
+.cnl-mem-list li .cnl-svg{color:var(--cnl-agent)}
+.cnl-mem-list li.is-new{box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--cnl-agent) 40%,transparent)}
+.cnl-mood{display:flex;align-items:baseline;justify-content:space-between;margin-top:6px}
+.cnl-mood b{font-family:var(--cnl-serif);font-weight:400;font-size:22px;letter-spacing:-.02em}
+.cnl-mood span{font:500 10.5px/1 var(--cnl-mono);color:var(--cnl-card-mute)}
+.cnl-spark{display:block;max-width:none;margin-top:10px;overflow:visible}
+
+.cnl-stats{padding:120px 24px 40px;max-width:1240px;margin:0 auto}
+.cnl-stats-head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cnl-stats-head h2{margin-top:18px}
+.cnl-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px;border-top:1px solid var(--cnl-line)}
+.cnl-stat{padding:28px 24px 8px 0}
+.cnl-stat+.cnl-stat{padding-left:24px;border-left:1px solid var(--cnl-line)}
+.cnl-stat small{display:block;height:16px;font:500 10.5px/1 var(--cnl-mono);color:var(--cnl-faint);letter-spacing:.04em;text-decoration:line-through;text-decoration-color:var(--cnl-accent)}
+.cnl-stat b{display:block;margin-top:10px;font-family:var(--cnl-serif);font-weight:400;font-size:clamp(46px,5.2vw,66px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cnl-stat span{display:block;margin-top:12px;font-size:13.5px;color:var(--cnl-mute);max-width:22ch}
+
+.cnl-quotes{padding:130px 24px 120px;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:72px;align-items:center}
+.cnl-quote{position:relative;margin-top:26px;min-height:4.9em;font-family:var(--cnl-serif);font-size:clamp(28px,3.3vw,40px);line-height:1.22;letter-spacing:-.02em}
+.cnl-quote>span{display:inline-block;animation:cnl-word .8s var(--cnl-ease) both}
+.cnl-quote::before{content:"\\201C";position:absolute;left:-.5em;top:0;color:var(--cnl-accent)}
+.cnl-cite{margin-top:24px;font-size:13.5px;color:var(--cnl-mute);animation:cnl-fade .6s .3s both}
+.cnl-cite b{color:var(--cnl-ink);font-weight:600}
+.cnl-people{display:flex;flex-direction:column;border-top:1px solid var(--cnl-line)}
+.cnl-person{position:relative;display:flex;align-items:center;gap:14px;padding:16px 4px;border-bottom:1px solid var(--cnl-line);opacity:.5;transition:opacity .35s}
+.cnl-person:hover,.cnl-person[aria-current=true]{opacity:1}
+.cnl-person .cnl-avatar{width:42px;height:42px;background:var(--cnl-soft);color:var(--cnl-ink)}
+.cnl-person b{display:block;font-size:14px;font-weight:600}
+.cnl-person span{display:block;font-size:12.5px;color:var(--cnl-mute)}
+.cnl-person i{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--cnl-ink);transform-origin:0 50%;transform:scaleX(0)}
+.cnl-person[aria-current=true] i{animation:cnl-bar 7s linear both}
+.cnl-people:hover .cnl-person i{animation-play-state:paused}
+
+.cnl-cta{padding:40px 24px 0}
+.cnl-cta-vista{height:clamp(540px,86svh,780px)}
+.cnl-cta-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 22px;color:#fff}
+.cnl-cta-in .cnl-kicker{color:#fff}
+.cnl-cta-in .cnl-h2{font-size:clamp(42px,6.4vw,76px);text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.cnl-cta-in .cnl-sec-text{color:rgba(255,255,255,.78)}
+.cnl-form{margin-top:30px;display:flex;align-items:center;gap:6px;width:min(440px,100%);height:52px;padding:5px 5px 5px 18px;border-radius:999px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:box-shadow .25s}
+.cnl-form:focus-within{box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.cnl-form.is-error{animation:cnl-shake .4s}
+.cnl-form input{flex:1;min-width:0;height:100%;border:0;background:transparent;outline:none;color:#fff;font-size:14.5px}
+.cnl-form input::placeholder{color:rgba(255,255,255,.6)}
+.cnl-form .cnl-pill{height:42px}
+.cnl-form-msg{margin-top:12px;min-height:20px;font-size:12.5px;color:rgba(255,255,255,.8)}
+.cnl-sent{margin-top:30px;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;border-radius:999px;background:#fff;color:#111;font-size:14px;animation:cnl-pop .6s var(--cnl-ease) both}
+.cnl-assure{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:22px;font:500 10.5px/1 var(--cnl-mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.cnl-assure li{display:flex;align-items:center;gap:7px}
+
+.cnl-foot{padding:90px 28px 0;overflow:hidden}
+.cnl-foot-top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:40px;max-width:1240px;margin:0 auto}
+.cnl-foot-brand p{margin-top:16px;max-width:30ch;font-size:13.5px;line-height:1.75;color:var(--cnl-mute)}
+.cnl-status{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:12px;color:var(--cnl-mute)}
+.cnl-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e}
+.cnl-foot h4{margin:0 0 14px;font:500 10.5px/1 var(--cnl-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cnl-faint)}
+.cnl-foot-col li+li{margin-top:9px}
+.cnl-foot-col a,.cnl-foot-col button{font-size:13.5px;color:var(--cnl-mute);transition:color .2s}
+.cnl-foot-col a:hover,.cnl-foot-col button:hover{color:var(--cnl-ink)}
+.cnl-foot-word{margin-top:70px;height:clamp(110px,19vw,290px);overflow:hidden;text-align:center;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+.cnl-foot-word span{display:inline-flex;align-items:center;gap:.08em;font-family:var(--cnl-serif);font-size:clamp(150px,27vw,420px);line-height:.92;letter-spacing:-.05em;color:var(--cnl-ink)}
+.cnl-foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1240px;margin:0 auto;padding:22px 0 28px;border-top:1px solid var(--cnl-line);font-size:12.5px;color:var(--cnl-faint)}
+.cnl-foot-bottom nav{display:flex;gap:18px}
+
+.cnl-dialog{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,10,12,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:cnl-fade .3s both}
+.cnl-dialog-box{position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--cnl-card);color:var(--cnl-card-ink);border-radius:18px;padding:26px;box-shadow:0 50px 120px -30px rgba(0,0,0,.6);animation:cnl-pop .5s var(--cnl-ease) both}
+.cnl-dialog-box h2{font-family:var(--cnl-serif);font-weight:400;font-size:34px;letter-spacing:-.025em;line-height:1.1}
+.cnl-dialog-box>p{margin-top:8px;font-size:13.5px;color:var(--cnl-card-mute);line-height:1.6}
+.cnl-dialog-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--cnl-card-mute)}
+.cnl-dialog-close:hover{background:var(--cnl-card-soft);color:var(--cnl-card-ink)}
+.cnl-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.cnl-field{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:12px;font-weight:500}
+.cnl-field.is-wide{grid-column:1/-1}
+.cnl-field input,.cnl-field textarea{width:100%;height:40px;padding:0 12px;border-radius:9px;border:0;background:var(--cnl-card-soft);box-shadow:inset 0 0 0 1px var(--cnl-card-line);font-size:13.5px;font-weight:400;outline:none;transition:box-shadow .2s}
+.cnl-field textarea{height:76px;padding:10px 12px;resize:none}
+.cnl-field input:focus,.cnl-field textarea:focus{box-shadow:inset 0 0 0 1.5px var(--cnl-agent)}
+.cnl-field.is-bad input{box-shadow:inset 0 0 0 1.5px var(--cnl-accent)}
+.cnl-field em{font-style:normal;font-weight:400;font-size:11px;color:var(--cnl-accent)}
+.cnl-vol{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:3px;border-radius:9px;background:var(--cnl-card-soft)}
+.cnl-vol button{height:30px;border-radius:7px;font-size:11.5px;font-weight:500;color:var(--cnl-card-mute);transition:background-color .25s,color .25s}
+.cnl-vol button[aria-checked=true]{background:var(--cnl-card);color:var(--cnl-card-ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.cnl-dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.cnl-dialog-foot small{font-size:11.5px;color:var(--cnl-card-mute)}
+.cnl-done{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 4px 8px}
+.cnl-done i{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--cnl-agent);color:#fff;animation:cnl-pop .6s var(--cnl-ease) both}
+.cnl-done h2{margin-top:18px}
+.cnl-done p{margin-top:8px;font-size:13.5px;color:var(--cnl-card-mute);max-width:32ch;line-height:1.6}
+
+@keyframes cnl-ping{0%{transform:scale(.6);opacity:.7}80%,100%{transform:scale(1.8);opacity:0}}
+@keyframes cnl-bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-3px);opacity:1}}
+@keyframes cnl-eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@keyframes cnl-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes cnl-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes cnl-spin{to{transform:rotate(360deg)}}
+@keyframes cnl-roll-in{from{transform:translateY(60%);opacity:0;filter:blur(4px)}to{transform:none;opacity:1;filter:none}}
+@keyframes cnl-rise{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+@keyframes cnl-pop{from{transform:translateY(10px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+@keyframes cnl-fade{from{opacity:0}to{opacity:1}}
+@keyframes cnl-word{from{transform:translateY(.35em);opacity:0;filter:blur(6px)}to{transform:none;opacity:1;filter:none}}
+@keyframes cnl-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes cnl-shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+@media (max-width:1023px){
+.cnl-canvas-pin{grid-template-columns:1fr;gap:40px;padding:20px 24px}
+.cnl-canvas-vista{height:600px}
+.cnl-quotes{grid-template-columns:1fr;gap:40px}
+.cnl-stat-grid{grid-template-columns:repeat(2,1fr)}
+.cnl-stat:nth-child(3){padding-left:0;border-left:0}
+.cnl-stat:nth-child(n+3){border-top:1px solid var(--cnl-line)}
+.cnl-call-vista{height:auto}
+.cnl-call-in{position:relative;flex-direction:column;padding:48px 20px}
+.cnl-player{width:min(440px,100%)}
+.cnl-mem{width:min(440px,100%)}
+.cnl-foot-top{grid-template-columns:repeat(3,1fr)}
+.cnl-foot-brand{grid-column:1/-1}
+}
+@media (max-width:860px){
+.cnl-links,.cnl-signin{display:none}
+.cnl-burger{display:inline-flex}
+.cnl-nav{padding:0 16px;gap:12px}
+.cnl-nav-end{margin-left:auto;gap:10px}
+.cnl-brand{min-width:0}
+}
+@media (max-width:640px){
+.cnl-root{--cnl-in:12px}
+.cnl-hero{padding-top:28px}
+.cnl-hero-stage{margin-top:52px}
+.cnl-chat{padding:64px 16px 80px;gap:16px}
+.cnl-b-alert,.cnl-b-agent{margin:0;max-width:min(300px,100%)}
+.cnl-b-alert{align-self:flex-end}
+.cnl-b-agent{align-self:flex-start}
+.cnl-voice{font-size:12.5px}
+.cnl-live{top:12px;right:12px}
+.cnl-scene{padding:0 10px;font-size:11.5px}
+.cnl-mem-list{min-height:0}
+.cnl-logo{padding:0 28px}
+.cnl-way{padding:96px 20px 48px}
+.cnl-canvas-pin{padding:12px 16px}
+.cnl-canvas-vista{height:590px}
+.cnl-call{padding:110px 16px 24px}
+.cnl-call-in{padding:28px 12px}
+.cnl-player{padding:14px}
+.cnl-stats{padding:96px 20px 24px}
+.cnl-stat-grid{grid-template-columns:1fr}
+.cnl-stat,.cnl-stat+.cnl-stat{padding:24px 0 8px;border-left:0}
+.cnl-stat+.cnl-stat{border-top:1px solid var(--cnl-line)}
+.cnl-quotes{padding:96px 20px 90px}
+.cnl-quote{padding-left:.5em}
+.cnl-quote::before{left:0}
+.cnl-cta{padding:24px 12px 0}
+.cnl-form{height:auto;flex-direction:column;align-items:stretch;padding:6px;border-radius:22px}
+.cnl-form input{height:44px;padding:0 12px}
+.cnl-form .cnl-pill{height:44px}
+.cnl-foot{padding:70px 20px 0}
+.cnl-foot-top{grid-template-columns:1fr 1fr}
+.cnl-fields{grid-template-columns:1fr}
+.cnl-vol{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+.cnl-track,.cnl-orb::before,.cnl-badge-dot::after,.cnl-eq i,.cnl-typing i,.cnl-live::before,.cnl-golive b::before,.cnl-clock.is-live::before{animation:none}
+.cnl-quote>span,.cnl-cite,.cnl-file,.cnl-feed li,.cnl-mem-list li,.cnl-app-title,.cnl-sheet,.cnl-sheet-links a,.cnl-sheet-links button,.cnl-outcome,.cnl-sent,.cnl-dialog,.cnl-dialog-box,.cnl-done i{animation-duration:.01ms}
+.cnl-person[aria-current=true] i{animation:none;transform:scaleX(1)}
+.cnl-roll>span,.cnl-roll::after,.cnl-img,.cnl-step-body,.cnl-step-body p,.cnl-logo,.cnl-drop-icons span,.cnl-seg::before,.cnl-switch::after{transition:none}
+.cnl-track{flex-wrap:wrap;justify-content:center;width:auto}
+.cnl-logo[aria-hidden=true]{display:none}
+}
+`
+
+const useIso = typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect
+
+function useReduced() {
+  const [r, setR] = React.useState(false)
+  React.useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return
+    const m = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const f = () => setR(m.matches)
+    f()
+    m.addEventListener("change", f)
+    return () => m.removeEventListener("change", f)
+  }, [])
+  return r
+}
+
+function useVisible(ref: React.RefObject<HTMLElement | null>, threshold = 0.2) {
+  const [v, setV] = React.useState(false)
+  React.useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (typeof IntersectionObserver === "undefined") {
+      setV(true)
+      return
+    }
+    const io = new IntersectionObserver(([e]) => setV(e.isIntersecting), { threshold })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [ref, threshold])
+  return v
+}
+
+const ICONS = {
+  chev: <path d="m9 6 6 6-6 6" />,
+  arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
+  chat: <path d="M4 5h16v11H9l-5 4z" />,
+  mic: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
+    </>
+  ),
+  multi: (
+    <>
+      <rect x="3" y="8" width="12" height="12" rx="2" />
+      <path d="M9 4h9a2 2 0 0 1 2 2v9" />
+    </>
+  ),
+  folder: <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />,
+  doc: (
+    <>
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v4h4" />
+    </>
+  ),
+  image: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="9" cy="10" r="2" />
+      <path d="m21 16-5-5-9 9" />
+    </>
+  ),
+  music: (
+    <>
+      <path d="M9 18V5l11-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="17" cy="16" r="3" />
+    </>
+  ),
+  play: <path d="M8 5v14l11-7z" fill="currentColor" stroke="none" />,
+  pause: (
+    <>
+      <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor" stroke="none" />
+      <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  restart: (
+    <>
+      <path d="M3 12a9 9 0 1 0 3-6.7" />
+      <path d="M3 4v5h5" />
+    </>
+  ),
+  sound: (
+    <>
+      <path d="M4 9v6h4l5 4V5L8 9z" />
+      <path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" />
+    </>
+  ),
+  mute: (
+    <>
+      <path d="M4 9v6h4l5 4V5L8 9z" />
+      <path d="m17 9 5 6M22 9l-5 6" />
+    </>
+  ),
+  check: <path d="m5 12 5 5 9-10" />,
+  x: <path d="M6 6l12 12M18 6 6 18" />,
+  menu: <path d="M4 9h16M4 15h16" />,
+  phone: (
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </>
+  ),
+  whats: <path d="M4 20l1.4-4.2A8 8 0 1 1 8.6 19z" />,
+  shield: <path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z" />,
+  spark: <path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M6 18l3-3M15 9l3-3" />,
+  memory: (
+    <>
+      <path d="M12 3a6 6 0 0 0-6 6c0 2.4 1.3 3.8 2.5 5 .8.8 1.5 1.7 1.5 3h4c0-1.3.7-2.2 1.5-3 1.2-1.2 2.5-2.6 2.5-5a6 6 0 0 0-6-6z" />
+      <path d="M10 21h4" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21a8 8 0 0 1 16 0" />
+    </>
+  ),
+  bolt: <path d="M13 3 5 14h6l-1 7 8-11h-6z" />,
+}
+
+type CnlIconName = keyof typeof ICONS
+
+function Icon({ name, size = 16, stroke = 1.7 }: { name: CnlIconName; size?: number; stroke?: number }) {
+  return (
+    <svg
+      className="cnl-svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={stroke}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {ICONS[name]}
+    </svg>
+  )
+}
+
+/** Custom Vivaro Mark: precision V emblem inside a rounded badge */
+function Mark({ size = 24 }: { size?: number }) {
+  return (
+    <svg className="cnl-svg" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="2" y="2" width="28" height="28" rx="8" fill="#F4D03F" />
+      <path
+        d="M10.5 10.5 L16 22.5 L21.5 10.5"
+        fill="none"
+        stroke="#111211"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function Ridges({ tones }: { tones: string[] }) {
+  const id = "cnl" + React.useId().replace(/[^a-zA-Z0-9]/g, "")
+  const t = tones.length >= 6 ? tones : PALETTES.fog.ridges
+  return (
+    <svg className="cnl-ridges" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id={id + "s"} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={t[0]} />
+          <stop offset="0.7" stopColor={t[1]} />
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="900" fill={"url(#" + id + "s)"} />
+      <path d={ridgePath(3, 470, 70)} fill={t[2]} opacity="0.75" />
+      <path d={ridgePath(11, 560, 80)} fill={t[3]} opacity="0.85" />
+      <path d={ridgePath(23, 660, 70)} fill={t[4]} />
+      <path d={ridgePath(41, 780, 60)} fill={t[5]} />
+    </svg>
+  )
+}
+
+function Vista({
+  src,
+  tones,
+  className,
+  style,
+  children,
+  eager,
+}: {
+  src?: string
+  tones: string[]
+  className?: string
+  style?: React.CSSProperties
+  children?: React.ReactNode
+  eager?: boolean
+}) {
+  const [state, setState] = React.useState("load")
+  const img = React.useRef(null as HTMLImageElement | null)
+  React.useEffect(() => {
+    const el = img.current
+    setState(el && el.complete && el.naturalWidth ? "ok" : "load")
+  }, [src])
+  return (
+    <div className={"cnl-vista" + (className ? " " + className : "")} style={style}>
+      <div className="cnl-vista-media" data-vista-media="">
+        <div className="cnl-vista-drift" data-vista-drift="">
+          <Ridges tones={tones} />
+          {src && state !== "fail" ? (
+            <img
+              ref={img}
+              className="cnl-img"
+              src={src}
+              alt=""
+              decoding="async"
+              loading={eager ? "eager" : "lazy"}
+              data-ok={state === "ok" ? "true" : "false"}
+              onLoad={() => setState("ok")}
+              onError={() => setState("fail")}
+            />
+          ) : null}
+        </div>
+      </div>
+      <div className="cnl-vista-shade" aria-hidden="true" />
+      {children}
+    </div>
+  )
+}
+
+function Pill({
+  label,
+  href,
+  onClick,
+  size,
+  tone,
+  type,
+  disabled,
+  reduced,
+}: {
+  label: string
+  href?: string
+  onClick?: (e: React.MouseEvent) => void
+  size?: "lg"
+  tone?: "light"
+  type?: "submit" | "button"
+  disabled?: boolean
+  reduced?: boolean
+}) {
+  const ref = React.useRef(null as HTMLElement | null)
+  const cls = "cnl-pill" + (size ? " is-lg" : "") + (tone ? " is-light" : "")
+  const move = (e: React.PointerEvent) => {
+    const el = ref.current
+    if (!el || reduced || e.pointerType !== "mouse") return
+    const r = el.getBoundingClientRect()
+    gsap.to(el, {
+      x: (e.clientX - r.left - r.width / 2) * 0.22,
+      y: (e.clientY - r.top - r.height / 2) * 0.3,
+      duration: 0.4,
+      ease: "power3.out",
+    })
+  }
+  const leave = () => {
+    if (ref.current) gsap.to(ref.current, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.45)" })
+  }
+  const inner = (
+    <span className="cnl-roll" data-t={label}>
+      <span>{label}</span>
+    </span>
+  )
+  if (href)
+    return (
+      <a
+        ref={(n) => {
+          ref.current = n
+        }}
+        className={cls}
+        href={href}
+        onClick={onClick}
+        onPointerMove={move}
+        onPointerLeave={leave}
+        data-magnetic=""
+      >
+        {inner}
+      </a>
+    )
+  return (
+    <button
+      ref={(n) => {
+        ref.current = n
+      }}
+      className={cls}
+      type={type || "button"}
+      onClick={onClick}
+      disabled={disabled}
+      onPointerMove={move}
+      onPointerLeave={leave}
+      data-magnetic=""
+    >
+      {inner}
+    </button>
+  )
+}
+
+function Avatar({ name, src }: { name: string; src?: string }) {
+  const [failed, setFailed] = React.useState(false)
+  return (
+    <span className="cnl-avatar">
+      {initials(name)}
+      {src && !failed ? <img src={src} alt="" loading="lazy" onError={() => setFailed(true)} /> : null}
+    </span>
+  )
+}
+
+function Words({ text }: { text: string }) {
+  const ws = splitWords(text)
   return (
     <>
-      <div className="min-h-screen bg-[#F4F0E6] text-gray-900">
-        {/* Nav */}
-        <div className="bg-[#f7f4e8] font-sans min-h-screen">
-          <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#F4D03F] flex items-center justify-center">
-                <span className="text-black font-bold text-sm">V</span>
-              </div>
-              <span className="font-bold text-lg">Vivaro</span>
-            </div>
-
-            {/* <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-            <a href="#features" className="hover:text-black">Features</a>
-            <a href="#how-it-works" className="hover:text-black">How it works</a>
-            <a href="#roadmap" className="hover:text-black">Roadmap</a>
-            <a href="#pilot" className="hover:text-black">Pilot study</a>
-          </div> */}
-
-            <div className="hidden md:flex items-center gap-4">
-              {/* <a href="#login" className="text-sm font-medium text-gray-700 hover:text-black">Log in</a> */}
-              <a
-                href="/interview"
-                className="text-sm font-semibold bg-[#F4D03F] text-black px-5 py-2.5 rounded-full hover:bg-[#e8c52e] transition"
-              >
-                Try for free
-              </a>
-            </div>
-
-            <button
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M3 12h18M3 6h18M3 18h18" />
-              </svg>
-            </button>
-          </nav>
-
-
-          {mobileMenuOpen && (
-            <div className="md:hidden px-6 pb-4 flex flex-col gap-3 text-sm font-medium">
-              <a href="#features">Features</a>
-              <a href="#how-it-works">How it works</a>
-              <a href="#roadmap">Roadmap</a>
-              <a href="#pilot">Pilot study</a>
-              <a href="#try" className="bg-[#F4D03F] text-black px-5 py-2.5 rounded-full text-center font-semibold">
-                Try for free
-              </a>
-            </div>
-          )}
-
-
-
-          {/* HERO */}
-          <div className="relative max-w-4xl mx-auto text-center pt-16 pb-10 px-6">
-
-            <span className="inline-block bg-black text-white text-xs font-semibold px-3 py-1 rounded-full mb-6">
-              {/* Built for Gen AI in education */}
-              For students and job seekers
-            </span>
-
-            {/* doodles */}
-            <PaperDoodle className="hidden md:block absolute left-0 top-32 w-24 h-24" rotate={-8} />
-            <PaperDoodle className="hidden md:block absolute left-24 top-72 w-20 h-20" rotate={-14} />
-            <PaperDoodle className="hidden md:block absolute right-8 top-56 w-24 h-24" rotate={10} />
-
-            <h1 className="max-w-2xl mx-auto text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
-              AI interviewer for your{" "}
-              <span className="bg-[#F4D03F] px-2">dream tech role.</span>
-            </h1>
-
-            <p className="text-gray-600 text-sm sm:text-base max-w-lg mx-auto mb-8">
-            Run real voice-driven mock interviews, compare your resume against any job
-            description, and get a scored, actionable feedback report, all in one
-            low-latency session.
-          </p>
-
-          <div className="flex items-center justify-center gap-3 flex-wrap mb-4">
-            <a
-              href="/prep"
-              className="bg-black text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-gray-800 transition"
-            >
-              Plan your study
-            </a>
-            <a
-              href="/interview"
-              className="border border-gray-300 font-semibold text-sm px-6 py-3 rounded-full hover:border-gray-400 transition"
-            >
-              Take mock Interview 
-            </a>
-          </div>
-
-            <div className="flex items-center justify-center gap-6 text-[#1c2b17]/60 text-sm">
-              <span className="text-xs uppercase tracking-wide">Trusted by Students:</span>
-              {logos.map((logo) => (
-                <span key={logo} className="font-semibold text-[#1c2b17]/70">
-                  {logo}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* VIDEO / IMAGE CARD */}
-          <div className="max-w-4xl mx-auto px-6 pb-16">
-            <div className="relative rounded-3xl border-8 border-[#c9531f] overflow-hidden aspect-video bg-black">
-              <img
-                src="https://images.unsplash.com/photo-1590650046871-92c887180603?auto=format&fit=crop&w=1200&q=80"
-                alt="Person recording a podcast interview"
-                className="w-full h-full object-cover"
-              />
-              <button
-                aria-label="Play video"
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-xl bg-black/70 flex items-center justify-center hover:bg-black/80 transition"
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-
-
-        {/* Are you preparing section */}
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 text-center mb-16">
-          <span className="inline-block bg-black text-white text-xs font-semibold px-3 py-1 rounded-full mb-6">
-            For students and job seekers
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-            Are you preparing for a job switch or new opportunities?
-          </h2>
-          <p className="text-gray-600 text-sm max-w-lg mx-auto mb-8">
-            Configure custom interview questions, get a semantic skill-gap analysis
-            against any job description, and evaluate every session fairly while focusing
-            your time on what matters.
-          </p>
-          <a
-            href="/interview"
-            className="inline-block bg-[#F4D03F] text-black font-semibold text-sm px-6 py-3 rounded-full hover:bg-[#e8c52e] transition"
-          >
-            Try For Free
-          </a>
-        </section>
-
-        {/* Feature 1: Practice interviews - yellow card */}
-        <section id="features" className="max-w-5xl mx-auto px-6 mb-10">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <h3 className="text-2xl font-extrabold mb-4">
-                Practice interviews with AI on any job role or subject
-              </h3>
-              <ul className="space-y-3 text-sm text-gray-700">
-                <li className="flex gap-2">
-                  <CheckIcon /> Access comprehensive interview scenarios across web
-                  dev, databases, and system design
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon /> Simulate interviews for both entry-level and
-                  advanced engineering roles
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon /> Adjust interview settings to match your target job
-                  description
-                </li>
-              </ul>
-            </div>
-            <div className="bg-[#F4D03F] rounded-2xl p-6 aspect-[4/3] flex items-center justify-center">
-              <div className="bg-white rounded-xl shadow-lg w-full max-w-xs p-4">
-                <p className="text-xs font-semibold text-gray-400 mb-3">Welcome Vivek</p>
-                <div className="flex gap-2 mb-3">
-                  <span className="text-[11px] bg-black text-white px-3 py-1 rounded-full">Job</span>
-                  <span className="text-[11px] text-gray-500 px-3 py-1">Topic</span>
-                  <span className="text-[11px] text-gray-500 px-3 py-1">Resume</span>
-                </div>
-                <p className="text-sm text-gray-800 mb-3">
-                  "We are seeing a stateless and creative individual to join our
-                  frontend team."
-                </p>
-                <div className="flex items-end gap-1 h-8">
-                  {[6, 14, 20, 10, 16, 8].map((h, i) => (
-                    <div key={i} className="w-1.5 bg-gray-800 rounded-full" style={{ height: `${h}px` }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr className="max-w-5xl mx-auto border-dashed border-gray-300 my-10" />
-
-        {/* Feature 2: Scoring & feedback - purple card */}
-        <section className="max-w-5xl mx-auto px-6 mb-10">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="bg-[#C9B8F0] rounded-2xl p-6 aspect-[4/3] flex items-center justify-center order-2 md:order-1">
-              <div className="bg-[#0F2A24] rounded-xl shadow-lg w-full max-w-xs p-4">
-                <p className="text-xs font-semibold text-gray-300 mb-4">Score Report</p>
-                <div className="flex items-center justify-center mb-2">
-                  <div className="relative w-20 h-20 rounded-full border-8 border-gray-700 flex items-center justify-center">
-                    <div className="absolute inset-0 rounded-full border-8 border-[#7DD3C0] border-r-transparent border-b-transparent rotate-45" />
-                    <span className="text-lg font-bold text-white">22.6/10</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-extrabold mb-4">
-                Learn from instant feedback and example answers
-              </h3>
-              <ul className="space-y-3 text-sm text-gray-700">
-                <li className="flex gap-2">
-                  <CheckIcon /> Receive immediate feedback on your responses, scored
-                  against a real rubric
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon /> Access example answers for comparison against your
-                  own transcript
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon /> Enhance your performance constructively with
-                  actionable insights
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <hr className="max-w-5xl mx-auto border-dashed border-gray-300 my-10" />
-
-        {/* Feature 3: Resume optimization - teal card */}
-        <section className="max-w-5xl mx-auto px-6 mb-24">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <h3 className="text-2xl font-extrabold mb-4">
-                Optimize your resume with AI interviewer technology better
-              </h3>
-              <ul className="space-y-3 text-sm text-gray-700">
-                <li className="flex gap-2">
-                  <CheckIcon /> ATS score checker to evaluate resume visibility
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon /> AI-powered resume feedback with keyword optimization
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon /> Job match analysis to target specific positions
-                </li>
-              </ul>
-            </div>
-            <div className="bg-[#7DD3C0] rounded-2xl p-6 aspect-[4/3] flex items-center justify-center">
-              <div className="bg-white rounded-xl shadow-lg w-full max-w-xs p-4 space-y-2">
-                <div className="flex justify-between items-center mb-2">
-                  <p className="text-xs font-semibold text-gray-400">Fixed Skills</p>
-                  <span className="text-[10px] text-gray-400">Show All</span>
-                </div>
-                {[
-                  ["React", 82],
-                  ["System design", 54],
-                  ["SQL", 70],
-                ].map(([label, pct]) => (
-                  <div key={label}>
-                    <div className="flex justify-between text-xs text-gray-600 mb-1">
-                      <span>{label}</span>
-                      <span>{pct}%</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-gray-100 rounded-full">
-                      <div
-                        className="h-1.5 bg-[#7DD3C0] rounded-full"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pilot study / CTA */}
-        <section id="pilot" className="max-w-2xl mx-auto px-6 text-center mb-20">
-          <h2 className="text-3xl font-extrabold mb-4">Now piloting with engineering students</h2>
-          <p className="text-gray-600 text-sm mb-8 max-w-lg mx-auto">
-            We're running a pilot with 15–20 engineering students to measure feedback
-            accuracy, scorecard consistency, and resume match quality. If your placement
-            cell wants high-fidelity mock interviews without the staffing problem, we'd
-            like to talk.
-          </p>
-          <a
-            href="#contact"
-            className="inline-block bg-black text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-gray-800 transition"
-          >
-            Bring Vivaro to your campus
-          </a>
-        </section>
-
-        {/* Footer */}
-        <div className="bg-[#e7e6e0] p-6 font-sans">
-          <div className=" mx-auto bg-[#f7f4e8] rounded-3xl overflow-hidden relative">
-
-            {/* HERO */}
-            <div className="p-10">
-              <div className="relative overflow-hidden bg-[#f4dd4d] rounded-[20px] flex items-center justify-between px-14 py-12">
-
-                <div className="max-w-md z-10">
-                  <h1 className="text-4xl font-bold text-[#1c2b17] leading-tight mb-4">
-                    Prepare students for career success.
-                  </h1>
-                  <p className="text-sm text-[#2c3a25] leading-relaxed mb-6">
-                    Transform your career services with our AI interviewer platform.
-                    Give every student unlimited practice with AI interview technology
-                    that provides personalized feedback and builds real confidence.
-                  </p>
-                  <button className="bg-[#1c2b17] text-[#f4dd4d] rounded-lg px-6 py-3 text-sm font-semibold hover:opacity-90 transition">
-                    It's Free Try Now!
-                  </button>
-                </div>
-
-                {/* Illustration */}
-                <svg width="220" height="200" viewBox="0 0 220 200" className="z-10 shrink-0">
-                  <g stroke="#1c2b17" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="10" y="150" width="30" height="35" />
-                    <rect x="55" y="120" width="30" height="65" />
-                    <rect x="100" y="90" width="30" height="95" />
-                    <line x1="165" y1="70" x2="165" y2="35" strokeDasharray="4 5" />
-                    <path d="M165 10 L171 25 L187 26 L174 36 L179 51 L165 42 L151 51 L156 36 L143 26 L159 25 Z" />
-                    <circle cx="115" cy="45" r="9" />
-                    <path d="M115 54 L115 78" />
-                    <path d="M115 60 L98 70" />
-                    <path d="M115 60 L132 50" />
-                    <rect x="122" y="48" width="14" height="12" rx="1" transform="rotate(20 122 48)" />
-                    <path d="M115 78 L100 95" />
-                    <path d="M115 78 L128 92" />
-                  </g>
-                </svg>
-              </div>
-            </div>
-
-            {/* FOOTER */}
-            <div className="px-14 pb-10">
-
-              <div className="flex flex-wrap justify-between items-start gap-6 mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-[46px] h-[46px] bg-[#f4dd4d] rounded-[10px] flex items-center justify-center font-bold text-2xl text-[#1c2b17]">
-                    S
-                  </div>
-                  <span className="text-2xl font-bold text-[#1c2b17]">Vivaro</span>
-                </div>
-
-                <div className="min-w-[260px]">
-                  <p className="text-sm font-semibold text-[#1c2b17] mb-2.5">Sign up to our news letter</p>
-                  <div className="flex gap-2.5">
-                    <input
-                      placeholder="Email"
-                      className="flex-1  border-[#1c2b17] bg-transparent px-1 py-1.5 text-sm outline-none text-[#1c2b17] placeholder:text-[#1c2b17]/60"
-                    />
-                    <button className="bg-[#1c2b17] text-[#f4dd4d] rounded-md px-4.5 py-2 text-sm font-semibold whitespace-nowrap hover:opacity-90 transition">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap justify-between items-center gap-3 text-xs text-[#1c2b17]">
-                <div className="flex gap-5">
-                  <span>Terms of use</span>
-                  <span>Privacy Policy</span>
-                </div>
-                <div className="flex items-center gap-5">
-                  <span>
-                    Contact Us <strong>support@Vivaro.ai</strong>
-                  </span>
-                  <div className="flex gap-3 text-base">
-                    <span>in</span>
-                    <span>𝕏</span>
-                    <span></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-t border-[#1c2b17] my-5" />
-
-              <div className="flex flex-wrap justify-between gap-6">
-                {footerCols.map((col) => (
-                  <div key={col}>
-                    <p className="text-[13px] font-bold text-[#1c2b17] mb-2.5">{col}</p>
-                    {footerLinks.map((item) => (
-                      <p key={item} className="text-xs text-[#1c2b17] my-1.5">
-                        {item}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* GIANT WORDMARK, cropped at bottom */}
-            <div className="text-center font-extrabold text-[#1c2b17] leading-none select-none text-[450px] mt-[-200px] tracking-tighter translate-y-[30%]">
-              Vivaro
-            </div>
-          </div>
-        </div>
-
-      </div>
-
+      {ws.map((w, k) => (
+        <React.Fragment key={k}>
+          <span data-w="">{w}</span>
+          {k < ws.length - 1 ? " " : ""}
+        </React.Fragment>
+      ))}
     </>
   )
 }
+
+/* ------------------------------------------------------------------ nav */
+
+function Nav({
+  brand,
+  logo,
+  nav,
+  login,
+  action,
+  onAction,
+  onNav,
+  reduced,
+}: {
+  brand: string
+  logo?: React.ReactNode
+  nav: CnlLink[]
+  login: CnlLink | null
+  action: CnlLink
+  onAction: () => void
+  onNav: (href: string | undefined, e?: React.MouseEvent) => void
+  reduced: boolean
+}) {
+  const [scrolled, setScrolled] = React.useState(false)
+  const [hidden, setHidden] = React.useState(false)
+  const [open, setOpen] = React.useState(false)
+  const links = React.useRef(null as HTMLDivElement | null)
+
+  React.useEffect(() => {
+    let last = window.scrollY
+    const on = () => {
+      const y = window.scrollY
+      setScrolled(y > 8)
+      if (y > 640 && y - last > 6) setHidden(true)
+      else if (last - y > 6 || y < 640) setHidden(false)
+      last = y
+    }
+    on()
+    window.addEventListener("scroll", on, { passive: true })
+    return () => window.removeEventListener("scroll", on)
+  }, [])
+
+  React.useEffect(() => {
+    if (!open) return
+    const k = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false)
+    window.addEventListener("keydown", k)
+    return () => window.removeEventListener("keydown", k)
+  }, [open])
+
+  const hover = (e: React.PointerEvent | React.FocusEvent) => {
+    const box = links.current
+    const el = e.currentTarget as HTMLElement
+    if (!box) return
+    box.style.setProperty("--cnl-lx", el.offsetLeft + "px")
+    box.style.setProperty("--cnl-lw", el.offsetWidth + "px")
+    box.style.setProperty("--cnl-lo", "1")
+  }
+  const out = () => links.current && links.current.style.setProperty("--cnl-lo", "0")
+  const act = (e: React.MouseEvent) => {
+    if (!action.href) {
+      e.preventDefault()
+      onAction()
+    } else onNav(action.href, e)
+  }
+
+  return (
+    <header className={"cnl-nav" + (scrolled ? " is-scrolled" : "") + (hidden && !open ? " is-hidden" : "")}>
+      <a className="cnl-brand" href="#top" onClick={(e) => onNav("#top", e)} aria-label={brand + ", home"}>
+        {logo || <Mark />}
+        <span>{brand}</span>
+      </a>
+      <nav className="cnl-links" ref={links} aria-label="Main" onPointerLeave={out}>
+        {nav.map((l) => (
+          <a
+            key={l.label}
+            className="cnl-link"
+            href={l.href || "#"}
+            onPointerEnter={hover}
+            onFocus={hover}
+            onBlur={out}
+            onClick={(e) => onNav(l.href, e)}
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+      <div className="cnl-nav-end">
+        {login ? (
+          <a className="cnl-signin" href={login.href || "#"} onClick={(e) => onNav(login.href, e)}>
+            {login.label}
+          </a>
+        ) : null}
+        <Pill label={action.label} href={action.href} onClick={act} reduced={reduced} />
+        <button className="cnl-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
+          <Icon name="menu" size={18} />
+        </button>
+      </div>
+      {open ? (
+        <div className="cnl-sheet" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="cnl-sheet-top">
+            <span className="cnl-brand">
+              {logo || <Mark />}
+              <span>{brand}</span>
+            </span>
+            <button className="cnl-burger" aria-label="Close menu" onClick={() => setOpen(false)} autoFocus>
+              <Icon name="x" size={18} />
+            </button>
+          </div>
+          <div className="cnl-sheet-links">
+            {nav.map((l, k) => (
+              <a
+                key={l.label}
+                href={l.href || "#"}
+                style={{ animationDelay: 60 + k * 50 + "ms" }}
+                onClick={(e) => {
+                  setOpen(false)
+                  onNav(l.href, e)
+                }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <div className="cnl-sheet-end">
+            <Pill
+              label={action.label}
+              href={action.href}
+              size="lg"
+              onClick={(e) => {
+                setOpen(false)
+                act(e)
+              }}
+            />
+            {login ? (
+              <a
+                className="cnl-signin"
+                style={{ display: "inline" }}
+                href={login.href || "#"}
+                onClick={(e) => {
+                  setOpen(false)
+                  onNav(login.href, e)
+                }}
+              >
+                {login.label}
+              </a>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </header>
+  )
+}
+
+/* ------------------------------------------------------------------ hero */
+
+function HeroChat({
+  scenarios,
+  brand,
+  reduced,
+  liveCalls,
+  onNav,
+}: {
+  scenarios: CnlScenario[]
+  brand: string
+  reduced: boolean
+  liveCalls: number | null
+  onNav: (href: string | undefined, e?: React.MouseEvent) => void
+}) {
+  const [i, setI] = React.useState(0)
+  const [hover, setHover] = React.useState(false)
+  const [live, setLive] = React.useState(liveCalls || 0)
+  const wrap = React.useRef(null as HTMLDivElement | null)
+  const alert = React.useRef(null as HTMLDivElement | null)
+  const agent = React.useRef(null as HTMLDivElement | null)
+  const typing = React.useRef(null as HTMLDivElement | null)
+  const body = React.useRef(null as HTMLDivElement | null)
+  const voice = React.useRef(null as HTMLDivElement | null)
+  const tl = React.useRef(null as gsap.core.Timeline | null)
+  const visible = useVisible(wrap, 0.15)
+  const n = scenarios.length
+  const s = scenarios[i % n]
+
+  useIso(() => {
+    const a = agent.current
+    const c = alert.current
+    const v = voice.current
+    const t = typing.current
+    const b = body.current
+    const w = wrap.current
+    if (!a || !c || !v || !t || !b || !w) return
+    const ctx = gsap.context(() => {
+      if (reduced) {
+        w.style.setProperty("--cnl-cp", "1")
+        return
+      }
+      const aw = a.offsetWidth
+      const ah = a.offsetHeight
+      const vw = v.offsetWidth
+      const vh = v.offsetHeight
+      const x = gsap.timeline({
+        onUpdate: () => w.style.setProperty("--cnl-cp", String(x.progress())),
+        onComplete: () => setI((k) => (k + 1) % n),
+      })
+      x.set([c, a, v, b], { autoAlpha: 0 })
+      x.set(t, { autoAlpha: 1 })
+      x.fromTo(
+        c,
+        { y: 26, scale: 0.92, filter: "blur(10px)" },
+        { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.85, ease: "expo.out" },
+        0.25,
+      )
+      x.fromTo(a, { width: 64, height: 40, y: 18, scale: 0.86 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 1.2)
+      x.to(t, { autoAlpha: 0, duration: 0.2 }, 2.6)
+      x.to(a, { width: aw, height: ah, duration: 0.85, ease: "expo.inOut" }, 2.55)
+      x.set(b, { autoAlpha: 1 }, 2.95)
+      x.fromTo(
+        b.querySelectorAll("[data-w],[data-link]"),
+        { autoAlpha: 0, y: 6 },
+        { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.024, ease: "power2.out" },
+        2.95,
+      )
+      x.fromTo(v, { width: vh, y: 16, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 4.35)
+      x.to(v, { width: vw, duration: 0.8, ease: "expo.inOut" }, 4.7)
+      x.fromTo(v.querySelectorAll("[data-w]"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.18, stagger: 0.07 }, 5.05)
+      x.add(() => {
+        gsap.set([a, v], { clearProps: "width,height" })
+      }, 5.6)
+      x.to({}, { duration: 3.6 })
+      x.to([c, a, v], { autoAlpha: 0, y: -18, filter: "blur(8px)", duration: 0.5, stagger: 0.07, ease: "power2.in" })
+      tl.current = x
+    }, w)
+    return () => {
+      ctx.revert()
+      tl.current = null
+    }
+  }, [i, reduced, n, s.alert, s.reply, s.voice])
+
+  React.useEffect(() => {
+    const x = tl.current
+    if (!x) return
+    if (hover || !visible) x.pause()
+    else x.resume()
+  }, [hover, visible, i, reduced])
+
+  React.useEffect(() => {
+    if (liveCalls == null || reduced || !visible) return
+    const id = window.setInterval(() => setLive((v) => Math.max(1, v + Math.round(Math.random() * 5 - 2))), 2200)
+    return () => window.clearInterval(id)
+  }, [liveCalls, reduced, visible])
+
+  return (
+    <div
+      className="cnl-chat"
+      ref={wrap}
+      onPointerEnter={() => setHover(true)}
+      onPointerLeave={() => setHover(false)}
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
+      data-chat=""
+    >
+      {liveCalls != null ? (
+        <p className="cnl-live" aria-label={live.toLocaleString("en-US") + " mock interviews active"}>
+          <b>{live.toLocaleString("en-US")}</b> mock sessions live
+        </p>
+      ) : null}
+      <div className="cnl-b cnl-b-alert" ref={alert} data-depth="1.4">
+        <span className="cnl-b-dot" aria-hidden="true" />
+        <p>{s.alert}</p>
+      </div>
+      <div className="cnl-b cnl-b-agent" ref={agent} data-depth="0.8">
+        <div className="cnl-typing" ref={typing} aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="cnl-b-in" ref={body}>
+          <span className="cnl-b-dot" aria-hidden="true" />
+          <div>
+            <p className="cnl-b-text">
+              <Words text={s.reply} />
+            </p>
+            {s.replyLink ? (
+              <a
+                className="cnl-b-link"
+                data-link=""
+                href={s.replyLink.href || "#"}
+                onClick={(e) => onNav(s.replyLink ? s.replyLink.href : undefined, e)}
+              >
+                {s.replyLink.label}
+              </a>
+            ) : null}
+          </div>
+        </div>
+      </div>
+      <div className="cnl-voice" ref={voice} data-depth="0.4">
+        <span className="cnl-eq" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <i />
+        </span>
+        <span>
+          <Words text={s.voice} />
+        </span>
+      </div>
+      <p className="cnl-powered">
+        Powered by <Mark size={15} />
+        <b>{brand}</b>
+      </p>
+      {n > 1 ? (
+        <div className="cnl-scenes" role="group" aria-label="Interview Scenarios">
+          {scenarios.map((sc, k) => (
+            <button key={sc.label + k} className="cnl-scene" aria-pressed={k === i} onClick={() => setI(k)}>
+              {sc.label}
+              <i aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+function Hero({
+  announcement,
+  title,
+  subtitle,
+  primary,
+  onPrimary,
+  image,
+  tones,
+  height,
+  scenarios,
+  brand,
+  reduced,
+  liveCalls,
+  onNav,
+}: {
+  announcement: CnlLink | null
+  title: string
+  subtitle: string
+  primary: CnlLink
+  onPrimary: () => void
+  image?: string
+  tones: string[]
+  height: string
+  scenarios: CnlScenario[]
+  brand: string
+  reduced: boolean
+  liveCalls: number | null
+  onNav: (href: string | undefined, e?: React.MouseEvent) => void
+}) {
+  const lines = splitTitle(title)
+  return (
+    <section className="cnl-hero" data-sec="top">
+      <div className="cnl-hero-copy">
+        {announcement ? (
+          <a className="cnl-badge" data-intro="" href={announcement.href || "#"} onClick={(e) => onNav(announcement.href, e)}>
+            <span className="cnl-badge-dot" aria-hidden="true" />
+            <span>{announcement.label}</span>
+            <Icon name="chev" size={12} stroke={2} />
+          </a>
+        ) : null}
+        <h1 className="cnl-title" aria-label={lines.join(" ")}>
+          {lines.map((l, k) => (
+            <span key={k} className="cnl-line" aria-hidden="true">
+              <span className="cnl-line-in" data-line="">
+                {l}
+              </span>
+            </span>
+          ))}
+        </h1>
+        <p className="cnl-sub" data-intro="">
+          {subtitle}
+        </p>
+        <div className="cnl-hero-cta" data-intro="">
+          <Pill
+            label={primary.label}
+            href={primary.href}
+            size="lg"
+            reduced={reduced}
+            onClick={(e) => {
+              if (!primary.href) {
+                e.preventDefault()
+                onPrimary()
+              } else onNav(primary.href, e)
+            }}
+          />
+          <Pill label="Plan your study" href="/prep" size="lg" tone="light" reduced={reduced} onClick={(e) => onNav("/prep", e)} />
+        </div>
+      </div>
+      <div className="cnl-hero-stage" data-hero-stage="">
+        <Vista
+          className="cnl-hero-vista"
+          src={image}
+          tones={tones}
+          eager
+          style={{ height: "clamp(460px, calc(" + height + " * 0.66), 860px)" }}
+        >
+          <HeroChat scenarios={scenarios} brand={brand} reduced={reduced} liveCalls={liveCalls} onNav={onNav} />
+        </Vista>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ logos */
+
+function Wordmark({ logo }: { logo: CnlLogo }) {
+  const c = logo.color || "currentColor"
+  if (logo.src) return <img className="cnl-logo-img" src={logo.src} alt={logo.name} loading="lazy" />
+  switch (logo.style) {
+    case "script":
+      return (
+        <span className="cnl-wm cnl-wm-script" style={{ color: c }}>
+          {logo.name}
+          <svg className="cnl-svg" width="74" height="10" viewBox="0 0 74 10" aria-hidden="true">
+            <path d="M2 7c18-5 44-7 70-3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        </span>
+      )
+    case "badge":
+      return (
+        <span className="cnl-wm cnl-wm-badge" style={{ color: c }}>
+          <i style={{ background: c }}>
+            <svg className="cnl-svg" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M3 11 11 3M7 11l4-4" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </i>
+          {logo.name.toUpperCase()}
+        </span>
+      )
+    case "heavy":
+      return (
+        <span className="cnl-wm cnl-wm-heavy" style={{ color: logo.color }}>
+          {logo.name}
+        </span>
+      )
+    case "round":
+      return (
+        <span className="cnl-wm cnl-wm-round" style={{ color: c }}>
+          {logo.name}
+        </span>
+      )
+    case "mono":
+      return (
+        <span className="cnl-wm cnl-wm-mono" style={{ color: c }}>
+          <svg className="cnl-svg" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 1 19 10 10 19 1 10z" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path d="M10 6v8M6 10h8" stroke="currentColor" strokeWidth="2" />
+          </svg>
+          {logo.name.toUpperCase()}
+        </span>
+      )
+    default:
+      return (
+        <span className="cnl-wm cnl-wm-serif" style={{ color: c }}>
+          {logo.name}
+        </span>
+      )
+  }
+}
+
+function Logos({ logos, label }: { logos: CnlLogo[]; label: string }) {
+  return (
+    <section className="cnl-logos" data-sec="customers" aria-label="Target Roles & Companies">
+      {label ? (
+        <p className="cnl-logos-label" data-reveal="">
+          {label}
+        </p>
+      ) : null}
+      <div className="cnl-marquee" data-reveal="">
+        <ul className="cnl-track">
+          {logos.concat(logos).map((l, k) => (
+            <li key={k} className="cnl-logo" aria-hidden={k >= logos.length ? true : undefined} title={l.name}>
+              <Wordmark logo={l} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ interview studio canvas */
+
+function Canvas({ data, image, tones, reduced }: { data: CnlCanvas; image?: string; tones: string[]; reduced: boolean }) {
+  const steps = data.steps
+  const n = steps.length
+  const uid = "cnl" + React.useId().replace(/[^a-zA-Z0-9]/g, "")
+  const [active, setActive] = React.useState(0)
+  const [pinned, setPinned] = React.useState(false)
+  const sec = React.useRef(null as HTMLElement | null)
+  const pin = React.useRef(null as HTMLDivElement | null)
+  const bodyRef = React.useRef(null as HTMLDivElement | null)
+  const trig = React.useRef(null as ScrollTrigger | null)
+  const prevH = React.useRef(0)
+
+  const [mode, setMode] = React.useState(1)
+  const [files, setFiles] = React.useState([] as CnlFile[])
+  const [over, setOver] = React.useState(false)
+  const [policies, setPolicies] = React.useState(() => data.policies.map((p) => ({ ...p, on: p.on !== false })))
+  const [sensitivity, setSensitivity] = React.useState(50)
+  const [personas, setPersonas] = React.useState(() => data.personas.slice(0, 2))
+  const [sim, setSim] = React.useState({ state: "idle", done: 0, runs: 0, result: null as CnlSimResult | null })
+  const [channels, setChannels] = React.useState(() => data.channels.map((c) => ({ ...c, on: c.on !== false })))
+  const [live, setLive] = React.useState(0)
+  const fileId = React.useRef(1)
+
+  useIso(() => {
+    const s = sec.current
+    const p = pin.current
+    if (!s || !p) return
+    const mm = gsap.matchMedia()
+    mm.add("(min-width: 1024px)", () => {
+      setPinned(true)
+      const st = ScrollTrigger.create({
+        trigger: s,
+        start: "top top",
+        end: () => "+=" + Math.round(window.innerHeight * n * 0.75),
+        pin: p,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          const k = stepAt(self.progress, n)
+          setActive((a) => (a === k ? a : k))
+          s.style.setProperty("--cnl-sp", String(stepLocal(self.progress, n, k)))
+        },
+      })
+      trig.current = st
+      return () => {
+        trig.current = null
+        setPinned(false)
+        s.style.removeProperty("--cnl-sp")
+      }
+    })
+    return () => mm.revert()
+  }, [n])
+
+  useIso(() => {
+    const b = bodyRef.current
+    if (!b) return
+    const h = b.offsetHeight
+    const from = prevH.current
+    prevH.current = h
+    if (reduced || !from) return
+    const ctx = gsap.context(() => {
+      if (Math.abs(from - h) > 1)
+        gsap.fromTo(b, { height: from }, { height: h, duration: 0.7, ease: "expo.inOut", clearProps: "height" })
+      gsap.fromTo(
+        b.querySelectorAll("[data-st]"),
+        { autoAlpha: 0, y: 14, filter: "blur(6px)" },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.6,
+          stagger: 0.045,
+          delay: 0.1,
+          ease: "power3.out",
+          clearProps: "filter,transform,opacity,visibility",
+        },
+      )
+    }, b)
+    return () => ctx.revert()
+  }, [active])
+
+  React.useEffect(() => {
+    if (!files.some((f) => f.progress < 1)) return
+    if (reduced) {
+      setFiles((fs) => fs.map((f) => ({ ...f, progress: 1 })))
+      return
+    }
+    let raf = 0
+    let last = performance.now()
+    const tick = (now: number) => {
+      const dt = Math.min(0.05, (now - last) / 1000)
+      last = now
+      setFiles((fs) =>
+        fs.map((f) =>
+          f.progress >= 1
+            ? f
+            : { ...f, progress: Math.min(1, f.progress + dt / (0.8 + Math.min(2.4, f.size / 300000))) },
+        ),
+      )
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [files.some((f) => f.progress < 1), reduced])
+
+  React.useEffect(() => {
+    if (sim.state !== "running" || !sim.result) return
+    const total = sim.result.calls.length
+    if (reduced) {
+      setSim((s) => ({ ...s, state: "done", done: total }))
+      return
+    }
+    let raf = 0
+    let last = performance.now()
+    const tick = (now: number) => {
+      const dt = Math.min(0.05, (now - last) / 1000)
+      last = now
+      let fin = false
+      setSim((s) => {
+        const done = Math.min(total, s.done + dt * total * 0.45)
+        fin = done >= total
+        return { ...s, done, state: fin ? "done" : "running" }
+      })
+      if (!fin) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [sim.state, sim.runs, reduced])
+
+  React.useEffect(() => {
+    if (live < 1 || live > 4) return
+    const id = window.setTimeout(() => setLive((l) => l + 1), reduced ? 0 : 700)
+    return () => window.clearTimeout(id)
+  }, [live, reduced])
+
+  const choose = (k: number) => {
+    const t = trig.current
+    if (t) {
+      const y = t.start + (t.end - t.start) * ((k + 0.12) / n)
+      window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" })
+      return
+    }
+    setActive(k)
+  }
+
+  const addFiles = (list: { name: string; size: number }[]) => {
+    if (!list.length) return
+    setFiles((fs) => fs.concat(list.map((f) => ({ id: fileId.current++, name: f.name, size: f.size, progress: 0 }))).slice(-3))
+  }
+
+  const run = () => {
+    const result = simulateCalls(15, {
+      seed: 7 + sim.runs * 101,
+      personas,
+      intents: data.intents,
+      policies: policies.filter((p) => p.on).length,
+      sensitivity,
+    })
+    setSim((s) => ({ state: "running", done: 0, runs: s.runs + 1, result }))
+  }
+
+  const tabs = [
+    { label: "Job Role", icon: "chat" as CnlIconName },
+    { label: "Voice Room", icon: "mic" as CnlIconName },
+    { label: "Resume + Git", icon: "multi" as CnlIconName },
+  ]
+  const step = steps[active] || steps[0]
+  const panel = step ? step.panel : "create"
+  const heads = {
+    create: "Profile & JD context",
+    policies: "Interview rubric",
+    simulate: "Practice question bank",
+    deploy: "Scorecard & roadmap",
+  }
+  const totalSim = sim.result ? sim.result.calls.length : 15
+  const t = sim.result ? tally(sim.result.calls, sim.done) : { done: 0, resolved: 0, handoff: 0, flagged: 0 }
+  const feed = sim.result ? sim.result.calls.slice(Math.max(0, t.done - 4), t.done).reverse() : []
+  const anyOn = channels.some((c) => c.on)
+  const checks = [
+    "Parsing spoken transcript",
+    "Evaluating " + Math.max(1, files.length) + " profile context" + (files.length === 1 ? "" : "s"),
+    "Computing 0–100 rubric score",
+    "Building personalized roadmap",
+  ]
+  const lines = splitTitle(data.heading || "")
+
+  let content: React.ReactNode = null
+  if (panel === "create")
+    content = (
+      <>
+        <div className="cnl-seg" role="tablist" aria-label="Interview focus" style={{ "--cnl-i": mode } as React.CSSProperties} data-st="">
+          {tabs.map((tb, k) => (
+            <button
+              key={tb.label}
+              role="tab"
+              aria-selected={k === mode}
+              tabIndex={k === mode ? 0 : -1}
+              onClick={() => setMode(k)}
+              onKeyDown={(e) => {
+                const j = nextIndex(mode, e.key, tabs.length)
+                if (j !== mode) {
+                  e.preventDefault()
+                  setMode(j)
+                  const sib = (e.currentTarget.parentElement as HTMLElement).children[j] as HTMLElement
+                  sib.focus()
+                }
+              }}
+            >
+              <Icon name={tb.icon} size={13} />
+              {tb.label}
+            </button>
+          ))}
+        </div>
+        <div className="cnl-lbl" data-st="">
+          <b>Upload resume & job description</b>
+          <span>Sync PDF resume and GitHub repos to personalize questions</span>
+        </div>
+        <label
+          className={"cnl-drop" + (over ? " is-over" : "")}
+          data-st=""
+          onDragOver={(e) => {
+            e.preventDefault()
+            setOver(true)
+          }}
+          onDragLeave={() => setOver(false)}
+          onDrop={(e) => {
+            e.preventDefault()
+            setOver(false)
+            addFiles(Array.from(e.dataTransfer.files))
+          }}
+        >
+          <input
+            type="file"
+            multiple
+            className="cnl-sr"
+            onChange={(e) => {
+              addFiles(Array.from(e.target.files || []))
+              e.target.value = ""
+            }}
+          />
+          <span className="cnl-drop-icons" aria-hidden="true">
+            <span>
+              <Icon name="folder" size={13} />
+            </span>
+            <em />
+            <span>
+              <Icon name="doc" size={13} />
+            </span>
+            <span>
+              <Icon name="image" size={13} />
+            </span>
+            <span>
+              <Icon name="music" size={13} />
+            </span>
+          </span>
+          <span>
+            Drag PDF resume here or <u>click to browse</u>
+          </span>
+        </label>
+        {files.length ? (
+          <ul className="cnl-files" aria-live="polite">
+            {files.map((f) => (
+              <li key={f.id} className="cnl-file">
+                <span aria-hidden="true">
+                  <Icon name={fileKind(f.name) as CnlIconName} size={13} />
+                </span>
+                <span className="cnl-file-name">
+                  <b>{f.name}</b>
+                  <span>
+                    {f.progress < 1
+                      ? "Extracting skills… " + Math.round(f.progress * 100) + "%"
+                      : chunksFor(f.size) + " skill signals · " + formatBytes(f.size)}
+                  </span>
+                  {f.progress < 1 ? (
+                    <span className="cnl-file-bar">
+                      <i style={{ transform: "scaleX(" + f.progress + ")" }} />
+                    </span>
+                  ) : null}
+                </span>
+                <button className="cnl-x" aria-label={"Remove " + f.name} onClick={() => setFiles((fs) => fs.filter((x) => x.id !== f.id))}>
+                  <Icon name="x" size={13} />
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <button className="cnl-sample" data-st="" onClick={() => addFiles(data.samples)}>
+            Load sample resume & JD
+          </button>
+        )}
+      </>
+    )
+  else if (panel === "policies")
+    content = (
+      <>
+        {policies.map((p) => (
+          <div key={p.id} className="cnl-row" data-st="">
+            <div>
+              <b>{p.title}</b>
+              <span>{p.text}</span>
+            </div>
+            <button
+              className="cnl-switch"
+              role="switch"
+              aria-checked={p.on}
+              aria-label={p.title}
+              onClick={() => setPolicies((ps) => ps.map((x) => (x.id === p.id ? { ...x, on: !x.on } : x)))}
+            />
+          </div>
+        ))}
+        <div className="cnl-range" data-st="">
+          <div className="cnl-range-top">
+            <b>Difficulty calibration</b>
+            <span>{sensitivityLabel(sensitivity)}</span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={sensitivity}
+            aria-label="Difficulty calibration"
+            onChange={(e) => setSensitivity(Number(e.target.value))}
+          />
+        </div>
+        <p className="cnl-rule" data-st="">
+          {policies.filter((p) => p.on).length} of {policies.length} rubric criteria active.{" "}
+          <em>When an answer lacks trade-offs</em>, the AI interviewer asks a targeted follow-up.
+        </p>
+      </>
+    )
+  else if (panel === "simulate")
+    content = (
+      <>
+        <div className="cnl-lbl" data-st="" style={{ marginTop: 0 }}>
+          <b>Target engineering tracks</b>
+          <span>Select domains to include in your session</span>
+        </div>
+        <div className="cnl-chips" data-st="">
+          {data.personas.map((p) => (
+            <button
+              key={p}
+              className="cnl-chip"
+              aria-pressed={personas.includes(p)}
+              onClick={() => setPersonas((ps) => (ps.includes(p) ? ps.filter((x) => x !== p) : ps.concat(p)))}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+        <button className="cnl-run" data-st="" onClick={run} disabled={sim.state === "running"}>
+          <Icon name="bolt" size={14} />
+          {sim.state === "running"
+            ? "Generating questions…"
+            : sim.state === "done"
+              ? "Regenerate 15 questions"
+              : "Generate 15 likely questions"}
+        </button>
+        <div data-st="">
+          <div className="cnl-sim-top">
+            <span>Questions tailored to profile</span>
+            <b>
+              {t.done}
+              <span style={{ fontSize: 12, color: "var(--cnl-card-mute)" }}> / {totalSim}</span>
+            </b>
+          </div>
+          <div className="cnl-sim-bar">
+            <i style={{ transform: "scaleX(" + t.done / totalSim + ")" }} />
+          </div>
+          <div className="cnl-tiles">
+            <div className="cnl-tile">
+              <b>{t.done ? ((t.resolved / t.done) * 100).toFixed(0) + "%" : "–"}</b>
+              <span>JD Match</span>
+            </div>
+            <div className="cnl-tile">
+              <b>{t.handoff}</b>
+              <span>Follow-ups</span>
+            </div>
+            <div className="cnl-tile">
+              <b>{t.flagged}</b>
+              <span>Skill Gaps</span>
+            </div>
+          </div>
+        </div>
+        <ul className="cnl-feed" data-st="" aria-live="off">
+          {feed.map((c) => (
+            <li key={c.id}>
+              <code>Q{String(c.id).padStart(2, "0")}</code>
+              <span>
+                {c.persona} · {c.intent}
+              </span>
+              <em className="cnl-tag" data-o={c.outcome}>
+                {c.outcome === "resolved" ? "matched" : c.outcome === "handoff" ? "deep-dive" : "gap"}
+              </em>
+              <code>{(c.ms / 1000).toFixed(1)}s</code>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  else
+    content = (
+      <>
+        {channels.map((c) => (
+          <div key={c.id} className="cnl-row" data-st="">
+            <div className="cnl-row-ico">
+              <i aria-hidden="true">
+                <Icon name={(c.icon || "globe") as CnlIconName} size={14} />
+              </i>
+              <div>
+                <b>{c.label}</b>
+                <span>{c.detail}</span>
+              </div>
+            </div>
+            <button
+              className="cnl-switch"
+              role="switch"
+              aria-checked={c.on}
+              aria-label={c.label}
+              disabled={live > 0 && live < 5}
+              onClick={() => setChannels((cs) => cs.map((x) => (x.id === c.id ? { ...x, on: !x.on } : x)))}
+            />
+          </div>
+        ))}
+        {live === 0 ? (
+          <button className="cnl-run" data-st="" disabled={!anyOn} onClick={() => setLive(1)}>
+            <Icon name="bolt" size={14} />
+            {anyOn
+              ? "Generate " + channels.filter((c) => c.on).length + " report output" + (channels.filter((c) => c.on).length === 1 ? "" : "s")
+              : "Pick an output"}
+          </button>
+        ) : (
+          <ul className="cnl-checks" aria-live="polite" data-st="">
+            {checks.map((c, k) => (
+              <li key={c} className={live > k + 1 ? "is-done" : live === k + 1 ? "is-busy" : ""}>
+                <i aria-hidden="true">{live > k + 1 ? <Icon name="check" size={11} stroke={2.6} /> : null}</i>
+                {c}
+              </li>
+            ))}
+          </ul>
+        )}
+        {live >= 5 ? (
+          <div className="cnl-golive" role="status">
+            <b>Scorecard ready · 86/100</b>
+            <button onClick={() => setLive(0)}>Reset</button>
+          </div>
+        ) : null}
+      </>
+    )
+
+  return (
+    <>
+      {data.heading ? (
+        <section className="cnl-way">
+          {data.kicker ? (
+            <p className="cnl-kicker" data-reveal="">
+              {data.kicker}
+            </p>
+          ) : null}
+          <h2 className="cnl-h2" data-scrub="">
+            {lines.map((l, k) => (
+              <span key={k}>
+                {splitWords(l).map((w, j) => (
+                  <React.Fragment key={j}>
+                    <span data-word="">{w}</span>{" "}
+                  </React.Fragment>
+                ))}
+              </span>
+            ))}
+          </h2>
+        </section>
+      ) : null}
+      <section ref={sec} className={"cnl-canvas" + (pinned ? " is-pinned" : "")} data-sec="product">
+        <div ref={pin} className="cnl-canvas-pin">
+          <div className="cnl-canvas-copy">
+            <div className="cnl-canvas-name" data-reveal="">
+              <span className="cnl-orb" aria-hidden="true" />
+              <h3>{data.title}</h3>
+            </div>
+            <p className="cnl-canvas-text" data-reveal="">
+              {data.text}
+            </p>
+            <ol className="cnl-steps" data-reveal="">
+              {steps.map((st, k) => (
+                <li key={st.title} className={k === active ? "is-on" : ""}>
+                  <span className="cnl-step-bar" aria-hidden="true">
+                    <i />
+                  </span>
+                  <button
+                    className="cnl-step-btn"
+                    aria-expanded={k === active}
+                    aria-controls={uid + "-app"}
+                    onClick={() => choose(k)}
+                  >
+                    <span className="cnl-step-num">{String(k + 1).padStart(2, "0")}</span>
+                    {st.title}
+                  </button>
+                  <div className="cnl-step-body">
+                    <div>
+                      <p>{st.text}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <Vista className="cnl-canvas-vista" src={image} tones={tones}>
+            <div className="cnl-app" id={uid + "-app"} role="region" aria-label={data.title + ": " + heads[panel]}>
+              <div className="cnl-app-head">
+                <span className="cnl-orb is-sm" aria-hidden="true" />
+                <span className="cnl-app-title" key={panel}>
+                  {heads[panel]}
+                </span>
+                <span className="cnl-app-step">
+                  {active + 1}/{n}
+                </span>
+              </div>
+              <div className="cnl-app-body" ref={bodyRef}>
+                {content}
+              </div>
+            </div>
+          </Vista>
+        </div>
+      </section>
+    </>
+  )
+}
+
+/* ------------------------------------------------------------------ the interview call */
+
+function Call({
+  kicker,
+  title,
+  text,
+  data,
+  image,
+  tones,
+  reduced,
+  brand,
+}: {
+  kicker?: string
+  title: string
+  text?: string
+  data: CnlCall
+  image?: string
+  tones: string[]
+  reduced: boolean
+  brand: string
+}) {
+  const { marks, total } = React.useMemo(() => callTimeline(data.lines), [data])
+  const [t, setT] = React.useState(0)
+  const [playing, setPlaying] = React.useState(false)
+  const [sound, setSound] = React.useState(false)
+  const box = React.useRef(null as HTMLDivElement | null)
+  const wave = React.useRef(null as HTMLDivElement | null)
+  const track = React.useRef(null as HTMLDivElement | null)
+  const tRef = React.useRef(0)
+  const speaking = React.useRef(false)
+  const soundRef = React.useRef(false)
+  const started = React.useRef(false)
+  const visible = useVisible(box, 0.35)
+  const idx = lineAt(marks, t)
+  const BARS = 54
+
+  soundRef.current = sound
+
+  const draw = React.useCallback(
+    (tt: number) => {
+      const w = wave.current
+      if (!w) return
+      const i = lineAt(marks, tt)
+      const talking = i >= 0 && tt < marks[i].end
+      w.dataset.who = talking ? data.lines[i].who : ""
+      const bars = w.children
+      for (let k = 0; k < bars.length; k++) {
+        const env = Math.sin((k / (bars.length - 1)) * Math.PI) * 0.7 + 0.3
+        const a = talking
+          ? Math.abs(Math.sin(k * 0.73 + tt * 9.1) * Math.sin(k * 0.21 + tt * 4.7)) * env * 0.92 + 0.08
+          : 0.06 + 0.03 * Math.sin(k + tt * 2)
+        ;(bars[k] as HTMLElement).style.transform = "scaleY(" + a.toFixed(3) + ")"
+      }
+    },
+    [marks, data],
+  )
+
+  React.useEffect(() => {
+    if (!playing) return
+    let raf = 0
+    let last = performance.now()
+    let shown = tRef.current
+    const loop = (now: number) => {
+      const dt = Math.min(0.05, (now - last) / 1000)
+      last = now
+      let nt = tRef.current + dt
+      const i = lineAt(marks, tRef.current)
+      if (soundRef.current && speaking.current && i >= 0 && nt > marks[i].end) nt = marks[i].end
+      if (nt >= total) {
+        nt = total
+        tRef.current = nt
+        setT(nt)
+        draw(nt)
+        setPlaying(false)
+        return
+      }
+      tRef.current = nt
+      if (!reduced) draw(nt)
+      if (Math.floor(nt * 12) !== Math.floor(shown * 12)) {
+        shown = nt
+        setT(nt)
+      }
+      raf = requestAnimationFrame(loop)
+    }
+    raf = requestAnimationFrame(loop)
+    return () => cancelAnimationFrame(raf)
+  }, [playing, marks, total, draw, reduced])
+
+  React.useEffect(() => {
+    if (visible && !started.current && !reduced) {
+      started.current = true
+      setPlaying(true)
+    }
+    if (!visible && playing) setPlaying(false)
+  }, [visible, reduced])
+
+  React.useEffect(() => {
+    const synth = typeof window !== "undefined" ? window.speechSynthesis : undefined
+    if (!synth) return
+    if (!sound || !playing || idx < 0) {
+      synth.cancel()
+      speaking.current = false
+      return
+    }
+    const line = data.lines[idx]
+    if (!line) return
+    synth.cancel()
+    const u = new SpeechSynthesisUtterance(line.text)
+    const voices = synth.getVoices().filter((v) => /^en/i.test(v.lang))
+    if (voices.length) u.voice = voices[line.who === "agent" ? 0 : Math.min(voices.length - 1, 1)]
+    u.rate = 1.04
+    u.pitch = line.who === "agent" ? 1 : 1.1
+    u.onend = () => {
+      speaking.current = false
+    }
+    speaking.current = true
+    synth.speak(u)
+  }, [idx, sound, playing, data])
+
+  React.useEffect(
+    () => () => {
+      if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
+    },
+    [],
+  )
+
+  useIso(() => {
+    const tr = track.current
+    if (!tr) return
+    const el = tr.children[Math.max(0, idx)] as HTMLElement | undefined
+    const y = el ? Math.max(0, el.offsetTop - 26) : 0
+    if (reduced) gsap.set(tr, { y: -y })
+    else gsap.to(tr, { y: -y, duration: 0.7, ease: "expo.out" })
+  }, [idx, reduced])
+
+  React.useEffect(() => draw(tRef.current), [draw])
+
+  const seek = (v: number) => {
+    tRef.current = v
+    setT(v)
+    draw(v)
+    if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel()
+    speaking.current = false
+  }
+  const toggle = () => {
+    if (!playing && tRef.current >= total - 0.01) seek(0)
+    started.current = true
+    setPlaying((p) => !p)
+  }
+  const mem = (data.memory || []).concat(
+    data.lines
+      .slice(0, idx + 1)
+      .filter((l) => l.memory)
+      .map((l) => l.memory as string),
+  )
+  const known = (data.memory || []).length
+  const mood = moodAt(data.lines, marks, t)
+  const spark = sentimentPath(data.lines, marks, total, t, 238, 64)
+  const ended = t >= total - 0.01
+  const titleLines = splitTitle(title)
+  const canSpeak = typeof window !== "undefined" && "speechSynthesis" in window
+
+  return (
+    <section className="cnl-call" data-sec="demo">
+      <div className="cnl-sec-head">
+        {kicker ? (
+          <p className="cnl-kicker" data-reveal="">
+            {kicker}
+          </p>
+        ) : null}
+        <h2 className="cnl-h2" data-reveal="">
+          {titleLines.map((l, k) => (
+            <span key={k}>{l}</span>
+          ))}
+        </h2>
+        {text ? (
+          <p className="cnl-sec-text" data-reveal="">
+            {text}
+          </p>
+        ) : null}
+      </div>
+      <Vista className="cnl-call-vista" src={image} tones={tones}>
+        <div className="cnl-call-in" ref={box}>
+          <div className="cnl-player" role="group" aria-label={"Mock interview with " + data.caller}>
+            <div className="cnl-player-head">
+              <Avatar name={data.caller} />
+              <div className="cnl-player-who">
+                <b>{data.caller}</b>
+                <span>
+                  {data.topic} · {brand} AI
+                </span>
+              </div>
+              <span className={"cnl-clock" + (playing ? " is-live" : "")}>{formatClock(t)}</span>
+              {canSpeak ? (
+                <button
+                  className="cnl-icon-btn"
+                  aria-pressed={sound}
+                  aria-label={sound ? "Mute voices" : "Play voices aloud"}
+                  onClick={() => setSound((s) => !s)}
+                >
+                  <Icon name={sound ? "sound" : "mute"} size={16} />
+                </button>
+              ) : null}
+            </div>
+            <div className="cnl-wave" ref={wave} aria-hidden="true">
+              {Array.from({ length: BARS }, (_, k) => (
+                <i key={k} />
+              ))}
+            </div>
+            <div className="cnl-tx" aria-live="polite">
+              <div className="cnl-tx-track" ref={track}>
+                {data.lines.map((l, k) => {
+                  const local = k === idx ? (t - marks[k].start) / (marks[k].end - marks[k].start) : k < idx ? 1 : 0
+                  const lit = litWords(l.text, local)
+                  return (
+                    <div
+                      key={k}
+                      className={"cnl-tx-line" + (k < idx ? " is-past" : k > idx ? " is-next" : "")}
+                      data-who={l.who}
+                    >
+                      <small>{l.who === "agent" ? brand + " Interviewer" : data.caller.split(" ")[0]}</small>
+                      <p>
+                        {splitWords(l.text).map((w, j) => (
+                          <React.Fragment key={j}>
+                            <span className={j < lit ? "is-lit" : ""}>{w}</span>{" "}
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+            <div className="cnl-controls">
+              <button
+                className="cnl-play"
+                aria-label={playing ? "Pause session" : ended ? "Replay session" : "Play session"}
+                onClick={toggle}
+              >
+                <Icon name={playing ? "pause" : ended ? "restart" : "play"} size={15} stroke={ended && !playing ? 2.2 : 1.7} />
+              </button>
+              <input
+                className="cnl-scrub"
+                type="range"
+                min={0}
+                max={Math.round(total * 10)}
+                value={Math.round(t * 10)}
+                aria-label="Seek"
+                onChange={(e) => seek(Number(e.target.value) / 10)}
+              />
+              <span className="cnl-time">
+                {formatClock(t)} / {formatClock(total)}
+              </span>
+            </div>
+            {ended && data.outcome ? (
+              <p className="cnl-outcome" role="status">
+                <Icon name="check" size={14} stroke={2.2} />
+                {data.outcome}
+              </p>
+            ) : null}
+          </div>
+          <aside className="cnl-mem" aria-label="Candidate Context & Rubric">
+            <h4>Profile Context</h4>
+            <ul className="cnl-mem-list">
+              {mem.map((m, k) => (
+                <li key={m} className={k >= known ? "is-new" : ""}>
+                  <Icon name={k >= known ? "memory" : "user"} size={13} />
+                  {m}
+                </li>
+              ))}
+            </ul>
+            <h4>Rubric Signal</h4>
+            <div className="cnl-mood">
+              <b>{moodLabel(mood)}</b>
+              <span>{(mood > 0 ? "+" : "") + mood.toFixed(2)}</span>
+            </div>
+            <svg className="cnl-spark" width="238" height="64" viewBox="0 0 238 64" aria-hidden="true">
+              <line x1="0" y1="32" x2="238" y2="32" stroke="currentColor" strokeOpacity="0.15" strokeDasharray="2 4" />
+              <path
+                d={spark.d}
+                fill="none"
+                stroke="var(--cnl-agent)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle cx={spark.x} cy={spark.y} r="4" fill="var(--cnl-card)" stroke="var(--cnl-agent)" strokeWidth="2" />
+            </svg>
+          </aside>
+        </div>
+      </Vista>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ stats */
+
+function Stats({ kicker, title, items, reduced }: { kicker?: string; title?: string; items: CnlStat[]; reduced: boolean }) {
+  const box = React.useRef(null as HTMLDivElement | null)
+  const fmt = (s: CnlStat, v: number) =>
+    s.clock ? formatClock(v) : (s.prefix || "") + formatStat(v, s.decimals || 0) + (s.suffix || "")
+  useIso(() => {
+    const b = box.current
+    if (!b || reduced) return
+    const nums = Array.from(b.querySelectorAll("[data-num]")) as HTMLElement[]
+    const ctx = gsap.context(() => {
+      nums.forEach((el, k) => {
+        const s = items[k]
+        if (!s) return
+        const o = { v: s.from != null ? s.from : 0 }
+        el.textContent = fmt(s, o.v)
+        gsap.to(o, {
+          v: s.value,
+          duration: s.clock ? 2.6 : 2.2,
+          ease: s.clock ? "power2.inOut" : "power3.out",
+          delay: k * 0.12,
+          onUpdate: () => {
+            el.textContent = fmt(s, o.v)
+          },
+          scrollTrigger: { trigger: b, start: "top 80%", once: true },
+        })
+      })
+    }, b)
+    return () => ctx.revert()
+  }, [JSON.stringify(items), reduced])
+  return (
+    <section className="cnl-stats" aria-label={kicker || "Pilot Metrics"}>
+      <div className="cnl-stats-head">
+        <div>
+          {kicker ? (
+            <p className="cnl-kicker" data-reveal="">
+              {kicker}
+            </p>
+          ) : null}
+          {title ? (
+            <h2 className="cnl-h2" data-reveal="">
+              {title}
+            </h2>
+          ) : null}
+        </div>
+      </div>
+      <div className="cnl-stat-grid" ref={box}>
+        {items.map((s, k) => (
+          <div key={k} className="cnl-stat" data-reveal="">
+            <small>{s.note || ""}</small>
+            <b data-num="">{fmt(s, s.value)}</b>
+            <span>{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ quotes */
+
+function Quotes({ kicker, items }: { kicker?: string; items: CnlQuote[] }) {
+  const [i, setI] = React.useState(0)
+  const q = items[i] || items[0]
+  if (!q) return null
+  return (
+    <section className="cnl-quotes" aria-label="Student Feedback">
+      <figure>
+        {kicker ? (
+          <p className="cnl-kicker" data-reveal="">
+            {kicker}
+          </p>
+        ) : null}
+        <blockquote className="cnl-quote" key={i} data-reveal="">
+          {splitWords(q.quote).map((w, k) => (
+            <React.Fragment key={k}>
+              <span style={{ animationDelay: k * 22 + "ms" }}>{w}</span>{" "}
+            </React.Fragment>
+          ))}
+        </blockquote>
+        <figcaption className="cnl-cite" key={"c" + i}>
+          <b>{q.name}</b> · {q.role}, {q.company}
+        </figcaption>
+      </figure>
+      <div className="cnl-people" data-reveal="">
+        {items.map((p, k) => (
+          <button key={p.name} className="cnl-person" aria-current={k === i} onClick={() => setI(k)}>
+            <Avatar name={p.name} src={p.avatar} />
+            <span>
+              <b>{p.name}</b>
+              <span>{p.company}</span>
+            </span>
+            <i aria-hidden="true" onAnimationEnd={() => setI((x) => (x + 1) % items.length)} />
+          </button>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ cta */
+
+function Cta({
+  data,
+  image,
+  tones,
+  onSubscribe,
+  onTalk,
+  reduced,
+}: {
+  data: NonNullable<CairnAgentsLandingProps["cta"]>
+  image?: string
+  tones: string[]
+  onSubscribe?: (email: string) => unknown
+  onTalk: () => void
+  reduced: boolean
+}) {
+  const [email, setEmail] = React.useState("")
+  const [state, setState] = React.useState("idle")
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!isEmail(email)) {
+      setState("error")
+      return
+    }
+    setState("busy")
+    try {
+      if (onSubscribe) await onSubscribe(email.trim())
+      setState("sent")
+    } catch {
+      setState("failed")
+    }
+  }
+  const lines = splitTitle(data.title)
+  return (
+    <section className="cnl-cta" data-sec="talk">
+      <Vista className="cnl-cta-vista" src={image} tones={tones}>
+        <div className="cnl-cta-in">
+          {data.kicker ? (
+            <p className="cnl-kicker" data-reveal="">
+              {data.kicker}
+            </p>
+          ) : null}
+          <h2 className="cnl-h2" data-reveal="">
+            {lines.map((l, k) => (
+              <span key={k}>{l}</span>
+            ))}
+          </h2>
+          {data.text ? (
+            <p className="cnl-sec-text" data-reveal="">
+              {data.text}
+            </p>
+          ) : null}
+          {state === "sent" ? (
+            <div className="cnl-sent" role="status">
+              <Icon name="check" size={16} stroke={2.2} />
+              Subscribed! We'll send study tips & updates to {email.trim()}.
+            </div>
+          ) : (
+            <>
+              <form className={"cnl-form" + (state === "error" ? " is-error" : "")} onSubmit={submit} noValidate data-reveal="">
+                <label className="cnl-sr" htmlFor="cnl-cta-email">
+                  Email address
+                </label>
+                <input
+                  id="cnl-cta-email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@college.edu"
+                  value={email}
+                  aria-invalid={state === "error"}
+                  aria-describedby="cnl-cta-msg"
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    if (state === "error" || state === "failed") setState("idle")
+                  }}
+                />
+                <Pill
+                  label={state === "busy" ? "Joining…" : data.action || "Subscribe"}
+                  type="submit"
+                  tone="light"
+                  disabled={state === "busy"}
+                  reduced={reduced}
+                />
+              </form>
+              <p className="cnl-form-msg" id="cnl-cta-msg" aria-live="polite">
+                {state === "error" ? (
+                  "Please enter a valid email address."
+                ) : state === "failed" ? (
+                  "Something went wrong. Try again in a moment."
+                ) : (
+                  <>
+                    Placement cell or recruiter?{" "}
+                    <button style={{ textDecoration: "underline", textUnderlineOffset: 3 }} onClick={onTalk} type="button">
+                      Bring Vivaro to your campus
+                    </button>
+                  </>
+                )}
+              </p>
+            </>
+          )}
+          {data.assurances && data.assurances.length ? (
+            <ul className="cnl-assure">
+              {data.assurances.map((a) => (
+                <li key={a}>
+                  <Icon name="shield" size={12} />
+                  {a}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </Vista>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ footer */
+
+function Footer({
+  brand,
+  logo,
+  data,
+  onNav,
+}: {
+  brand: string
+  logo?: React.ReactNode
+  data: NonNullable<CairnAgentsLandingProps["footer"]>
+  onNav: (href: string | undefined, e?: React.MouseEvent) => void
+}) {
+  return (
+    <footer className="cnl-foot" data-sec="company">
+      <div className="cnl-foot-top">
+        <div className="cnl-foot-brand">
+          <span className="cnl-brand">
+            {logo || <Mark />}
+            <span>{brand}</span>
+          </span>
+          {data.tagline ? <p>{data.tagline}</p> : null}
+          <span className="cnl-status">Voice agent online · Ready for sessions</span>
+        </div>
+        {(data.columns || []).map((c) => (
+          <div key={c.title} className="cnl-foot-col">
+            <h4>{c.title}</h4>
+            <ul>
+              {c.links.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href || "#"} onClick={(e) => onNav(l.href, e)}>
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="cnl-foot-word" aria-hidden="true">
+        <span data-foot-word="">{brand}</span>
+      </div>
+      <div className="cnl-foot-bottom">
+        <span>
+          © {new Date().getFullYear()} {brand} AI.
+          {data.note ? " · " + data.note : ""}
+        </span>
+        <nav aria-label="Legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="mailto:support@Vivaro.ai">support@Vivaro.ai</a>
+        </nav>
+      </div>
+    </footer>
+  )
+}
+
+/* ------------------------------------------------------------------ campus pilot dialog */
+
+function TalkDialog({
+  brand,
+  volumes,
+  onClose,
+  onTalk,
+}: {
+  brand: string
+  volumes: string[]
+  onClose: () => void
+  onTalk?: (d: CnlTalkRequest) => unknown
+}) {
+  const [f, setF] = React.useState({
+    name: "",
+    email: "",
+    company: "",
+    volume: volumes[1] || volumes[0] || "",
+    message: "",
+  })
+  const [tried, setTried] = React.useState(false)
+  const [state, setState] = React.useState("idle")
+  const box = React.useRef(null as HTMLDivElement | null)
+  const opener = React.useRef(null as HTMLElement | null)
+
+  React.useEffect(() => {
+    opener.current = document.activeElement as HTMLElement | null
+    const first = box.current && (box.current.querySelector("input") as HTMLInputElement | null)
+    if (first) first.focus()
+    return () => {
+      if (opener.current && opener.current.focus) opener.current.focus()
+    }
+  }, [])
+
+  const key = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      e.stopPropagation()
+      onClose()
+    }
+    if (e.key === "Tab" && box.current) {
+      const els = Array.from(box.current.querySelectorAll("button,input,textarea,a[href]")).filter(
+        (x) => !(x as HTMLButtonElement).disabled,
+      ) as HTMLElement[]
+      if (!els.length) return
+      const a = els[0]
+      const z = els[els.length - 1]
+      if (e.shiftKey && document.activeElement === a) {
+        e.preventDefault()
+        z.focus()
+      } else if (!e.shiftKey && document.activeElement === z) {
+        e.preventDefault()
+        a.focus()
+      }
+    }
+  }
+  const bad = { name: !f.name.trim(), email: !isEmail(f.email), company: !f.company.trim() }
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setTried(true)
+    if (bad.name || bad.email || bad.company) return
+    setState("busy")
+    try {
+      if (onTalk) await onTalk({ ...f, email: f.email.trim() })
+      setState("sent")
+    } catch {
+      setState("failed")
+    }
+  }
+  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setF((x) => ({ ...x, [k]: e.target.value }))
+
+  return (
+    <div className="cnl-dialog" onMouseDown={(e) => e.target === e.currentTarget && onClose()} onKeyDown={key}>
+      <div className="cnl-dialog-box" ref={box} role="dialog" aria-modal="true" aria-labelledby="cnl-dlg-t">
+        <button className="cnl-dialog-close" aria-label="Close" onClick={onClose}>
+          <Icon name="x" size={16} />
+        </button>
+        {state === "sent" ? (
+          <div className="cnl-done" role="status">
+            <i>
+              <Icon name="check" size={22} stroke={2.4} />
+            </i>
+            <h2 id="cnl-dlg-t">We'll be in touch, {f.name.trim().split(" ")[0]}.</h2>
+            <p>
+              The {brand} team will reach out to {f.email.trim()} to set up mock interview cohorts for {f.company.trim()}.
+            </p>
+            <div style={{ marginTop: 20 }}>
+              <Pill label="Done" onClick={onClose} />
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={submit} noValidate>
+            <h2 id="cnl-dlg-t">Bring {brand} to your campus</h2>
+            <p style={{ marginTop: 8, fontSize: 13.5, color: "var(--cnl-card-mute)", lineHeight: 1.6 }}>
+              Give every student unlimited AI mock interviews with rubric scorecards and personalized study roadmaps.
+            </p>
+            <div className="cnl-fields">
+              <label className={"cnl-field" + (tried && bad.name ? " is-bad" : "")}>
+                Your name
+                <input value={f.name} onChange={set("name")} autoComplete="name" aria-invalid={tried && bad.name} />
+              </label>
+              <label className={"cnl-field" + (tried && bad.company ? " is-bad" : "")}>
+                College / Organization
+                <input
+                  value={f.company}
+                  onChange={set("company")}
+                  autoComplete="organization"
+                  aria-invalid={tried && bad.company}
+                />
+              </label>
+              <label className={"cnl-field is-wide" + (tried && bad.email ? " is-bad" : "")}>
+                Official email
+                <input type="email" value={f.email} onChange={set("email")} autoComplete="email" aria-invalid={tried && bad.email} />
+                {tried && bad.email ? <em>Enter a valid email like placement@college.edu</em> : null}
+              </label>
+              <div className="cnl-field is-wide">
+                <span id="cnl-vol-l">Student cohort size</span>
+                <div className="cnl-vol" role="radiogroup" aria-labelledby="cnl-vol-l">
+                  {volumes.map((v) => (
+                    <button
+                      key={v}
+                      type="button"
+                      role="radio"
+                      aria-checked={f.volume === v}
+                      onClick={() => setF((x) => ({ ...x, volume: v }))}
+                    >
+                      {v}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <label className="cnl-field is-wide">
+                Target roles or placement timeline
+                <textarea
+                  value={f.message}
+                  onChange={set("message")}
+                  placeholder="SDE roles, campus drive dates, custom rubrics…"
+                />
+              </label>
+            </div>
+            <div className="cnl-dialog-foot">
+              <small>{state === "failed" ? "That didn't send. Try again." : "Or email support@Vivaro.ai"}</small>
+              <Pill label={state === "busy" ? "Sending…" : "Request Pilot"} type="submit" disabled={state === "busy"} />
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ page */
+
+export function CairnAgentsLanding({
+  brand = "Vivaro",
+  logo,
+  nav = DEFAULT_NAV,
+  login = { label: "Plan study", href: "/prep" },
+  action = { label: "Try for free", href: "/interview" },
+  announcement = { label: "For students & job seekers · Now piloting", href: "/interview" },
+  title = "AI interviewer for your\ndream tech role.",
+  subtitle = "Run real voice-driven mock interviews, compare your resume against any job description, and get a scored, actionable feedback report in one low-latency session.",
+  primaryAction = { label: "Take mock interview", href: "/interview" },
+  scenarios = DEFAULT_SCENARIOS,
+  liveCalls = 18,
+  logosLabel = "Trusted by students preparing for top engineering roles",
+  logos = DEFAULT_LOGOS as CnlLogo[],
+  canvas = DEFAULT_CANVAS as CnlCanvas,
+  call = DEFAULT_CALL as CairnAgentsLandingProps["call"],
+  stats = DEFAULT_STATS,
+  quotes = DEFAULT_QUOTES,
+  cta = DEFAULT_CTA,
+  footer = DEFAULT_FOOTER,
+  images,
+  palette = "ember",
+  scheme = "light",
+  height = "100svh",
+  volumes = DEFAULT_VOLUMES,
+  onTalk,
+  onSubscribe,
+  className,
+  style,
+}: CairnAgentsLandingProps) {
+  const pal = resolvePalette(palette)
+  const img = { ...DEFAULT_IMAGES, ...(images || {}) }
+  const reduced = useReduced()
+  const rootRef = React.useRef(null as HTMLDivElement | null)
+  const [talk, setTalk] = React.useState(false)
+
+  const go = React.useCallback(
+    (href: string | undefined, e?: React.MouseEvent) => {
+      if (!href || href.charAt(0) !== "#") return
+      const root = rootRef.current
+      const el = root && (root.querySelector('[data-sec="' + href.slice(1) + '"]') as HTMLElement | null)
+      if (!el) return
+      if (e) e.preventDefault()
+      el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" })
+    },
+    [reduced],
+  )
+
+  useIso(() => {
+    const r = rootRef.current
+    if (!r) return
+    const absTop = (el: HTMLElement) => {
+      let y = 0
+      let n: HTMLElement | null = el
+      while (n) {
+        y += n.offsetTop
+        n = n.offsetParent as HTMLElement | null
+      }
+      return y
+    }
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia()
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const q = gsap.utils.selector(r)
+        const intro = gsap.timeline({ defaults: { ease: "expo.out" } })
+        intro
+          .from(q(".cnl-nav"), { y: -24, autoAlpha: 0, duration: 1, clearProps: "transform,opacity,visibility" })
+          .from(q("[data-line]"), { yPercent: 115, rotate: 2.5, duration: 1.3, stagger: 0.1 }, 0.1)
+          .from(q(".cnl-hero-copy [data-intro]"), { y: 18, autoAlpha: 0, duration: 1.1, stagger: 0.08 }, 0.3)
+          .from(q("[data-hero-stage]"), { y: 110, autoAlpha: 0, scale: 0.94, duration: 1.6 }, 0.35)
+
+        const hv = r.querySelector(".cnl-hero-vista") as HTMLElement | null
+        if (hv) {
+          const st = { start: 0, end: () => Math.max(220, absTop(hv) - window.innerHeight * 0.08), scrub: 0.6 }
+          gsap.to(hv, { "--cnl-in": "0px", "--cnl-r": "0px", ease: "none", scrollTrigger: st })
+          gsap.fromTo(hv.querySelector("[data-vista-media]"), { scale: 1.16 }, { scale: 1, ease: "none", scrollTrigger: st })
+          gsap.to(hv.querySelector("[data-chat]"), {
+            y: -50,
+            ease: "none",
+            scrollTrigger: { trigger: hv, start: "top 40%", end: "bottom top", scrub: true },
+          })
+          const drift = hv.querySelector("[data-vista-drift]")
+          const xTo = gsap.quickTo(drift, "x", { duration: 1.2, ease: "power3.out" })
+          const yTo = gsap.quickTo(drift, "y", { duration: 1.2, ease: "power3.out" })
+          const bubbles = Array.from(hv.querySelectorAll("[data-depth]")) as HTMLElement[]
+          const move = (e: PointerEvent) => {
+            if (e.pointerType !== "mouse") return
+            const b = hv.getBoundingClientRect()
+            const nx = (e.clientX - b.left) / b.width - 0.5
+            const ny = (e.clientY - b.top) / b.height - 0.5
+            xTo(nx * -26)
+            yTo(ny * -16)
+            bubbles.forEach((el) => {
+              const d = Number(el.dataset.depth || 1)
+              gsap.to(el, {
+                xPercent: nx * d * 3,
+                yPercent: ny * d * 4,
+                duration: 1,
+                ease: "power3.out",
+                overwrite: "auto",
+              })
+            })
+          }
+          hv.addEventListener("pointermove", move)
+          return () => hv.removeEventListener("pointermove", move)
+        }
+      })
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        ;(Array.from(r.querySelectorAll(".cnl-vista")) as HTMLElement[])
+          .filter((v) => !v.classList.contains("cnl-hero-vista"))
+          .forEach((v) => {
+            const pc = v.closest(".cnl-canvas-pin") as HTMLElement | null
+            const big = v.classList.contains("cnl-cta-vista")
+            gsap.fromTo(
+              v,
+              { clipPath: big ? "inset(12% 9% 12% 9% round 40px)" : "inset(7% 5% 7% 5% round 28px)" },
+              {
+                clipPath: "inset(0% 0% 0% 0% round 14px)",
+                ease: "none",
+                scrollTrigger: {
+                  trigger: v,
+                  start: "top 96%",
+                  end: big ? "top 25%" : "top 45%",
+                  scrub: 0.5,
+                  pinnedContainer: pc || undefined,
+                },
+              },
+            )
+            gsap.fromTo(
+              v.querySelector("[data-vista-media]"),
+              { yPercent: -6 },
+              {
+                yPercent: 6,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: v,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  pinnedContainer: pc || undefined,
+                },
+              },
+            )
+          })
+        ;(Array.from(r.querySelectorAll("[data-scrub]")) as HTMLElement[]).forEach((h) => {
+          gsap.fromTo(
+            h.querySelectorAll("[data-word]"),
+            { opacity: 0.13 },
+            { opacity: 1, stagger: 0.12, ease: "none", scrollTrigger: { trigger: h, start: "top 85%", end: "top 40%", scrub: true } },
+          )
+        })
+
+        const items = Array.from(r.querySelectorAll("[data-reveal]")) as HTMLElement[]
+        gsap.set(items, { autoAlpha: 0, y: 28 })
+        ScrollTrigger.batch(items, {
+          start: "top 90%",
+          once: true,
+          onEnter: (b) =>
+            gsap.to(b, { autoAlpha: 1, y: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, overwrite: true }),
+        })
+
+        const fw = r.querySelector("[data-foot-word]")
+        if (fw)
+          gsap.fromTo(
+            fw,
+            { yPercent: 70 },
+            { yPercent: 0, ease: "none", scrollTrigger: { trigger: fw.parentElement, start: "top bottom", end: "bottom bottom", scrub: true } },
+          )
+      })
+    }, r)
+    const raf = requestAnimationFrame(() => ScrollTrigger.refresh())
+    const onLoad = () => ScrollTrigger.refresh()
+    window.addEventListener("load", onLoad)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener("load", onLoad)
+      ctx.revert()
+    }
+  }, [])
+
+  const vars = {
+    "--cnl-day": pal.bg,
+    "--cnl-night-bg": pal.night,
+    "--cnl-accent": pal.accent,
+    "--cnl-agent": pal.agent,
+    ...(style || {}),
+  } as React.CSSProperties
+
+  return (
+    <div ref={rootRef} className={"cnl-root" + (className ? " " + className : "")} data-scheme={scheme} style={vars}>
+      <style>{CNL_CSS}</style>
+      <Nav
+        brand={brand}
+        logo={logo}
+        nav={nav}
+        login={login}
+        action={action}
+        onAction={() => setTalk(true)}
+        onNav={go}
+        reduced={reduced}
+      />
+      <main>
+        <Hero
+          announcement={announcement}
+          title={title}
+          subtitle={subtitle}
+          primary={primaryAction}
+          onPrimary={() => setTalk(true)}
+          image={img.hero}
+          tones={pal.ridges}
+          height={height}
+          scenarios={scenarios.length ? scenarios : DEFAULT_SCENARIOS}
+          brand={brand}
+          reduced={reduced}
+          liveCalls={liveCalls}
+          onNav={go}
+        />
+        {logos && logos.length ? <Logos logos={logos} label={logosLabel} /> : null}
+        {canvas && canvas.steps.length ? <Canvas data={canvas} image={img.canvas} tones={pal.ridges} reduced={reduced} /> : null}
+        {call ? (
+          <Call
+            kicker={call.kicker}
+            title={call.title}
+            text={call.text}
+            data={call.data}
+            image={img.call}
+            tones={pal.ridges}
+            reduced={reduced}
+            brand={brand}
+          />
+        ) : null}
+        {stats && stats.items.length ? (
+          <Stats kicker={stats.kicker} title={stats.title} items={stats.items} reduced={reduced} />
+        ) : null}
+        {quotes && quotes.items.length ? <Quotes kicker={quotes.kicker} items={quotes.items} /> : null}
+        {cta ? (
+          <Cta
+            data={cta}
+            image={img.cta}
+            tones={pal.ridges}
+            onSubscribe={onSubscribe}
+            onTalk={() => setTalk(true)}
+            reduced={reduced}
+          />
+        ) : null}
+      </main>
+      {footer ? <Footer brand={brand} logo={logo} data={footer} onNav={go} /> : null}
+      {talk ? <TalkDialog brand={brand} volumes={volumes} onClose={() => setTalk(false)} onTalk={onTalk} /> : null}
+    </div>
+  )
+}
+
+function Home() {
+  return <CairnAgentsLanding />
+}
+
+export default Home
