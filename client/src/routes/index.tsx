@@ -526,7 +526,7 @@ function tally(calls: CnlSimCall[], upto: number) {
 
 function callTimeline(lines: { text: string }[], wps = 2.7, gap = 0.6) {
   let t = 0.4
-  const marks: CnlMark[] = lines.map((l) => {
+  const marks: CnlMark    [] = lines.map((l) => {
     const d = Math.max(1.4, splitWords(l.text).length / wps)
     const m = { start: t, end: t + d }
     t += d + gap
@@ -561,7 +561,7 @@ function moodAt(lines: { mood: number }[], marks: CnlMark[], t: number) {
 
 function sentimentPath(
   lines: { mood: number }[],
-  marks: CnlMark[],
+  marks: CnlMark    [],
   total: number,
   t: number,
   w: number,
@@ -1221,20 +1221,49 @@ function Icon({ name, size = 16, stroke = 1.7 }: { name: CnlIconName; size?: num
   )
 }
 
-/** Custom PrepAi Mark: precision V emblem inside a rounded badge */
-function Mark({ size = 24 }: { size?: number }) {
+/** Custom PrepAi Mark    : precision P emblem inside a rounded badge */
+// function Mark({ size = 24 }: { size?: number }) {
+//   return (
+//     <svg className="cnl-svg" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
+//       <rect x="2" y="2" width="28" height="28" rx="8" fill="#F4D03F" />
+//       <path
+//         d="M11 23V9h6.2c3.1 0 5.3 1.9 5.3 4.8 0 2.9-2.2 4.8-5.3 4.8h-3V23H11zm3.2-7.1h2.7c1.4 0 2.3-.8 2.3-2.1 0-1.3-.9-2.1-2.3-2.1h-2.7v4.2z"
+//         fill="#111211"
+//       />
+//     </svg>
+//   )
+// }
+
+function Mark({ size = 26 }: { size?: number }) {
   return (
-    <svg className="cnl-svg" width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
-      <rect x="2" y="2" width="28" height="28" rx="8" fill="#F4D03F" />
-      <path
-        d="M10.5 10.5 L16 22.5 L21.5 10.5"
-        fill="none"
-        stroke="#111211"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <span
+      aria-hidden="true"
+      style={{
+        position: "relative",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: size,
+        height: size,
+        borderRadius: Math.round(size * 0.28),
+        background:
+          "radial-gradient(circle at 68% 72%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0) 45%), conic-gradient(from 335deg, #ff9a76, #ff85a1, #e09eff, #8ab4ff, #9ff0d5, #ffd38a, #ff9a76)",
+        boxShadow: "0 1px 3px rgba(16,13,11,0.12), inset 0 0 0 1px rgba(16,13,11,0.08)",
+        flex: "none",
+      }}
+    >
+      <svg
+        width={Math.round(size * 0.56)}
+        height={Math.round(size * 0.56)}
+        viewBox="0 0 16 16"
+        style={{ position: "relative", zIndex: 1 }}
+      >
+        <path
+          d="M4.2 13.5V2.5h4.6c2.4 0 4 1.4 4 3.6s-1.6 3.6-4 3.6H6.7v3.8H4.2zm2.5-5.7h1.9c1.1 0 1.7-.6 1.7-1.7s-.6-1.7-1.7-1.7H6.7v3.4z"
+          fill="#100d0b"
+        />
+      </svg>
+    </span>
   )
 }
 
@@ -1469,7 +1498,7 @@ function Nav({
   return (
     <header className={"cnl-nav" + (scrolled ? " is-scrolled" : "") + (hidden && !open ? " is-hidden" : "")}>
       <a className="cnl-brand" href="#top" onClick={(e) => onNav("#top", e)} aria-label={brand + ", home"}>
-        {logo || <Mark />}
+        {logo || <Mark     />}
         <span>{brand}</span>
       </a>
       <nav className="cnl-links" ref={links} aria-label="Main" onPointerLeave={out}>
@@ -1502,7 +1531,7 @@ function Nav({
         <div className="cnl-sheet" role="dialog" aria-modal="true" aria-label="Menu">
           <div className="cnl-sheet-top">
             <span className="cnl-brand">
-              {logo || <Mark />}
+              {logo || <Mark     />}
               <span>{brand}</span>
             </span>
             <button className="cnl-burger" aria-label="Close menu" onClick={() => setOpen(false)} autoFocus>
@@ -1707,7 +1736,7 @@ function HeroChat({
         </span>
       </div>
       <p className="cnl-powered">
-        Powered by <Mark size={15} />
+        Powered by <Mark     size={15} />
         <b>{brand}</b>
       </p>
       {n > 1 ? (
@@ -1809,7 +1838,7 @@ function Hero({
 
 /* ------------------------------------------------------------------ logos */
 
-function Wordmark({ logo }: { logo: CnlLogo }) {
+function Wordmark   ({ logo }: { logo: CnlLogo }) {
   const c = logo.color || "currentColor"
   if (logo.src) return <img className="cnl-logo-img" src={logo.src} alt={logo.name} loading="lazy" />
   switch (logo.style) {
@@ -1874,9 +1903,9 @@ function Logos({ logos, label }: { logos: CnlLogo[]; label: string }) {
       ) : null}
       <div className="cnl-marquee" data-reveal="">
         <ul className="cnl-track">
-          {logos.concat(logos).map((l, k) => (
-            <li key={k} className="cnl-logo" aria-hidden={k >= logos.length ? true : undefined} title={l.name}>
-              <Wordmark logo={l} />
+          {logos.concat(logos).map((P, k) => (
+            <li key={k} className="cnl-logo" aria-hidden={k >= logos.length ? true : undefined} title={P.name}>
+              <Wordmark    logo={P} />
             </li>
           ))}
         </ul>
@@ -2117,6 +2146,7 @@ function Canvas({ data, image, tones, reduced }: { data: CnlCanvas; image?: stri
             addFiles(Array.from(e.dataTransfer.files))
           }}
         >
+              
           <input
             type="file"
             multiple
@@ -2943,7 +2973,7 @@ function Footer({
       <div className="cnl-foot-top">
         <div className="cnl-foot-brand">
           <span className="cnl-brand">
-            {logo || <Mark />}
+            {logo || <Mark     />}
             <span>{brand}</span>
           </span>
           {data.tagline ? <p>{data.tagline}</p> : null}

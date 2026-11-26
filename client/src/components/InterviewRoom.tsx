@@ -411,19 +411,36 @@ const ROOM_CSS = `
 }
 `
 
-function VivaroMark({ size = 24 }: { size?: number }) {
+function Mark({ size = 26 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
-      <rect x="2" y="2" width="28" height="28" rx="8" fill="#F4D03F" />
-      <path
-        d="M10.5 10.5 L16 22.5 L21.5 10.5"
-        fill="none"
-        stroke="#111211"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <span
+      aria-hidden="true"
+      style={{
+        position: "relative",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: size,
+        height: size,
+        borderRadius: Math.round(size * 0.28),
+        background:
+          "radial-gradient(circle at 68% 72%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0) 45%), conic-gradient(from 335deg, #ff9a76, #ff85a1, #e09eff, #8ab4ff, #9ff0d5, #ffd38a, #ff9a76)",
+        boxShadow: "0 1px 3px rgba(16,13,11,0.12), inset 0 0 0 1px rgba(16,13,11,0.08)",
+        flex: "none",
+      }}
+    >
+      <svg
+        width={Math.round(size * 0.56)}
+        height={Math.round(size * 0.56)}
+        viewBox="0 0 16 16"
+        style={{ position: "relative", zIndex: 1 }}
+      >
+        <path
+          d="M4.2 13.5V2.5h4.6c2.4 0 4 1.4 4 3.6s-1.6 3.6-4 3.6H6.7v3.8H4.2zm2.5-5.7h1.9c1.1 0 1.7-.6 1.7-1.7s-.6-1.7-1.7-1.7H6.7v3.4z"
+          fill="#100d0b"
+        />
+      </svg>
+    </span>
   )
 }
 
@@ -477,9 +494,9 @@ export default function InterviewRoom({ interviewId }: InterviewRoomProps) {
 
       {/* Top Navigation matching Home & Form Pages */}
       <header className="viv-nav">
-        <a href="/" className="viv-brand" aria-label="Vivaro Home">
-          <VivaroMark size={24} />
-          <span>Vivaro</span>
+        <a href="/" className="viv-brand" aria-label="PrepAi Home">
+          <Mark size={24} />
+          <span>PrepAi</span>
         </a>
         <div className="viv-nav-actions">
           <span className="viv-session-tag" title="Interview Session ID">
