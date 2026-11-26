@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 
-// const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL; // Main deplyed
-const VITE_BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL; // Main deplyed
+// const VITE_BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export function useInterviewToken() {
     const [connectionDetails, setConnectionDetails] = useState<{

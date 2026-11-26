@@ -856,6 +856,7 @@ export function PrepPage() {
                 </ol>
 
                 <div className="viv-q-actions">
+                  {resumeUploaded ? "" : ""}
                   {/* {resumeUploaded && !showRoadmap && (
                     <button
                       type="button"

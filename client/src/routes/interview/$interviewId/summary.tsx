@@ -1,7 +1,10 @@
 import { useEffect, useState, useCallback } from "react"
 import { createFileRoute } from "@tanstack/react-router"
 import axios from "axios"
-import { BACKEND } from "../../../lib/config"
+// import { BACKEND } from "../../../lib/config"
+
+const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL; // Main deplyed
+// const VITE_BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const Route = createFileRoute("/interview/$interviewId/summary")({
   component: RouteComponent,
@@ -519,7 +522,7 @@ const SUMMARY_CSS = `
 }
 `
 
-function VivaroMark({ size = 24 }: { size?: number }) {
+function PrepAiMark({ size = 24 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
       <rect x="2" y="2" width="28" height="28" rx="8" fill="#F4D03F" />
@@ -604,7 +607,7 @@ function RouteComponent() {
 
   const fetchReportCard = useCallback(async () => {
     try {
-      const res = await axios.get(`${BACKEND}/api/v1/interview/${interviewId}`)
+      const res = await axios.get(`${VITE_BACKEND_BASE_URL}/api/v1/interview/${interviewId}`)
       if (res.data && res.data.success) {
         const interviewPayload = res.data.data
         setReport({
@@ -635,7 +638,7 @@ function RouteComponent() {
     if (!report?.feedback) return
     try {
       await navigator.clipboard.writeText(
-        `Vivaro Mock Interview Scorecard (${report.score}/100)\n\n${report.feedback}`,
+        `PrepAi Mock Interview Scorecard (${report.score}/100)\n\n${report.feedback}`,
       )
       setCopied(true)
       window.setTimeout(() => setCopied(false), 2000)
@@ -658,9 +661,9 @@ function RouteComponent() {
 
       {/* Top Navigation matching Home, Form & Room Pages */}
       <header className="viv-nav">
-        <a href="/" className="viv-brand" aria-label="Vivaro Home">
-          <VivaroMark size={24} />
-          <span>Vivaro</span>
+        <a href="/" className="viv-brand" aria-label="PrepAi Home">
+          <PrepAiMark size={24} />
+          <span>PrepAi</span>
         </a>
         <div className="viv-nav-actions">
           <span className="viv-session-tag" title="Interview Session ID">
@@ -699,7 +702,7 @@ function RouteComponent() {
               <div className="viv-card-head">
                 <div className="viv-head-left">
                   <span className="viv-orb" aria-hidden="true" />
-                  <span className="viv-card-title">Vivaro Rubric Engine</span>
+                  <span className="viv-card-title">PrepAi Rubric Engine</span>
                 </div>
                 <span className="viv-card-step">SYNC</span>
               </div>
@@ -720,7 +723,7 @@ function RouteComponent() {
               <div className="viv-card-head">
                 <div className="viv-head-left">
                   <span className="viv-orb" aria-hidden="true" />
-                  <span className="viv-card-title">Vivaro Rubric Engine</span>
+                  <span className="viv-card-title">PrepAi Rubric Engine</span>
                 </div>
                 <span className="viv-card-step">GRADING</span>
               </div>
@@ -749,7 +752,7 @@ function RouteComponent() {
               <div className="viv-card-head">
                 <div className="viv-head-left">
                   <span className="viv-orb" aria-hidden="true" />
-                  <span className="viv-card-title">Vivaro Rubric Report</span>
+                  <span className="viv-card-title">PrepAi Rubric Report</span>
                 </div>
                 <span className="viv-card-step">0–100 SCALE</span>
               </div>

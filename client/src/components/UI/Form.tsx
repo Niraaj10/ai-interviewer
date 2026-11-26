@@ -1,6 +1,3 @@
-"use client"
-
-import * as React from "react"
 import { useRef, useState } from "react"
 import axios from "axios"
 import { toast } from "sonner"
